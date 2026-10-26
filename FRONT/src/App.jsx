@@ -1,8 +1,13 @@
 
 // import pages
-import Navbar from './pages/navbar/navbar'
-import Footer from './pages/footer/footer'
+import Navbar from './composants/navbar'
+import Footer from './composants/footer'
 import Accueil from './pages/accueil/accueil';
+import VisiteVirtuelle from './pages/visiteVirtuelle/visiteVirtuelle';
+import MonCompte from './pages/MonEspace/MonCompte';
+import Evenements from './pages/events/events';
+import { Authentification } from './pages/auth/auth';
+import DashBoardAdmin from './Admin/pagesAdmin/Dashboard';
 
 // imports react
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
@@ -29,6 +34,11 @@ function App() {
         <main className="min-h-screen">
           <Routes>
             <Route path="/" element={<Accueil />} />
+            <Route path="/visite-virtuelle" element={<VisiteVirtuelle />} />
+            <Route path="/mon-compte" element={<MonCompte />} />
+            <Route path="/evenements" element={<Evenements />} />
+            <Route path="/auth" element={<Authentification />} />
+            <Route path="/admin/dashboard" element={<DashBoardAdmin />} />
           </Routes>
         </main>
         <Footer />
