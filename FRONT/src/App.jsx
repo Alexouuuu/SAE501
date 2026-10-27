@@ -6,8 +6,13 @@ import Accueil from './pages/accueil/accueil';
 import VisiteVirtuelle from './pages/visiteVirtuelle/visiteVirtuelle';
 import MonCompte from './pages/MonEspace/MonCompte';
 import Evenements from './pages/events/events';
-import { Authentification } from './pages/auth/auth';
+import Authentification from './pages/auth/auth';
 import DashBoardAdmin from './Admin/pagesAdmin/Dashboard';
+
+import CGU from './pages/droits/CGU';
+import Cookies from './pages/droits/Cookies';
+import MentionsLegales from './pages/droits/mentionslegales';
+import PolitiqueConfidentialite from './pages/droits/PolitiqueConfidentialite';
 
 // imports react
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
@@ -39,6 +44,10 @@ function App() {
             <Route path="/evenements" element={<Evenements />} />
             <Route path="/auth" element={<Authentification />} />
             <Route path="/admin/dashboard" element={<DashBoardAdmin />} />
+            <Route path="/cgu" element={<CGU />} />
+            <Route path="/cookies" element={<Cookies />} />
+            <Route path="/mentions-legales" element={<MentionsLegales />} />
+            <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
           </Routes>
         </main>
         <Footer />
