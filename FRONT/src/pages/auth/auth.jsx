@@ -2,7 +2,7 @@ import TitreProps from "../../composants/titreProps";
 
 // inscription connexion
 
-export function Authentification(){
+export default function Authentification(){
     return(
         <section>
             <TitreProps titre={Authentification}></TitreProps>

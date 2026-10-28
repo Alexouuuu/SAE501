@@ -1,14 +1,13 @@
 
 // import pages
 import Navbar from './composants/navbar'
-import Footer from './composants/footer'
+import Footer from './composants/footer/footer'
 import Accueil from './pages/accueil/accueil';
 import VisiteVirtuelle from './pages/visiteVirtuelle/visiteVirtuelle';
 import MonCompte from './pages/MonEspace/MonCompte';
 import Evenements from './pages/events/events';
 import Authentification from './pages/auth/auth';
 import DashBoardAdmin from './Admin/pagesAdmin/Dashboard';
-
 import CGU from './pages/droits/CGU';
 import Cookies from './pages/droits/Cookies';
 import MentionsLegales from './pages/droits/mentionslegales';
