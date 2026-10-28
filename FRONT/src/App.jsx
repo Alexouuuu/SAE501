@@ -12,6 +12,7 @@ import CGU from './pages/droits/CGU';
 import Cookies from './pages/droits/Cookies';
 import MentionsLegales from './pages/droits/mentionslegales';
 import PolitiqueConfidentialite from './pages/droits/PolitiqueConfidentialite';
+import Contact from './pages/contact/contact';
 
 // imports react
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
@@ -47,6 +48,7 @@ function App() {
             <Route path="/cookies" element={<Cookies />} />
             <Route path="/mentions-legales" element={<MentionsLegales />} />
             <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
+            <Route path="/Contact" element={<Contact/>}/>
           </Routes>
         </main>
         <Footer />

@@ -1,6 +1,12 @@
 .OnHoverLeftBorderAppear {
     position: relative;
-    display: inline-block;
+    color: white;
+    transition: background-color 0.2s ease-in, color 0.2s ease-in;
+}
+
+.OnHoverLeftBorderAppear:hover {
+    background-color: aliceblue;
+    color: black;
 }
 
 .OnHoverLeftBorderAppear::before {
@@ -10,7 +16,7 @@
     left: -8px;
     height: 100%;
     width: 2px;
-    background-color: #252b90; 
+    background-color: white;
     opacity: 0;
     transition: opacity 0.3s ease-in-out;
 }
