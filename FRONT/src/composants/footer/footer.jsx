@@ -89,7 +89,7 @@ export default function Footer() {
 
             {/* Réseaux sociaux et liens légaux */}
             <section className="bg-[#252B90]">
-                <div className="mx-auto flex w-full flex-col items-center justify-between gap-6 p-5 md:flex-row">
+                <div className="flex w-full flex-col items-center justify-between gap-6 p-5 px-8 md:flex-row">
                     <div className="flex items-center justify-center gap-3">
                         {liensReseaux.map((reseau) => (
                             <a
