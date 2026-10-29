@@ -1,6 +1,7 @@
 // sections
 import LandingAccueil from "../../composants/pageAccueil/landingAccueil"
 import SectionJPO from "../../composants/pageAccueil/sectionJPO"
+import InfosUniv from "../../composants/pageAccueil/infosUniv";
 // autres
 import TitreProps from "../../composants/titreProps";
 import Espacement from "../../composants/espacement"
@@ -9,11 +10,11 @@ export default function Accueil() {
     return (
         <section>
             <TitreProps titre={"Accueil"}/>
-            <LandingAccueil /> {/* banner avec img de l'iut ou de quoi attirer des gens + info dates / btn redirection*/}
+                <LandingAccueil /> {/* banner avec img de l'iut ou de quoi attirer des gens + info dates / btn redirection*/}
             <Espacement/>
-            {/*Informations : Parler de la formation et des cursus qui sont présentés avec des icons interactives qui changent le texte et l'interface*/}
+                <InfosUniv/>{/*Informations : Parler de la formation et des cursus qui sont présentés avec des icons interactives qui changent le texte et l'interface*/}
             <Espacement/>
-            <SectionJPO /> {/*Présentation de la JPO et etat ouverture/fermé avec les dates et détails*/}
+                <SectionJPO /> {/*Présentation de la JPO et etat ouverture/fermé avec les dates et détails*/}
             <Espacement/>
         </section>
     )
