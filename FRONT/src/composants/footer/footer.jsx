@@ -32,6 +32,9 @@ export default function Footer() {
         { id: 2, name: 'Instagram', url: 'https://www.instagram.com/but_mmi_meaux?utm_source=ig_web_button_share_sheet&srtk=ZDNlZDc0MzIxNw==', icon: <AiFillInstagram /> },
     ];
 
+    const adresse = "17 Rue Jablinot, 77100 Meaux";
+    const telephone = "01 64 36 44 15";
+
     return (
         <footer>
             <hr className="mx-auto w-24 h-1 bg-[#31379A] rounded-full mb-1 border-0" />
@@ -104,6 +107,12 @@ export default function Footer() {
                                 {reseau.icon}
                             </a>
                         ))}
+                    </div>
+                    <div className="flex flex-col items-center text-center text-sm text-white">
+                        <address className="not-italic">{adresse}</address>
+                        <a href="tel:+33164364415" className="hover:underline">
+                            {telephone}
+                        </a>
                     </div>
                     <div className="flex flex-wrap items-center justify-center gap-2 text-center font-medium sm:gap-6 md:justify-end">
                         {liensdroits.map((lien) => (
