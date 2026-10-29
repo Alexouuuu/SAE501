@@ -3,6 +3,7 @@
 import { Link } from 'react-router-dom';
 import { FaYoutube } from "react-icons/fa6"; // https://www.youtube.com/@iutmlv6116
 import { AiFillInstagram } from "react-icons/ai"; // https://www.instagram.com/but_mmi_meaux?utm_source=ig_web_button_share_sheet&srtk=ZDNlZDc0MzIxNw==
+import { FaLinkedin } from "react-icons/fa";
 
 import "./footer.css";
 
@@ -13,6 +14,8 @@ export default function Footer() {
         { id: 1, name: 'Accueil', url: '/' },
         { id: 2, name: 'Visite Virtuelle', url: '/visite-virtuelle' },
         { id: 3, name: 'Evenements', url: '/evenements' },
+        { id: 4, name: 'Plan du site', url: '/planDuSite' },
+        
     ];
 
     const liensPersos = [
@@ -29,6 +32,7 @@ export default function Footer() {
     const liensReseaux = [
         { id: 1, name: 'Youtube', url: 'https://www.youtube.com/@iutmlv6116', icon: <FaYoutube /> },
         { id: 2, name: 'Instagram', url: 'https://www.instagram.com/but_mmi_meaux?utm_source=ig_web_button_share_sheet&srtk=ZDNlZDc0MzIxNw==', icon: <AiFillInstagram /> },
+        {id: 3, name: "Linkedin", url: "https://www.linkedin.com/in/iut-marne-la-vallée-a6b583122/", icon: <FaLinkedin />}
     ];
 
     const adresse = "17 Rue Jablinot, 77100 Meaux";
