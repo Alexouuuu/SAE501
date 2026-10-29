@@ -57,7 +57,7 @@ export default function Footer() {
                                 <ul className="m-2 space-y-4 font-medium">
                                     {liens.map((lien) => (
                                         <li key={lien.id}>
-                                            <Link to={lien.url} className="OnHoverLeftBorderAppear inline-block cursor-pointer py-2 text-base">
+                                            <Link to={lien.url} className="OnHoverLeftBorderAppear inline-block cursor-pointer py-2 px-2 text-base">
                                                 {lien.name}
                                             </Link>
                                         </li>
@@ -70,7 +70,7 @@ export default function Footer() {
                                     <ul className="m-2 space-y-4 font-medium">
                                         {liensPersos.map((lien) => (
                                             <li key={lien.id}>
-                                                <Link to={lien.url} className="OnHoverLeftBorderAppear inline-block cursor-pointer py-2 text-base">
+                                                <Link to={lien.url} className="OnHoverLeftBorderAppear inline-block cursor-pointer py-2 px-2 text-base">
                                                     {lien.name}
                                                 </Link>
                                             </li>
@@ -83,7 +83,7 @@ export default function Footer() {
                                         <ul className="py-2 space-y-4 font-medium">
                                             {liencontact.map((lien) => (
                                                 <li key={lien.id}>
-                                                    <Link to={lien.url} className="OnHoverLeftBorderAppear inline-block cursor-pointer py-2 text-base">
+                                                    <Link to={lien.url} className="OnHoverLeftBorderAppear inline-block cursor-pointer py-2 px-2 text-base">
                                                         {lien.name}
                                                     </Link>
                                                 </li>
