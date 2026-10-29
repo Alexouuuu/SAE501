@@ -13,7 +13,6 @@ export default function Footer() {
         { id: 1, name: 'Accueil', url: '/' },
         { id: 2, name: 'Visite Virtuelle', url: '/visite-virtuelle' },
         { id: 3, name: 'Evenements', url: '/evenements' },
-        { id: 4, name: 'Nous contacter', url: '/contact' },
     ];
 
     const liensPersos = [
@@ -35,6 +34,10 @@ export default function Footer() {
     const adresse = "17 Rue Jablinot, 77100 Meaux";
     const telephone = "01 64 36 44 15";
 
+    const liencontact = [
+        { id: 1, name: 'Nous contacter', url: '/contact' },
+    ]
+
     return (
         <footer>
             <hr className="mx-auto w-24 h-1 bg-[#31379A] rounded-full mb-1 border-0" />
@@ -54,25 +57,45 @@ export default function Footer() {
                                 <ul className="m-2 space-y-4 font-medium">
                                     {liens.map((lien) => (
                                         <li key={lien.id}>
-                                            <Link to={lien.url} className="OnHoverLeftBorderAppear inline-block cursor-pointer p-2 text-base">
+                                            <Link to={lien.url} className="OnHoverLeftBorderAppear inline-block cursor-pointer py-2 text-base">
                                                 {lien.name}
                                             </Link>
                                         </li>
                                     ))}
                                 </ul>
                             </div>
-                            <div>
-                                <h4 className="mb-6 text-xl font-bold uppercase tracking-wider text-white">VOTRE ESPACE</h4>
-                                <ul className="m-2 space-y-4 font-medium">
-                                    {liensPersos.map((lien) => (
-                                        <li key={lien.id}>
-                                            <Link to={lien.url} className="OnHoverLeftBorderAppear inline-block cursor-pointer p-2 text-base">
-                                                {lien.name}
-                                            </Link>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                            <section className="flex flex-col gap-8">
+                                <div>
+                                    <h4 className="mb-6 text-xl font-bold uppercase tracking-wider text-white">VOTRE ESPACE</h4>
+                                    <ul className="m-2 space-y-4 font-medium">
+                                        {liensPersos.map((lien) => (
+                                            <li key={lien.id}>
+                                                <Link to={lien.url} className="OnHoverLeftBorderAppear inline-block cursor-pointer py-2 text-base">
+                                                    {lien.name}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <div className="flex flex-col items-center text-center text-sm text-white md:items-start md:text-left">
+                                    <h1 className="text-xl font-bold uppercase tracking-wider text-white">Comment nous joindre ?</h1>
+                                    <div className="m-2 flex flex-col gap-2">
+                                        <ul className="py-2 space-y-4 font-medium">
+                                            {liencontact.map((lien) => (
+                                                <li key={lien.id}>
+                                                    <Link to={lien.url} className="OnHoverLeftBorderAppear inline-block cursor-pointer py-2 text-base">
+                                                        {lien.name}
+                                                    </Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        <address className="not-italic">{adresse}</address>
+                                        <a href="tel:+33164364415" className="hover:underline">
+                                            {telephone}
+                                        </a>
+                                    </div>
+                                </div>
+                            </section>
                         </div>
                     </div>
                 </div>
@@ -107,12 +130,6 @@ export default function Footer() {
                                 {reseau.icon}
                             </a>
                         ))}
-                    </div>
-                    <div className="flex flex-col items-center text-center text-sm text-white">
-                        <address className="not-italic">{adresse}</address>
-                        <a href="tel:+33164364415" className="hover:underline">
-                            {telephone}
-                        </a>
                     </div>
                     <div className="flex flex-wrap items-center justify-center gap-2 text-center font-medium sm:gap-6 md:justify-end">
                         {liensdroits.map((lien) => (
