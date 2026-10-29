@@ -1,8 +1,8 @@
 
 
 import { Link } from 'react-router-dom';
-import { FaYoutube } from "react-icons/fa"; // https://www.youtube.com/@iutmlv6116
-import { FaInstagram } from "react-icons/fa"; // https://www.instagram.com/but_mmi_meaux?utm_source=ig_web_button_share_sheet&srtk=ZDNlZDc0MzIxNw==
+import { FaYoutube } from "react-icons/fa6"; // https://www.youtube.com/@iutmlv6116
+import { AiFillInstagram } from "react-icons/ai"; // https://www.instagram.com/but_mmi_meaux?utm_source=ig_web_button_share_sheet&srtk=ZDNlZDc0MzIxNw==
 
 import "./footer.css";
 
@@ -28,12 +28,13 @@ export default function Footer() {
     ];
 
     const liensReseaux = [
-        { id: 1, name: 'Youtube', url: 'https://www.youtube.com/@iutmlv6116', icon: <FaYoutube></FaYoutube> },
-        { id: 2, name: 'Instagram', url: 'https://www.instagram.com/but_mmi_meaux?utm_source=ig_web_button_share_sheet&srtk=ZDNlZDc0MzIxNw==', icon: <FaInstagram></FaInstagram> },
+        { id: 1, name: 'Youtube', url: 'https://www.youtube.com/@iutmlv6116', icon: <FaYoutube /> },
+        { id: 2, name: 'Instagram', url: 'https://www.instagram.com/but_mmi_meaux?utm_source=ig_web_button_share_sheet&srtk=ZDNlZDc0MzIxNw==', icon: <AiFillInstagram /> },
     ];
 
     return (
         <footer>
+            <hr className="mx-auto w-24 h-1 bg-[#31379A] rounded-full mb-1 border-0" />
             <section className="relative overflow-hidden bg-[#31379A] border-t border-gray-200 pt-16 pb-8 text-gray-600">
                 {/* Fond de la zone carte et séparation diagonale */}
                 <div
@@ -43,7 +44,7 @@ export default function Footer() {
                 <div className="relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
 
                     {/* Navigation */}
-                    <div className="mb-8 grid grid-cols-1 gap-12 text-center md:mb-0 md:min-h-80 md:grid-cols-2 md:items-center md:text-left">
+                    <div className="mb-8 grid grid-cols-1 text-center md:mb-0 md:min-h-80 md:grid-cols-2 md:items-center md:text-left">
                         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2">
                             <div>
                                 <h4 className="mb-6 text-xl font-bold uppercase tracking-wider text-white">PAGES</h4>
