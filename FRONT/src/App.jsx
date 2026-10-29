@@ -6,6 +6,7 @@ import Footer from './composants/footer/footer'
 import Accueil from './pages/accueil/accueil';
 import VisiteVirtuelle from './pages/visiteVirtuelle/visiteVirtuelle';
 import Evenements from './pages/events/events';
+import Formation from './pages/formation/formation';
 
 import MonCompte from './pages/MonEspace/MonCompte';
 import Authentification from './pages/auth/auth';
@@ -47,6 +48,7 @@ function App() {
             <Route path="/" element={<Accueil />} />
             <Route path="/visite-virtuelle" element={<VisiteVirtuelle />} />
             <Route path="/evenements" element={<Evenements />} />
+            <Route path="/formation" element={<Formation />} />
 
             <Route path="/mon-compte" element={<MonCompte />} />
             <Route path="/auth" element={<Authentification />} />
