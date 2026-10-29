@@ -1,7 +1,8 @@
 // sections
-import LandingAccueil from "../../composants/pageAccueil/landingAccueil"
-import SectionJPO from "../../composants/pageAccueil/sectionJPO"
-import InfosUniv from "../../composants/pageAccueil/infosUniv";
+import LandingAccueil from "./pageAccueilComps/landingAccueil"
+import SectionJPO from "./pageAccueilComps/sectionJPO"
+import InfosUniv from "./pageAccueilComps/infosUniv";
+import SectionFAQ from "./pageAccueilComps/sectionFAQ";
 // autres
 import TitreProps from "../../composants/titreProps";
 import Espacement from "../../composants/espacement"
@@ -15,6 +16,8 @@ export default function Accueil() {
                 <InfosUniv/>{/*Informations : Parler de la formation et des cursus qui sont présentés avec des icons interactives qui changent le texte et l'interface*/}
             <Espacement/>
                 <SectionJPO /> {/*Présentation de la JPO et etat ouverture/fermé avec les dates et détails*/}
+            <Espacement/>
+                <SectionFAQ/>
             <Espacement/>
         </section>
     )

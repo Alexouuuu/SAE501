@@ -6,10 +6,11 @@ import logo from "/images/logo_univ_eiffel_bleu.png" // temporaire hein, l'image
 export default function Navbar() {
     // const Pages = [
     //     { id: 1, name: 'Accueil', url: '/' },
-    //     { id: 2, name: 'Visite Virtuelle', url: '/visite-virtuelle' },
-    //     { id: 3, name: 'Evenements', url: '/evenements' },
-    //     { id: 4, name: 'Plan du Site', url: '/planDuSite' },
-    //     { id: 5, name: 'Nous contacter', url: '/contact' },
+    //     { id: 2, name: 'La formation', url: '/formation' },
+    //     { id: 3, name: 'Visite Virtuelle', url: '/visite-virtuelle' },
+    //     { id: 4, name: 'Evenements', url: '/evenements' },
+    //     { id: 5, name: 'Plan du Site', url: '/planDuSite' },
+    //     { id: 6, name: 'Nous contacter', url: '/contact' },
 
     // ];
 
