@@ -45,15 +45,18 @@ export default function Footer() {
 
     return (
         <footer>
-            <hr className="mx-auto w-24 h-1 bg-[#31379A] rounded-full mb-1 border-0" />
-            <section className="relative overflow-hidden bg-[#31379A] border-t border-gray-200 pt-16 pb-8 text-gray-600">
+            <hr className="mx-auto w-24 h-1 bg-[#212684] rounded-full mb-1 border-0" />
+            <section className="relative overflow-hidden bg-[#212684] border-t border-gray-200 pt-16 pb-8 text-gray-600">
                 {/* Fond de la zone carte et séparation diagonale */}
                 <div
-                    className="absolute inset-y-0 right-0 hidden w-[48%] bg-[#252B90] [clip-path:polygon(16%_0,100%_0,100%_100%,0_100%)] md:block"
+                    className="absolute inset-y-0 right-0 hidden w-[52%] bg-[#161b7d] [clip-path:polygon(16%_0,100%_0,100%_100%,0_100%)] md:block"
+                    aria-hidden="true"
+                />
+                <div
+                    className="absolute inset-y-0 right-[42%] hidden w-[5%] bg-[#1b1f6e] [clip-path:polygon(100%_0,100%_100%,0_100%)] md:block"
                     aria-hidden="true"
                 />
                 <div className="relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-
                     {/* Navigation */}
                     <div className="mb-8 grid grid-cols-1 text-center md:mb-0 md:min-h-80 md:grid-cols-2 md:items-center md:text-left">
                         <div className="grid grid-cols-1 gap-12 sm:grid-cols-2">
@@ -106,13 +109,24 @@ export default function Footer() {
                 </div>
 
                 {/* Carte Google Maps */}
+
+                
+
                 <div
-                    className="relative z-10 mx-auto h-56 w-[calc(100%-2rem)] bg-[#252B90] p-2 md:absolute md:inset-y-4 md:right-4 md:m-0 md:h-auto md:w-[45%] md:bg-transparent md:p-0 md:[clip-path:polygon(16%_0,100%_0,100%_100%,0_100%)]"
+                    className="relative z-10 mx-auto h-56 w-[calc(100%-2rem)] md:pr-5 p-0 md:absolute md:inset-y-4 md:right-0 md:m-0 md:h-auto md:w-[40%] md:bg-transparent"
                 >
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1906.7855729968471!2d2.8736989282913137!3d48.956627391235735!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e8a11cceb9ee4f%3A0x143615de96b042c5!2sIUT%20De%20Meaux%20Universit%C3%A9%20Gustave%20Eiffel!5e0!3m2!1sfr!2sfr!4v1793196787299!5m2!1sfr!2sfr"
+                    {/* <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1906.7855729968471!2d2.8736989282913137!3d48.956627391235735!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e8a11cceb9ee4f%3A0x143615de96b042c5!2sIUT%20De%20Meaux%20Universit%C3%A9%20Gustave%20Eiffel!5e0!3m2!1sfr!2sfr!4v1793196787299!5m2!1sfr!2sfr"
                         title="Carte Google Maps de l'IUT de Meaux"
                         className="block h-full w-full rounded-lg border-0"
                         allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                    /> */}
+
+                    <iframe
+                        src="https://www.google.com/maps/d/u/0/embed?mid=1CL_CfHqV1qgPkJAHlLORT95OJFVJYCc&ehbc=2E312F&noprof=1"
+                        title="Carte Google Maps de l'IUT de Meaux"
+                        className="block h-full w-full border-0"
                         loading="lazy"
                         referrerPolicy="strict-origin-when-cross-origin"
                     />
@@ -120,7 +134,7 @@ export default function Footer() {
             </section>
 
             {/* Réseaux sociaux et liens légaux */}
-            <section className="bg-[#252B90]">
+            <section className="bg-[#161b7d]">
                 <div className="flex w-full flex-col items-center justify-between gap-6 p-5 px-8 md:flex-row">
                     <div className="flex items-center justify-center gap-3">
                         {liensReseaux.map((reseau) => (

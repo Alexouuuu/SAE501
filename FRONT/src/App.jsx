@@ -1,6 +1,7 @@
 
 // import pages
 import Navbar from './composants/navbar'
+import BandeauNavbar from './composants/bandeauNavbar';
 import Footer from './composants/footer/footer'
 
 import Accueil from './pages/accueil/accueil';
@@ -42,6 +43,7 @@ function App() {
     <BrowserRouter>
       <section>
         <OnPageChangeScrollToTop />
+        <BandeauNavbar/>
         <Navbar />
         <main className="min-h-screen">
           <Routes>
