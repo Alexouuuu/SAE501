@@ -36,7 +36,7 @@ export default function Navbar() {
 
     const Admin = { name: 'Dashboard Admin', url: '/admin/dashboard' }
 
-    const Compte = { name: 'Mon Compte', url: '/mon-compte' }
+    const Compte = { name: 'Connexion / inscription', url: '/auth' }
 
     return (
         <nav className="border-b border-black bg-white">
@@ -117,8 +117,8 @@ export default function Navbar() {
                         {Compte.name}
                     </Link>
                     <Link
-                        className="min-w-0 px-2 py-2 inline-flex h-full w-auto items-center justify-center gap-1 text-center text-sm text-black hover:bg-black hover:text-white sm:px-4 sm:gap-2 sm:text-lg"
-                        to={Compte.url}
+                        className="px-4 inline-flex h-full w-auto items-center justify-center gap-2 text-lg text-black hover:bg-black hover:text-white"
+                        to="/auth"
                     >
                         <MdFormatAlignCenter />
                         <p className="max-w-20 leading-tight sm:max-w-none">S'inscrire à la JPO</p>
