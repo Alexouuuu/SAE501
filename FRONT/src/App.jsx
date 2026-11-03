@@ -4,6 +4,8 @@ import Navbar from './composants/navbar'
 import BandeauNavbar from './composants/bandeauNavbar';
 import Footer from './composants/footer/footer'
 
+import NotFound from './pages/404/notfound'
+
 import Accueil from './pages/accueil/accueil';
 import VisiteVirtuelle from './pages/visiteVirtuelle/visiteVirtuelle';
 import Evenements from './pages/events/events';
@@ -86,12 +88,13 @@ function App() {
               <Route path="/mentions-legales" element={<MentionsLegales />} />
               <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
 
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/planDuSite" element={<PlanDuSite />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
+            <Route path="/contact" element={<Contact/>}/>
+            <Route path="/planDuSite" element={<PlanDuSite/>}/>
+            <Route path="*" element={<NotFound/>}/>
+          </Routes>
+        </main>
+        <Footer />
+      </div>
       </div>
     </BrowserRouter>
   )
