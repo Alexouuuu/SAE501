@@ -35,7 +35,7 @@ export default function Navbar() {
 
     const Admin = { name: 'Dashboard Admin', url: '/admin/dashboard' }
 
-    const Compte = { name: 'Mon Compte', url: '/mon-compte' }
+    const Compte = { name: 'Connexion / inscription', url: '/auth' }
 
     return (
         <nav className="border-b border-black bg-white">
@@ -117,7 +117,7 @@ export default function Navbar() {
                     </Link>
                     <Link
                         className="px-4 inline-flex h-full w-auto items-center justify-center gap-2 text-lg text-black hover:bg-black hover:text-white"
-                        to={Compte.url}
+                        to="/auth"
                     >
                         <p>S'inscrire à la JPO</p>
                     </Link>

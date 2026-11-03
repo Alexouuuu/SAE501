@@ -1,13 +1,5 @@
-import TitreProps from "../../composants/titreProps";
+import { Navigate } from "react-router-dom";
 
-// import EventsInscriptionsList from "./MonEspaceComps/EventsInscriptionsList";
-// import JPOInscriptionsList from "./MonEspaceComps/JPOInscriptionsList";
-// import SettingsUsers from "./MonEspaceComps/SettingsUser";
-
-export default function MonEspace(){
-    return(
-        <section>
-            <TitreProps titre={"Mon Espace"}></TitreProps>
-        </section>
-    );
+export default function MonEspace() {
+    return <Navigate to="/auth" replace />;
 }
