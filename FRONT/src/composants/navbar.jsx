@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { FaUser } from "react-icons/fa";
 import { useEffect, useRef, useState } from 'react';
 
+import { MdFormatAlignCenter } from "react-icons/md";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 
@@ -39,7 +40,7 @@ export default function Navbar() {
 
     return (
         <nav className="border-b border-black bg-white">
-            <div className="flex flex-row items-stretch justify-between pl-20">
+            <div className="flex flex-col items-center gap-1 px-2 sm:flex-row sm:justify-between sm:pl-8 lg:pl-20">
                 {/*Logo */}
                 <div className="flex items-center">
                     <Link to="/">
@@ -47,13 +48,13 @@ export default function Navbar() {
                     </Link>
                 </div>
 
-                <section className="flex flex-row items-stretch">
+                <section className="flex w-full min-w-0 flex-wrap items-stretch justify-center sm:w-auto sm:flex-nowrap">
 
-                    <ul ref={menusRef} className="flex flex-row items-stretch">
+                    <ul ref={menusRef} className="flex min-w-0 flex-wrap items-stretch justify-center sm:flex-nowrap">
                         <li className="relative flex items-center">
                             <button
                                 type="button"
-                                className="hover:bg-gray-100 h-full px-4 text-black flex flex-row gap-2 items-center text-lg cursor-pointer"
+                                className="hover:bg-gray-100 h-full px-2 text-sm text-black flex flex-row gap-1 items-center cursor-pointer sm:px-4 sm:gap-2 sm:text-lg"
                                 aria-expanded={openMenu === 'jpo'}
                                 aria-controls="jpo-menu"
                                 onClick={() => setOpenMenu(openMenu === 'jpo' ? null : 'jpo')}
@@ -78,7 +79,7 @@ export default function Navbar() {
                         <li className="relative flex items-center">
                             <button
                                 type="button"
-                                className="hover:bg-gray-100 h-full px-4 text-black flex flex-row gap-2 items-center text-lg cursor-pointer"
+                                className="hover:bg-gray-100 h-full px-2 text-sm text-black flex flex-row gap-1 items-center cursor-pointer sm:px-4 sm:gap-2 sm:text-lg"
                                 aria-expanded={openMenu === 'autres'}
                                 aria-controls="autres-menu"
                                 onClick={() => setOpenMenu(openMenu === 'autres' ? null : 'autres')}
@@ -102,24 +103,25 @@ export default function Navbar() {
                     </ul>
 
                     <Link
-                        className="px-4 inline-flex h-full w-auto items-center justify-center gap-2 text-lg text-black hover:bg-black hover:text-white"
+                        className="min-w-0 px-2 py-2 inline-flex h-full w-auto items-center justify-center gap-1 text-center text-sm text-black hover:bg-black hover:text-white sm:px-4 sm:gap-2 sm:text-lg"
                         to={Admin.url}
                     >
                         <MdOutlineAdminPanelSettings />
                         {Admin.name}
                     </Link>
                     <Link
-                        className="px-4 inline-flex h-full w-auto items-center justify-center gap-2 text-lg text-black hover:bg-black hover:text-white"
+                        className="min-w-0 px-2 py-2 inline-flex h-full w-auto items-center justify-center gap-1 text-center text-sm text-black hover:bg-black hover:text-white sm:px-4 sm:gap-2 sm:text-lg"
                         to={Compte.url}
                     >
                         <FaUser />
                         {Compte.name}
                     </Link>
                     <Link
-                        className="px-4 inline-flex h-full w-auto items-center justify-center gap-2 text-lg text-black hover:bg-black hover:text-white"
+                        className="min-w-0 px-2 py-2 inline-flex h-full w-auto items-center justify-center gap-1 text-center text-sm text-black hover:bg-black hover:text-white sm:px-4 sm:gap-2 sm:text-lg"
                         to={Compte.url}
                     >
-                        <p>S'inscrire à la JPO</p>
+                        <MdFormatAlignCenter />
+                        <p className="max-w-20 leading-tight sm:max-w-none">S'inscrire à la JPO</p>
                     </Link>
                 </section>
             </div>

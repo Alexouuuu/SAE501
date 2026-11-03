@@ -8,141 +8,129 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function SectionEnseignements() {
     const sectionRef = useRef(null);
-    const cardsRef = useRef([]);
+    const slidesRef = useRef([]);
 
     const enseign = [
         {
             id: 1,
             logo: <FaCode />,
-            matiere: 'Développement et intégration web',
-            description: 'Conception et réalisation de sites web et d\'applications interactives en maîtrisant les langages de programmation du web et les bonnes pratiques d\'intégration.',
-            image: '/images/IUT.jpg'
+            matiere: "Développement",
+            soustitre: "et intégration web",
+            description: "Concevoir et réaliser des sites web et des applications interactives en mobilisant les langages du web et les bonnes pratiques d'intégration.",
+            image: "/images/IUT.jpg"
         },
         {
             id: 2,
             logo: <FaPenFancy />,
-            matiere: 'Création graphique et infographie',
-            description: 'Apprentissage des fondamentaux du design visuel, de la charte graphique et de la création de supports de communication plurinumérique.',
-            image: '/images/IUT.jpg'
+            matiere: "Création graphique",
+            soustitre: "et infographie",
+            description: "Maîtriser les fondamentaux du design visuel, élaborer une charte graphique et créer des supports de communication numérique.",
+            image: "/images/IUT.jpg"
         },
         {
             id: 3,
             logo: <MdOutlineVideoLibrary />,
-            matiere: 'Production audiovisuelle',
-            description: 'Maîtrise de la chaîne de production audiovisuelle, de l\'écriture de scénario au tournage en passant par le montage numérique et les effets visuels.',
-            image: '/images/IUT.jpg'
+            matiere: "Audiovisuel",
+            soustitre: "et production numérique",
+            description: "Écrire un scénario, réaliser un tournage, monter des vidéos et créer des effets visuels en maîtrisant toute la chaîne de production audiovisuelle.",
+            image: "/images/IUT.jpg"
         },
     ];
 
     useEffect(() => {
         const section = sectionRef.current;
-        const cards = cardsRef.current.filter(Boolean);
-        if (!section || cards.length === 0) return;
+        const slides = slidesRef.current.filter(Boolean);
+        if (!section || slides.length === 0) return;
 
-        let ctx;
-        const frame = requestAnimationFrame(() => {
-            ctx = gsap.context(() => {
-                const renderProgress = (progress) => {
-                    const { width, height } = section.getBoundingClientRect();
-                    const firstMove = gsap.utils.clamp(0, 1, progress / 0.5);
-                    const secondMove = gsap.utils.clamp(
-                        0,
-                        1,
-                        (progress - 0.5) / 0.18
-                    );
-                    const thirdReveal = gsap.utils.clamp(
-                        0,
-                        1,
-                        (progress - 0.72) / 0.18
-                    );
-                    cards.forEach((card, index) => {
-                        const position = index === 0
-                            ? {
-                                x: 0.8 + (0.22 - 0.8) * firstMove,
-                                y: 0.16 + (0.76 - 0.16) * firstMove,
-                                autoAlpha: 1,
-                            }
-                            : index === 1
-                                ? {
-                                    x: 0.78 + (0.5 - 0.78) * secondMove,
-                                    y: 0.22 + (0.5 - 0.22) * secondMove,
-                                    autoAlpha: secondMove,
-                                }
-                                : {
-                                    x: 0.78,
-                                    y: 0.22,
-                                    autoAlpha: thirdReveal,
-                                };
+        const ctx = gsap.context(() => {
+            // Placement initial des slides
+            slides.forEach((slide, index) => {
+                gsap.set(slide, {
+                    xPercent: index === 0 ? 0 : 100,
+                    autoAlpha: index === 0 ? 1 : 0
+                });
+            });
 
-                        gsap.set(card, {
-                            x: (position.x - 0.5) * width,
-                            y: (position.y - 0.5) * height,
-                            xPercent: -50,
-                            yPercent: -50,
-                            autoAlpha: position.autoAlpha,
-                        });
-                    });
-                };
-
-                renderProgress(0);
-                ScrollTrigger.create({
+            // Timeline ScrollTrigger globale
+            const tl = gsap.timeline({
+                scrollTrigger: {
                     trigger: section,
                     start: "top top",
-                    end: () => `+=${window.innerHeight * (cards.length - 1)}`,
+                    end: () => `+=${window.innerHeight * slides.length}`,
                     pin: true,
-                    scrub: true,
+                    scrub: 1,
                     anticipatePin: 1,
                     invalidateOnRefresh: true,
-                    onUpdate: (self) => renderProgress(self.progress),
-                    onRefresh: (self) => renderProgress(self.progress),
-                });
-            }, section);
+                }
+            });
 
-            ScrollTrigger.refresh();
-        });
+            // Animation de glissement horizontal vers la gauche
+            slides.forEach((slide, index) => {
+                if (index < slides.length - 1) {
+                    const nextSlide = slides[index + 1];
 
-        return () => {
-            cancelAnimationFrame(frame);
-            ctx?.revert();
-        };
+                    // La slide courante glisse vers la gauche (-100%) et s'efface légèrement
+                    tl.to(slide, {
+                        xPercent: -100,
+                        autoAlpha: 0,
+                        duration: 1,
+                        ease: "power2.inOut"
+                    }, `+=0.5`); // Temps d'arrêt pour lecture
+
+                    // La slide suivante arrive par la droite (de 100% à 0%)
+                    tl.to(nextSlide, {
+                        xPercent: 0,
+                        autoAlpha: 1,
+                        duration: 1,
+                        ease: "power2.inOut"
+                    }, "<");
+                }
+            });
+        }, section);
+
+        return () => ctx.revert();
     }, []);
 
     return (
-        <section ref={sectionRef} className="relative h-screen w-full overflow-hidden text-black">
-            <header className="absolute left-6 top-10 z-20 flex max-w-xl flex-col gap-3 sm:left-12 sm:top-14 lg:left-16">
-                <h2 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl">
-                    Les enseignements
-                </h2>
-                <p className="hidden text-md font-bold leading-relaxed text-black sm:block sm:text-base">
-                    La formation MMI associe créativité et maîtrise des outils numériques.<br></br>
-                    Découvrez les grands domaines enseignés.
-                </p>
-            </header>
-
+        <section ref={sectionRef} className="relative h-screen w-full overflow-hidden bg-black text-white">
             {enseign.map((enseignement, index) => (
                 <article
                     key={enseignement.id}
-                    ref={(el) => (cardsRef.current[index] = el)}
-                    className="absolute left-1/2 top-1/2 aspect-square w-[min(38vw,38vh)] max-w-[400px]"
+                    ref={(el) => (slidesRef.current[index] = el)}
+                    className="absolute inset-0 flex h-full w-full min-w-0 flex-col justify-between p-5 sm:p-8 md:p-14 lg:p-20"
                 >
-                    <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden rounded-full border-2 border-black/80">
+                    {/* Image bg */}
+                    <div className="absolute inset-0 z-0">
                         <img
                             src={enseignement.image}
-                            alt=""
-                            className="h-full w-full object-cover opacity-100"
+                            alt={enseignement.matiere}
+                            className="h-full w-full object-cover opacity-60"
                         />
                     </div>
 
-                    <div className="absolute inset-[12%] z-10 flex flex-col items-center justify-center p-2 rounded-full border-2 border-white bg-black px-[9%] text-center text-white shadow-2xl">
-                        <span className="mb-1 text-2xl sm:mb-3 sm:text-4xl" aria-hidden="true">
-                            {enseignement.logo}
-                        </span>
-                        <h3 className="mb-1 text-xs font-bold leading-tight sm:mb-2 sm:text-lg lg:text-xl">
+                    <div className="relative z-10 flex min-w-0 max-w-full flex-col gap-1">
+                        <span className="text-2xl text-white/80">{enseignement.logo}</span>
+                        <h2 className="max-w-full wrap-break-word text-[clamp(2rem,10vw,3rem)] font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
                             {enseignement.matiere}
+                        </h2>
+                        {enseignement.soustitre && (
+                            <span className="text-lg font-light text-white/80 sm:text-xl lg:text-3xl">
+                                {enseignement.soustitre}
+                            </span>
+                        )}
+                    </div>
+
+                    <div className="absolute left-1/2 top-1/2 z-10 w-[calc(100%-2.5rem)] max-w-sm -translate-x-1/2 -translate-y-1/2 text-center sm:relative sm:left-auto sm:top-auto sm:ml-auto sm:mt-auto sm:w-full sm:max-w-lg sm:translate-x-0 sm:translate-y-0 sm:pb-4 sm:text-right lg:max-w-2xl">
+                        <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-white/75 drop-shadow-lg sm:mb-4 sm:text-sm">
+                            <strong>En BUT MMI</strong>, on vous apprend à
                         </h3>
-                        <p className="hidden text-[10px] leading-relaxed text-white/90 sm:block sm:text-xs sm:leading-5 lg:text-sm">
+                        <p className="text-pretty text-xl font-medium leading-relaxed tracking-wide text-white drop-shadow-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl">
                             {enseignement.description}
                         </p>
+                    </div>
+
+                    <div className="relative z-10 flex items-center justify-between border-t border-white/20 pt-4 text-xs font-mono text-white/60">
+                        <span>0{index + 1} / 0{enseign.length}</span>
                     </div>
                 </article>
             ))}
