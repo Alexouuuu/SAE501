@@ -56,6 +56,7 @@ export default function Contact(){
                             loading="lazy" 
                             referrerPolicy="strict-origin-when-cross-origin">
                         </iframe>
+                        {/* <iframe src="https://www.google.com/maps/d/embed?mid=1CL_CfHqV1qgPkJAHlLORT95OJFVJYCc&ehbc=2E312F" className="h-full w-full rounded-md border-0" allowFullScreen="" loading="lazy" referrerPolicy="strict-origin-when-cross-origin"></iframe> */}
                     </div>
                 </div>
                 <div className="bg-white rounded-md px-8 py-8 border border-gray-300 flex flex-col justify-start">
