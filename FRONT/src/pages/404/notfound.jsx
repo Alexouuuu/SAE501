@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function NotFound() {
     return (
-        <section className="h-screen w-full flex flex-col md:flex-row items-center justify-center">
+        <section className="h-screen w-full flex flex-col md:flex-row items-center justify-center pb-2">
             <div className="w-full h-full grid grid-cols-1 md:grid-cols-2">
                 <div className="flex flex-col items-center md:items-start text-center md:text-left mx-auto justify-center">
                     <h1 className="text-8xl sm:text-9xl text-[#252B90] font-bold tracking-tight">404</h1>
