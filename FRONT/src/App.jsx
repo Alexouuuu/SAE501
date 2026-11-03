@@ -24,7 +24,12 @@ import PlanDuSite from './pages/PlanDuSite/PlanDuSite';
 
 // imports react
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useLayoutEffect } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ScrollSmoother } from 'gsap/ScrollSmoother'
+
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
 
 
 // pour scroll top au changement de page
@@ -32,42 +37,62 @@ function OnPageChangeScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    const smoother = ScrollSmoother.get()
+    if (smoother) {
+      smoother.scrollTo(0, false)
+      requestAnimationFrame(() => ScrollTrigger.refresh())
+    } else {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    }
   }, [pathname]);
 
   return null;
 }
 
 function App() {
+  useLayoutEffect(() => {
+    const smoother = ScrollSmoother.create({
+      wrapper: '#smooth-wrapper',
+      content: '#smooth-content',
+      smooth: 1,
+      effects: true,
+      smoothTouch: 0.1,
+    })
+
+    return () => smoother.kill()
+  }, [])
+
   return (
     <BrowserRouter>
-      <section>
-        <OnPageChangeScrollToTop />
-        <BandeauNavbar/>
-        <Navbar />
-        <main className="min-h-screen">
-          <Routes>
-            <Route path="/" element={<Accueil />} />
-            <Route path="/visite-virtuelle" element={<VisiteVirtuelle />} />
-            <Route path="/evenements" element={<Evenements />} />
-            <Route path="/formation" element={<Formation />} />
+      <div id="smooth-wrapper">
+        <div id="smooth-content">
+          <OnPageChangeScrollToTop />
+          <BandeauNavbar />
+          <Navbar />
+          <main className="min-h-screen">
+            <Routes>
+              <Route path="/" element={<Accueil />} />
+              <Route path="/visite-virtuelle" element={<VisiteVirtuelle />} />
+              <Route path="/evenements" element={<Evenements />} />
+              <Route path="/formation" element={<Formation />} />
 
-            <Route path="/mon-compte" element={<MonCompte />} />
-            <Route path="/auth" element={<Authentification />} />
+              <Route path="/mon-compte" element={<MonCompte />} />
+              <Route path="/auth" element={<Authentification />} />
 
-            <Route path="/admin/dashboard" element={<DashBoardAdmin />} />
+              <Route path="/admin/dashboard" element={<DashBoardAdmin />} />
 
-            <Route path="/cgu" element={<CGU />} />
-            <Route path="/cookies" element={<Cookies />} />
-            <Route path="/mentions-legales" element={<MentionsLegales />} />
-            <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
+              <Route path="/cgu" element={<CGU />} />
+              <Route path="/cookies" element={<Cookies />} />
+              <Route path="/mentions-legales" element={<MentionsLegales />} />
+              <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
 
-            <Route path="/contact" element={<Contact/>}/>
-            <Route path="/planDuSite" element={<PlanDuSite/>}/>
-          </Routes>
-        </main>
-        <Footer />
-      </section>
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/planDuSite" element={<PlanDuSite />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </div>
     </BrowserRouter>
   )
 }
