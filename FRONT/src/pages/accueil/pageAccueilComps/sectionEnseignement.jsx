@@ -17,7 +17,7 @@ export default function SectionEnseignements() {
             matiere: "Développement",
             soustitre: "et intégration web",
             description: "Concevoir et réaliser des sites web et des applications interactives en mobilisant les langages du web et les bonnes pratiques d'intégration.",
-            image: "/images/IUT.webp"
+            image: "/images/paccueil/devweb.webp"
         },
         {
             id: 2,
