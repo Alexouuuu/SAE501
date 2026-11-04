@@ -28,7 +28,7 @@ export default function Navbar() {
 
     const JPO = [
         { id: 1, nom: 'La formation', url: '/formation' },
-        { id: 2, nom: 'Les évènements JPO', url: '/evenements' },
+        { id: 2, nom: 'Les évènements', url: '/evenements' },
         { id: 3, nom: 'Visite Virtuelle', url: '/visite-virtuelle' },
     ];
 
