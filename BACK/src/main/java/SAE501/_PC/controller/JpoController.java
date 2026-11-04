@@ -7,14 +7,20 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/jpo")
+@CrossOrigin(origins = "http://localhost:5173")
 public class JpoController {
     
     @Autowired 
     private JpoService jpoService;
     
     @PostMapping
-    public JPO createeJpo(@RequestBody JPO jpo){
+    public JPO createJpo(@RequestBody JPO jpo){
         return jpoService.saveJpo(jpo);
+    }
+
+    @PutMapping("/{id}")
+    public JPO updateJpo(@PathVariable Long id, @RequestBody JPO jpo){
+        return jpoService.updateJpo(id, jpo);
     }
     
     @GetMapping 

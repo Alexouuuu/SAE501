@@ -3,7 +3,9 @@ package SAE501._PC.entity;
 import SAE501._PC.enums.StatutInscription;
 import java.time.Instant;
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@Entity
 public class InscriptionJPO {
     
     @Id
@@ -15,10 +17,12 @@ public class InscriptionJPO {
     
     @ManyToOne //Une JPO peut avoir plusieurs inscriptions , listées dans JPO
     @JoinColumn(name = "jpo_id")
+    @JsonIgnore
     private JPO jpo;
     
     @ManyToOne //Plusieurs inscriptions peuvent appartenir au meme Utilisateur
     @JoinColumn(name= "utilisateur_id")
+    @JsonIgnore
     private Utilisateur utilisateur;
     
     //Constructeur

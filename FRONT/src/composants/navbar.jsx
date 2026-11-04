@@ -40,7 +40,7 @@ export default function Navbar() {
     const Admin = { nom: 'Admin', url: '/admin/dashboard' }
     const Compte = { nom: 'Mon espace', url: '/mon-compte' }
     const Auth = { nom: 'Connexion / inscription', url: '/auth' }
-    const JPOinscription = { nom: "S'inscrire à la JPO", url: '/auth' }
+    const JPOinscription = { nom: "S'inscrire à la JPO", url: '/jpo' }
 
     return (
         <nav className="bg-white">

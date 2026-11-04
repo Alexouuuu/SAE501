@@ -19,7 +19,8 @@ const planDuSiteData = [
         }, {
             titre: "Évènements & Contact",
             liens: [
-                { nom: "Journée Portes Ouvertes", route: "/evenements" },
+                { nom: "Événements de la formation", route: "/evenements" },
+                { nom: "S'inscrire à la JPO", route: "/jpo" },
                 { nom: "Nous contacter", route: "/contact" },
             ]
         }]

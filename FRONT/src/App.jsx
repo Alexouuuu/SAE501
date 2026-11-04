@@ -10,6 +10,7 @@ import NotFound from './pages/404/notfound'
 import Accueil from './pages/accueil/accueil';
 import VisiteVirtuelle from './pages/visiteVirtuelle/visiteVirtuelle';
 import Evenements from './pages/events/events';
+import JPO from './pages/events/JPO';
 import Formation from './pages/formation/formation';
 
 import MonCompte from './pages/MonEspace/MonCompte';
@@ -77,6 +78,7 @@ function App() {
               <Route path="/" element={<Accueil />} />
               <Route path="/visite-virtuelle" element={<VisiteVirtuelle />} />
               <Route path="/evenements" element={<Evenements />} />
+              <Route path="/jpo" element={<JPO />} />
               <Route path="/formation" element={<Formation />} />
 
               <Route path="/mon-compte" element={<MonCompte />} />
