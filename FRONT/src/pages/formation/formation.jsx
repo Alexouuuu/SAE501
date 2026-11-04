@@ -85,7 +85,7 @@ export default function Formation() {
             <TitreProps titre="BUT MMI - La formation" />
             
 
-            <header className="bg-[#212684] text-white">
+            <header className="bg-[#2f2a85] text-white">
                 <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-2 lg:gap-16 lg:px-12">
                     <div>
                         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white">
@@ -105,8 +105,8 @@ export default function Formation() {
                         <div className="mt-10 flex flex-wrap gap-4">
                             <a
                                 href="#formation"
-                                className="inline-flex min-h-12 items-center gap-2 rounded-md bg-white px-5 py-3 font-semibold text-[#212684] transition hover:bg-gray-200"
-                                style={{ color: "#212684" }}
+                                className="inline-flex min-h-12 items-center gap-2 rounded-md bg-white px-5 py-3 font-semibold text-[#2f2a85] transition hover:bg-gray-200"
+                                style={{ color: "#2f2a85" }}
                             >
                                 Découvrir la formation <FaArrowRight aria-hidden="true" />
                             </a>
@@ -131,7 +131,7 @@ export default function Formation() {
             <section id="formation" className="scroll-mt-8 px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
                 <div className="mx-auto max-w-7xl">
                     <div className="max-w-3xl">
-                        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#212684]">
+                        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#2f2a85]">
                             Une formation créative et technique
                         </p>
                         <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
@@ -157,7 +157,7 @@ export default function Formation() {
                                 />
                                 <div className="p-5">
                                     <span
-                                        className="flex h-11 w-11 items-center justify-center rounded-lg bg-gray-100 text-xl text-[#212684]"
+                                        className="flex h-11 w-11 items-center justify-center rounded-lg bg-gray-100 text-xl text-[#2f2a85]"
                                         aria-hidden="true"
                                     >
                                         {domaine.icon}
@@ -176,7 +176,7 @@ export default function Formation() {
                 <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
 
                     <div>
-                        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#212684]">
+                        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#2f2a85]">
                             À découvrir en images
                         </p>
                         <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
@@ -201,7 +201,7 @@ export default function Formation() {
             <section className="px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
                 <div className="mx-auto max-w-7xl">
                     <div className="max-w-3xl">
-                        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#212684]">
+                        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#2f2a85]">
                             Un parcours en trois étapes
                         </p>
                         <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
@@ -220,7 +220,7 @@ export default function Formation() {
                                 key={annee.numero}
                                 className="rounded-xl border border-gray-200 p-6 sm:p-7"
                             >
-                                <p className="text-sm font-bold tracking-widest text-[#212684]">
+                                <p className="text-sm font-bold tracking-widest text-[#2f2a85]">
                                     ANNÉE {annee.numero}
                                 </p>
                                 <h3 className="mt-4 text-xl font-bold">{annee.titre}</h3>
@@ -236,7 +236,7 @@ export default function Formation() {
             <section className="bg-gray-50 px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
                 <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:gap-16">
                     <article>
-                        <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-white text-2xl text-[#212684] shadow-sm">
+                        <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-white text-2xl text-[#2f2a85] shadow-sm">
                             <FaGraduationCap aria-hidden="true" />
                         </span>
                         <h2 className="mt-5 text-3xl font-bold">Comment candidater ?</h2>
@@ -275,7 +275,7 @@ export default function Formation() {
 
             <section className="px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
                 <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-2">
-                    <article className="flex min-w-0 flex-col items-start overflow-hidden rounded-2xl bg-[#212684] p-10 text-white sm:p-12 lg:p-14">
+                    <article className="flex min-w-0 flex-col items-start overflow-hidden rounded-2xl bg-[#2f2a85] p-10 text-white sm:p-12 lg:p-14">
                         <p className="max-w-full text-sm font-semibold uppercase tracking-[0.12em] text-white sm:tracking-[0.16em]">
                             Envie de découvrir les lieux ?
                         </p>
@@ -294,7 +294,7 @@ export default function Formation() {
                     </article>
 
                     <article className="flex min-w-0 flex-col items-start overflow-hidden rounded-2xl border border-gray-200 p-10 sm:p-12 lg:p-14">
-                        <p className="max-w-full text-sm font-semibold uppercase tracking-[0.12em] text-[#212684] sm:tracking-[0.16em]">
+                        <p className="max-w-full text-sm font-semibold uppercase tracking-[0.12em] text-[#2f2a85] sm:tracking-[0.16em]">
                             Une question sur la formation ?
                         </p>
                         <h2 className="mt-3 text-2xl font-bold">Parlons-en</h2>
@@ -304,7 +304,7 @@ export default function Formation() {
                         </p>
                         <Link
                             to="/contact"
-                            className="mt-6 inline-flex items-center gap-2 font-semibold text-[#212684] underline decoration-[#212684] underline-offset-4 hover:text-[#161b7d]"
+                            className="mt-6 inline-flex items-center gap-2 font-semibold text-[#2f2a85] underline decoration-[#2f2a85] hover:decoration-[#0097d7] underline-offset-4 hover:text-[#0097d7]"
                         >
                             Accéder aux informations de contact{" "}
                             <FaArrowRight aria-hidden="true" />

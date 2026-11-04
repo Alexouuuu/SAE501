@@ -3,6 +3,7 @@
 import Navbar from './composants/navbar'
 import BandeauNavbar from './composants/bandeauNavbar';
 import Footer from './composants/footer/footer'
+import GoUpArrow from './composants/GoUpArrow'
 
 import NotFound from './pages/404/notfound'
 
@@ -68,9 +69,9 @@ function App() {
     <BrowserRouter>
       <div id="smooth-wrapper">
         <div id="smooth-content">
-          <OnPageChangeScrollToTop />
-          <BandeauNavbar />
+          <OnPageChangeScrollToTop /> 
           <Navbar />
+          <BandeauNavbar />
           <main className="min-h-screen">
             <Routes>
               <Route path="/" element={<Accueil />} />
@@ -95,6 +96,7 @@ function App() {
         </main>
         <Footer />
       </div>
+      <GoUpArrow />
       </div>
     </BrowserRouter>
   )

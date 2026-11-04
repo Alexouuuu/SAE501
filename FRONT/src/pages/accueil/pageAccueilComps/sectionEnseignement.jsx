@@ -17,7 +17,7 @@ export default function SectionEnseignements() {
             matiere: "Développement",
             soustitre: "et intégration web",
             description: "Concevoir et réaliser des sites web et des applications interactives en mobilisant les langages du web et les bonnes pratiques d'intégration.",
-            image: "/images/IUT.jpg"
+            image: "/images/IUT.webp"
         },
         {
             id: 2,
@@ -25,7 +25,7 @@ export default function SectionEnseignements() {
             matiere: "Création graphique",
             soustitre: "et infographie",
             description: "Maîtriser les fondamentaux du design visuel, élaborer une charte graphique et créer des supports de communication numérique.",
-            image: "/images/IUT.jpg"
+            image: "/images/IUT.webp"
         },
         {
             id: 3,
@@ -33,7 +33,7 @@ export default function SectionEnseignements() {
             matiere: "Audiovisuel",
             soustitre: "et production numérique",
             description: "Écrire un scénario, réaliser un tournage, monter des vidéos et créer des effets visuels en maîtrisant toute la chaîne de production audiovisuelle.",
-            image: "/images/IUT.jpg"
+            image: "/images/IUT.webp"
         },
     ];
 
@@ -69,15 +69,13 @@ export default function SectionEnseignements() {
                 if (index < slides.length - 1) {
                     const nextSlide = slides[index + 1];
 
-                    // La slide courante glisse vers la gauche (-100%) et s'efface légèrement
                     tl.to(slide, {
                         xPercent: -100,
                         autoAlpha: 0,
                         duration: 1,
                         ease: "power2.inOut"
-                    }, `+=0.5`); // Temps d'arrêt pour lecture
+                    }, `+=0.2`); // Temps d'arrêt pour lecture
 
-                    // La slide suivante arrive par la droite (de 100% à 0%)
                     tl.to(nextSlide, {
                         xPercent: 0,
                         autoAlpha: 1,
@@ -104,34 +102,38 @@ export default function SectionEnseignements() {
                         <img
                             src={enseignement.image}
                             alt={enseignement.matiere}
-                            className="h-full w-full object-cover opacity-60"
+                            className="h-full w-full object-cover"
                         />
                     </div>
 
-                    <div className="relative z-10 flex min-w-0 max-w-full flex-col gap-1">
-                        <span className="text-2xl text-white/80">{enseignement.logo}</span>
-                        <h2 className="max-w-full wrap-break-word text-[clamp(2rem,10vw,3rem)] font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
-                            {enseignement.matiere}
-                        </h2>
-                        {enseignement.soustitre && (
-                            <span className="text-lg font-light text-white/80 sm:text-xl lg:text-3xl">
-                                {enseignement.soustitre}
-                            </span>
-                        )}
+                    <div className="relative z-10 flex min-w-0 max-w-full flex-col items-start">
+                        <div className="flex w-fit max-w-full flex-col gap-1 rounded-xl bg-black/10 p-4 backdrop-blur-sm sm:p-6">
+                            <span className="text-2xl text-white/80">{enseignement.logo}</span>
+                            <h2 className="max-w-full wrap-break-word text-[clamp(2rem,10vw,3rem)] font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
+                                {enseignement.matiere}
+                            </h2>
+                            {enseignement.soustitre && (
+                                <span className="text-lg font-light text-white/80 sm:text-xl lg:text-3xl">
+                                    {enseignement.soustitre}
+                                </span>
+                            )}
+                        </div>
                     </div>
 
                     <div className="absolute left-1/2 top-1/2 z-10 w-[calc(100%-2.5rem)] max-w-sm -translate-x-1/2 -translate-y-1/2 text-center sm:relative sm:left-auto sm:top-auto sm:ml-auto sm:mt-auto sm:w-full sm:max-w-lg sm:translate-x-0 sm:translate-y-0 sm:pb-4 sm:text-right lg:max-w-2xl">
-                        <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-white/75 drop-shadow-lg sm:mb-4 sm:text-sm">
-                            <strong>En BUT MMI</strong>, on vous apprend à
-                        </h3>
-                        <p className="text-pretty text-xl font-medium leading-relaxed tracking-wide text-white drop-shadow-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl">
-                            {enseignement.description}
-                        </p>
+                        <div className="inline-block max-w-full rounded-xl bg-black/10 p-4 backdrop-blur-sm sm:p-6">
+                            <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-white drop-shadow-lg sm:mb-4 sm:text-sm">
+                                <strong>En BUT MMI</strong>, on vous apprend à
+                            </h3>
+                            <p className="text-pretty text-xl font-medium leading-relaxed tracking-wide text-white drop-shadow-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl">
+                                {enseignement.description}
+                            </p>
+                        </div>
                     </div>
 
-                    <div className="relative z-10 flex items-center justify-between border-t border-white/20 pt-4 text-xs font-mono text-white/60">
+                    {/* <div className="relative z-10 flex items-center justify-between border-t border-white/20 pt-4 text-xs font-mono text-white/60">
                         <span>0{index + 1} / 0{enseign.length}</span>
-                    </div>
+                    </div> */}
                 </article>
             ))}
         </section>

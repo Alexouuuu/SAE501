@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+a {
+    color: #2f2a85;
+}
+
+a:hover {
+    color: #0097d7;
+    transition: color 0.3s ease;
+}

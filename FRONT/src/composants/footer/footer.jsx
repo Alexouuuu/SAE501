@@ -45,11 +45,11 @@ export default function Footer() {
 
     return (
         <footer>
-            <hr className="mx-auto w-24 h-1 bg-[#212684] rounded-full mb-1 border-0" />
-            <section className="relative overflow-hidden bg-[#212684] border-t border-gray-200 pt-16 pb-8 text-gray-600">
+            <hr className="mx-auto w-24 h-1 bg-[#2f2a85] rounded-full mb-1 border-0" />
+            <section className="relative overflow-hidden bg-[#3c3796] border-t border-gray-200 pt-16 pb-8 text-gray-600">
                 {/* Fond de la zone carte et séparation diagonale */}
                 <div
-                    className="absolute inset-y-0 left-0 hidden w-[48%] bg-[#161b7d] [clip-path:polygon(0_0,100%_0,84%_100%,0_100%)] md:block"
+                    className="absolute inset-y-0 left-0 hidden w-[48%] bg-[#2f2a85] [clip-path:polygon(0_0,100%_0,84%_100%,0_100%)] md:block"
                     aria-hidden="true"
                 />
                 <div className="relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
@@ -123,7 +123,7 @@ export default function Footer() {
             </section>
 
             {/* Réseaux sociaux et liens légaux */}
-            <section className="bg-[#161b7d]">
+            <section className="bg-[#2f2a85]">
                 <div className="flex w-full flex-col items-center justify-between gap-6 p-5 px-6 md:flex-row">
                     <div className="flex flex-wrap items-center justify-center gap-2 text-center font-medium sm:gap-6 md:justify-end">
                         {liensdroits.map((lien) => (

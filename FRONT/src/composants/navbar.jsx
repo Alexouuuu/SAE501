@@ -8,7 +8,7 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import { HiMiniBars3BottomRight } from "react-icons/hi2";
 
-import logo from "/images/logo_univ_eiffel_bleu.png"
+import logo from "/images/logo_univ_eiffel_bleu.webp"
 
 export default function Navbar() {
     const [openMenu, setOpenMenu] = useState(null);
@@ -38,7 +38,8 @@ export default function Navbar() {
     ];
 
     const Admin = { nom: 'Admin', url: '/admin/dashboard' }
-    const Compte = { nom: 'Connexion / inscription', url: '/auth' }
+    const Compte = { nom: 'Mon espace', url: '/mon-compte' }
+    const Auth = { nom: 'Connexion / inscription', url: '/auth' }
     const JPOinscription = { nom: "S'inscrire à la JPO", url: '/auth' }
 
     return (
@@ -69,7 +70,7 @@ export default function Navbar() {
                         <li className="relative flex w-full items-center justify-center lg:w-auto">
                             <button
                                 type="button"
-                                className="relative flex h-full w-full cursor-pointer items-center justify-center px-2 py-3 text-base text-black hover:bg-gray-100 lg:static lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg"
+                                className="bg-[#3c3792] text-white hover:bg-[#2a266c] relative flex h-full w-full cursor-pointer items-center justify-center px-2 py-3 text-base lg:static lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg"
                                 aria-expanded={openMenu === 'jpo'}
                                 aria-controls="jpo-menu"
                                 onClick={() => setOpenMenu(openMenu === 'jpo' ? null : 'jpo')}
@@ -83,7 +84,7 @@ export default function Navbar() {
                             >
                                 {JPO.map((page) => (
                                     <li key={page.id}>
-                                        <Link className="block whitespace-normal px-4 py-3 text-center text-lg text-black hover:bg-gray-100 lg:whitespace-nowrap lg:text-left" to={page.url}>
+                                        <Link className="block whitespace-normal px-4 py-3 text-center text-lg text-black hover:bg-gray-100 transform transition duration-300 lg:whitespace-nowrap lg:text-left" to={page.url}>
                                             {page.nom}
                                         </Link>
                                     </li>
@@ -94,21 +95,21 @@ export default function Navbar() {
                         <li className="relative flex w-full items-center justify-center lg:w-auto">
                             <button
                                 type="button"
-                                className="relative flex h-full w-full cursor-pointer items-center justify-center px-2 py-3 text-base text-black hover:bg-gray-100 lg:static lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg"
+                                className="bg-[#3c3792] text-white hover:bg-[#2a266c] relative flex h-full w-full cursor-pointer items-center justify-center px-2 py-3 text-base  lg:static lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
                                 aria-expanded={openMenu === 'autres'}
                                 aria-controls="autres-menu"
                                 onClick={() => setOpenMenu(openMenu === 'autres' ? null : 'autres')}
                             >
                                 <span className="w-full text-center lg:w-auto">Autres</span>
-                                <RiArrowDropDownLine className="absolute right-3 mt-1 lg:static"/>
+                                <RiArrowDropDownLine className="absolute right-3 mt-1 lg:static" />
                             </button>
                             <ul
                                 id="autres-menu"
-                                className={`${openMenu === 'autres' ? 'visible opacity-100' : 'invisible opacity-0'} absolute left-0 top-full z-20 w-full min-w-0 bg-white text-center shadow-lg transition-opacity lg:w-auto lg:min-w-48 lg:text-left`}
+                                className={`${openMenu === 'autres' ? 'visible opacity-100' : 'invisible opacity-0'} absolute left-0 top-full z-20 w-full min-w-0 bg-white text-center shadow-lg transition-opacity lg:w-auto lg:min-w-48 lg:text-left transform duration-300`}
                             >
                                 {Autres.map((page) => (
                                     <li key={page.id}>
-                                        <Link className="block whitespace-normal px-4 py-3 text-center text-lg text-black hover:bg-gray-100 lg:whitespace-nowrap lg:text-left" to={page.url}>
+                                        <Link className="block whitespace-normal px-4 py-3 text-center text-lg text-black hover:bg-gray-100 transform transition duration-300 lg:whitespace-nowrap lg:text-left" to={page.url}>
                                             {page.nom}
                                         </Link>
                                     </li>
@@ -119,7 +120,7 @@ export default function Navbar() {
 
                     <Link
                         aria-label={Admin.nom}
-                        className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm text-black hover:bg-black hover:text-white lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg"
+                        className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm bg-[#3c3792] text-white hover:bg-[#2a266c] lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
                         to={Admin.url}
                     >
                         <MdOutlineAdminPanelSettings />
@@ -128,7 +129,7 @@ export default function Navbar() {
                     </Link>
                     <Link
                         aria-label={Compte.nom}
-                        className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm text-black hover:bg-black hover:text-white lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg"
+                        className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm bg-[#3c3792] text-white hover:bg-[#2a266c] lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
                         to={Compte.url}
                     >
                         <FaUser />
@@ -136,8 +137,17 @@ export default function Navbar() {
                         <span className="hidden lg:inline">{Compte.nom}</span>
                     </Link>
                     <Link
+                        aria-label={Auth.nom}
+                        className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm bg-[#3c3792] text-white hover:bg-[#2a266c] lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
+                        to={Auth.url}
+                    >
+                        <FaUser />
+                        <span className="lg:hidden">{Auth.nom}</span>
+                        <span className="hidden lg:inline">{Auth.nom}</span>
+                    </Link>
+                    <Link
                         aria-label={JPOinscription.nom}
-                        className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm text-black hover:bg-black hover:text-white lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg"
+                        className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm text-white bg-[#00936e] hover:bg-[#92c56e] lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
                         to={JPOinscription.url}
                     >
                         <IoIosSchool />
