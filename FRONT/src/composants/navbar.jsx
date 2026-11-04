@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { FaBars, FaTimes, FaUser } from "react-icons/fa";
 import { useEffect, useRef, useState } from 'react';
 
+import { MdFormatAlignCenter } from "react-icons/md";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 
