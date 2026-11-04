@@ -112,8 +112,8 @@ export default function EventsGestion() {
                     <textarea name="description" rows="3" maxLength="2000" value={form.description} onChange={modifierChamp} className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 outline-none focus:border-[#212684] focus:ring-2 focus:ring-[#212684]/20" />
                 </label>
                 <div className="flex flex-wrap gap-3 md:col-span-2">
-                    <button className="rounded-lg bg-[#212684] px-5 py-2.5 font-semibold text-white hover:bg-[#3c3792]">{editionId ? "Enregistrer" : "Publier"}</button>
-                    {editionId && <button type="button" onClick={annulerEdition} className="rounded-lg border border-gray-300 px-5 py-2.5 font-semibold text-gray-700 hover:bg-white">Annuler</button>}
+                    <button className="cursor-pointer rounded-lg bg-[#212684] px-5 py-2.5 font-semibold text-white hover:bg-[#3c3792]">{editionId ? "Enregistrer" : "Publier"}</button>
+                    {editionId && <button type="button" onClick={annulerEdition} className="cursor-pointer rounded-lg border border-gray-300 px-5 py-2.5 font-semibold text-gray-700 hover:bg-white">Annuler</button>}
                 </div>
             </form>
 
@@ -128,8 +128,8 @@ export default function EventsGestion() {
                             {evenement.description && <p className="mt-1 max-w-2xl text-sm text-gray-600">{evenement.description}</p>}
                         </div>
                         <div className="flex shrink-0 gap-2">
-                            <button type="button" onClick={() => editer(evenement)} className="rounded-lg border border-gray-300 px-3 py-2 text-sm font-semibold hover:bg-gray-50">Modifier</button>
-                            <button type="button" onClick={() => supprimer(evenement.id)} className="rounded-lg border border-red-200 px-3 py-2 text-sm font-semibold text-red-700 hover:bg-red-50">Supprimer</button>
+                            <button type="button" onClick={() => editer(evenement)} className="cursor-pointer rounded-lg border border-gray-300 px-3 py-2 text-sm font-semibold hover:bg-gray-50">Modifier</button>
+                            <button type="button" onClick={() => supprimer(evenement.id)} className="cursor-pointer rounded-lg border border-red-200 px-3 py-2 text-sm font-semibold text-red-700 hover:bg-red-50">Supprimer</button>
                         </div>
                     </article>
                 ))}

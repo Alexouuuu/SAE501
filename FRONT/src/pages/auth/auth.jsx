@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import TitreProps from "../../composants/titreProps";
 import Filarial from "../../composants/filArial";
 import BannerHead from "../../composants/bannerHead";
+import { api } from "../../services/api";
 
 const fieldClassName =
     "mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none transition focus:border-[#212684] focus:ring-2 focus:ring-[#212684]/20";
 
-function Champ({ label, name, type = "text", autoComplete, ...props }) {
+function Champ({ label, name, type = "text", autoComplete, required = true, ...props }) {
     return (
         <label className="block text-sm font-medium text-gray-800">
             {label}
@@ -17,7 +18,7 @@ function Champ({ label, name, type = "text", autoComplete, ...props }) {
                 name={name}
                 type={type}
                 autoComplete={autoComplete}
-                required
+                required={required}
                 {...props}
             />
         </label>
@@ -27,11 +28,13 @@ function Champ({ label, name, type = "text", autoComplete, ...props }) {
 export default function Authentification() {
     const [mode, setMode] = useState("connexion");
     const [message, setMessage] = useState("");
+    const [chargement, setChargement] = useState(false);
+    const navigate = useNavigate();
 
     const isInscription = mode === "inscription";
     const isAdmin = mode === "admin";
 
-    function handleSubmit(event) {
+    async function handleSubmit(event) {
         event.preventDefault();
 
         const formData = new FormData(event.currentTarget);
@@ -43,10 +46,32 @@ export default function Authentification() {
             return;
         }
 
-        event.currentTarget.reset();
-        setMessage(
-            "Le service de compte n’est pas encore connecté : aucune donnée n’a été envoyée ni enregistrée."
-        );
+        setChargement(true);
+        setMessage("");
+        const donnees = Object.fromEntries(formData.entries());
+        try {
+            const profil = await api(isInscription ? "/api/auth/register" : "/api/auth/login", {
+                method: "POST",
+                body: JSON.stringify(isInscription
+                    ? {
+                    nom: donnees.nom,
+                    prenom: donnees.prenom,
+                    email: donnees.email,
+                    password: donnees.password,
+                    sexe: donnees.sexe || null,
+                    ville: donnees.ville,
+                    filiere: donnees.filiere,
+                    dateNaissance: donnees.dateNaissance || null,
+                    interesseFormation: donnees.interesseFormation === "on",
+                    }
+                    : { email: donnees.email, password: donnees.password }),
+            });
+            navigate(profil.role === "ADMIN" ? "/admin/dashboard" : "/mon-compte");
+        } catch (cause) {
+            setMessage(cause.message || "La connexion a échoué. Vérifiez vos informations.");
+        } finally {
+            setChargement(false);
+        }
     }
 
     function changerMode(nouveauMode) {
@@ -161,20 +186,18 @@ export default function Authentification() {
                                         </div>
                                         <div className="grid gap-5 sm:grid-cols-2">
                                             <Champ
-                                                label="Âge"
-                                                name="age"
-                                                type="number"
-                                                min="1"
-                                                max="120"
-                                                inputMode="numeric"
+                                                label="Date de naissance"
+                                                name="dateNaissance"
+                                                type="date"
+                                                autoComplete="bday"
                                             />
                                             <label className="block text-sm font-medium text-gray-800">
-                                                Sexe
+                                                Sexe (facultatif)
                                                 <select
                                                     className={fieldClassName}
                                                     name="sexe"
                                                     defaultValue=""
-                                                    required
+                                                    required={false}
                                                 >
                                                     <option value="" disabled>
                                                         Choisir une option
@@ -182,6 +205,7 @@ export default function Authentification() {
                                                     <option value="femme">Femme</option>
                                                     <option value="homme">Homme</option>
                                                     <option value="autre">Autre</option>
+                                                    <option value="non-binaire">Non-binaire</option>
                                                     <option value="non-precise">
                                                         Je préfère ne pas répondre
                                                     </option>
@@ -196,6 +220,17 @@ export default function Authentification() {
                                             />
                                             <Champ label="Filière" name="filiere" />
                                         </div>
+                                        <label className="flex items-start gap-3 text-sm leading-6 text-gray-700">
+                                            <input
+                                                className="mt-1 cursor-pointer"
+                                                name="interesseFormation"
+                                                type="checkbox"
+                                            />
+                                            Je souhaite être comptabilisé parmi les personnes intéressées par la formation.
+                                        </label>
+                                        <p className="text-xs leading-5 text-gray-500">
+                                            Votre date de naissance sert uniquement au calcul de statistiques d’âge agrégées. Elle n’est pas affichée dans le tableau de bord.
+                                        </p>
                                     </>
                                 )}
 
@@ -229,7 +264,9 @@ export default function Authentification() {
                                     type="submit"
                                     className="w-full cursor-pointer rounded-md bg-[#212684] px-5 py-3 font-semibold text-white transition hover:bg-[#161b7d] focus:outline-none focus:ring-2 focus:ring-[#212684] focus:ring-offset-2"
                                 >
-                                    {isInscription
+                                    {chargement
+                                        ? "Veuillez patienter…"
+                                        : isInscription
                                         ? "Créer mon compte"
                                         : isAdmin
                                             ? "Se connecter en tant qu’administrateur"

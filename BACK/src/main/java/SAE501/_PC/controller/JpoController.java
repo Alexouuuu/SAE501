@@ -2,6 +2,8 @@ package SAE501._PC.controller;
 
 import SAE501._PC.entity.JPO;
 import SAE501._PC.service.JpoService;
+import SAE501._PC.service.SessionAuth;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,14 +14,18 @@ public class JpoController {
     
     @Autowired 
     private JpoService jpoService;
+    @Autowired
+    private SessionAuth sessionAuth;
     
     @PostMapping
-    public JPO createJpo(@RequestBody JPO jpo){
+    public JPO createJpo(@RequestBody JPO jpo, HttpSession session){
+        sessionAuth.exigerAdmin(session);
         return jpoService.saveJpo(jpo);
     }
 
     @PutMapping("/{id}")
-    public JPO updateJpo(@PathVariable Long id, @RequestBody JPO jpo){
+    public JPO updateJpo(@PathVariable Long id, @RequestBody JPO jpo, HttpSession session){
+        sessionAuth.exigerAdmin(session);
         return jpoService.updateJpo(id, jpo);
     }
     
@@ -34,7 +40,8 @@ public class JpoController {
     }
     
     @DeleteMapping("/{id}")
-    public void deleteJpo(@PathVariable Long id) {
+    public void deleteJpo(@PathVariable Long id, HttpSession session) {
+        sessionAuth.exigerAdmin(session);
         jpoService.deleteJpoById(id);
     }
 }
