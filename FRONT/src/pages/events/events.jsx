@@ -1,9 +1,12 @@
 import TitreProps from "../../composants/titreProps";
-
-export default function evenements(){
-    return(
+import Filarial from "../../composants/filArial";
+import BannerHead from "../../composants/bannerHead";
+export default function evenements() {
+    return (
         <section>
-            <TitreProps titre={"Evenements"}/>
+            <TitreProps titre={"Les évènements JPO"} />
+            <BannerHead />
+            <Filarial titrePage={"Les évènements JPO"} />
         </section>
     );
 

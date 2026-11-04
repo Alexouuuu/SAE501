@@ -1,4 +1,6 @@
 import TitreProps from "../../composants/titreProps";
+import Filarial from "../../composants/filArial";
+import BannerHead from "../../composants/bannerHead";
 
 import { MdAlternateEmail } from "react-icons/md";
 import { BsFillTelephoneFill } from "react-icons/bs";
@@ -8,8 +10,10 @@ import { FaRegQuestionCircle } from "react-icons/fa";
 
 export default function Contact() {
     return (
-        <section className="min-h-screen py-6">
+        <section className="min-h-screen">
             <TitreProps titre={"Nous contacter"}></TitreProps>
+            <BannerHead/>
+            <Filarial titrePage={"Nous contacter"}/>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 min-h-[85vh] w-[90%] lg:w-[80%] mx-auto my-10 items-stretch">
                 <div className="flex flex-col h-full">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

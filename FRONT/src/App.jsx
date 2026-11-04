@@ -18,7 +18,7 @@ import DashBoardAdmin from './Admin/pagesAdmin/Dashboard';
 
 import CGU from './pages/droits/CGU';
 import Cookies from './pages/droits/Cookies';
-import MentionsLegales from './pages/droits/mentionslegales';
+import MentionsLegales from './pages/droits/MentionsLegales'
 import PolitiqueConfidentialite from './pages/droits/PolitiqueConfidentialite';
 
 import Contact from './pages/contact/contact';

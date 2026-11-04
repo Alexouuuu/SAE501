@@ -1,53 +1,57 @@
 import TitreProps from "../../composants/titreProps";
+import Filarial from "../../composants/filArial";
+import BannerHead from "../../composants/bannerHead";
+
 import { Link } from "react-router-dom";
+
 
 const planDuSiteData = [
     {
-        id:1,
-        titreSection:"L'IUT & FORMATION",
-        categories: [{ 
+        id: 1,
+        titreSection: "L'IUT & FORMATION",
+        categories: [{
             titre: "Découverte",
             liens: [
-                { nom: "Accueil", route:"/" },
-                { nom: "La Formation", route:"/formation"},
-                { nom: "Visite Virtuelle", route:"/visite-virtuelle"},
+                { nom: "Accueil", route: "/" },
+                { nom: "La Formation", route: "/formation" },
+                { nom: "Visite Virtuelle", route: "/visite-virtuelle" },
             ]
-        },{
-            titre:"Évènements & Contact",
+        }, {
+            titre: "Évènements & Contact",
             liens: [
-                { nom: "Journée Portes Ouvertes", route:"/evenements"},
-                { nom: "Nous contacter", route:"/contact"},
+                { nom: "Journée Portes Ouvertes", route: "/evenements" },
+                { nom: "Nous contacter", route: "/contact" },
             ]
         }]
-    },{
-        id:2,
-        titreSection:"ESPACE PERSONNEL",
+    }, {
+        id: 2,
+        titreSection: "ESPACE PERSONNEL",
         categories: [{
             titre: "Gestion du Compte",
             liens: [
-                { nom: "Mon Compte", route:"/mon-compte" },
-                { nom: "Connexion/Inscription", route:"/auth"},
+                { nom: "Mon Compte", route: "/mon-compte" },
+                { nom: "Connexion/Inscription", route: "/auth" },
             ]
-        },{
-            titre:"Navigation",
+        }, {
+            titre: "Navigation",
             liens: [
-                { nom: "Plan du Site", route:"/planDuSite" },
+                { nom: "Plan du Site", route: "/planDuSite" },
             ]
         }]
-    },{
-        id:3,
-        titreSection:"LÉGAL & CONFIDENTIALITÉ",
+    }, {
+        id: 3,
+        titreSection: "LÉGAL & CONFIDENTIALITÉ",
         categories: [{
             titre: "Informations Légales",
             liens: [
-                { nom: "Mentions Légales", route:"/mentions-legales" },
-                { nom: "Conditions Générales d'Utilisation", route:"/cgu" },
+                { nom: "Mentions Légales", route: "/mentions-legales" },
+                { nom: "Conditions Générales d'Utilisation", route: "/cgu" },
             ]
-        },{
+        }, {
             titre: "Données Personnelles",
             liens: [
-                { nom: "Politique de Confidentialité", route:"/politique-confidentialite" },
-                { nom: "Utilisation des Cookies", route:"/cookies"},
+                { nom: "Politique de Confidentialité", route: "/politique-confidentialite" },
+                { nom: "Utilisation des Cookies", route: "/cookies" },
             ]
         }]
     }
@@ -56,7 +60,9 @@ const planDuSiteData = [
 export default function PlanDuSite() {
     return (
         <section>
-            <TitreProps titre={"Plan du site"}/>
+            <TitreProps titre={"Plan du site"} />
+            <BannerHead />
+            <Filarial titrePage={"Plan du site"} />
             <div className="w-[85%] mx-auto my-10">
                 {planDuSiteData.map((section, index) => (
                     <div key={section.id}>
@@ -67,11 +73,11 @@ export default function PlanDuSite() {
                                 <div className="flex flex-col gap-1.5 mb-8">{cat.liens.map((lien, lienIndex) => (
                                     <Link key={lienIndex} to={lien.route} className="text-sm text-gray-600 hover:text-black hover:underline">{lien.nom}</Link>
                                 ))}
-                            </div></div>
-                ))}
-            </div>
-            {index < planDuSiteData.length -1 && ( <hr className="border-gray-300 mb-8" />)}
-            </div>
+                                </div></div>
+                        ))}
+                        </div>
+                        {index < planDuSiteData.length - 1 && (<hr className="border-gray-300 mb-8" />)}
+                    </div>
                 ))}
             </div>
         </section>

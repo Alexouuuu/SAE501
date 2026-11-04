@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+
+
+// icons
 import {
     FaArrowRight,
     FaCode,
@@ -7,7 +10,9 @@ import {
     FaPalette,
 } from "react-icons/fa6";
 import { MdOutlineVideoLibrary } from "react-icons/md";
+
 import TitreProps from "../../composants/titreProps";
+import Filarial from "../../composants/filArial";
 
 const domaines = [
     {
@@ -78,6 +83,7 @@ export default function Formation() {
     return (
         <section className="text-gray-900">
             <TitreProps titre="BUT MMI - La formation" />
+            
 
             <header className="bg-[#212684] text-white">
                 <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-2 lg:gap-16 lg:px-12">
@@ -114,11 +120,13 @@ export default function Formation() {
                     </div>
                     <EmplacementImage
                         description="Emplacement image — étudiants et projets MMI"
-                        className="aspect-[4/3] rounded-xl border border-white/20 shadow-2xl"
+                        className="aspect-4/3 rounded-xl border border-white/20 shadow-2xl"
                     />
                 </div>
 
             </header>
+
+            <Filarial titrePage={"La formation"}/>
 
             <section id="formation" className="scroll-mt-8 px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
                 <div className="mx-auto max-w-7xl">
@@ -145,7 +153,7 @@ export default function Formation() {
                             >
                                 <EmplacementImage
                                     description={domaine.media}
-                                    className="aspect-[16/10]"
+                                    className="aspect-16/10"
                                 />
                                 <div className="p-5">
                                     <span
