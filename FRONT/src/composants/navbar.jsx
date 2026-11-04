@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FaUser } from "react-icons/fa";
+import { FaBars, FaTimes, FaUser } from "react-icons/fa";
 import { useEffect, useRef, useState } from 'react';
 
 import { RiArrowDropDownLine } from "react-icons/ri";
@@ -9,6 +9,7 @@ import logo from "/images/logo_univ_eiffel_bleu.png"
 
 export default function Navbar() {
     const [openMenu, setOpenMenu] = useState(null);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const menusRef = useRef(null);
 
     useEffect(() => {
@@ -23,77 +24,89 @@ export default function Navbar() {
     }, []);
 
     const JPO = [
-        { id: 1, name: 'La formation', url: '/formation' },
-        { id: 2, name: 'Evenements JPO', url: '/evenements' },
-        { id: 3, name: 'Visite Virtuelle', url: '/visite-virtuelle' },
+        { id: 1, nom: 'La formation', url: '/formation' },
+        { id: 2, nom: 'Evenements JPO', url: '/evenements' },
+        { id: 3, nom: 'Visite Virtuelle', url: '/visite-virtuelle' },
     ];
 
     const Autres = [
-        { id: 1, name: 'Plan du Site', url: '/planDuSite' },
-        { id: 2, name: 'Nous contacter', url: '/contact' },
+        { id: 1, nom: 'Plan du Site', url: '/planDuSite' },
+        { id: 2, nom: 'Nous contacter', url: '/contact' },
     ];
 
-    const Admin = { name: 'Dashboard Admin', url: '/admin/dashboard' }
-
-    const Compte = { name: 'Connexion / inscription', url: '/auth' }
+    const Admin = { nom: 'Admin', url: '/admin/dashboard' }
+    const Compte = { nom: 'Connexion / inscription', url: '/auth' }
+    const JPOinscription = { nom: "S'inscrire à la JPO", url: '/auth' }
 
     return (
-        <nav className="border-b border-black bg-white">
-            <div className="flex flex-row items-stretch justify-between pl-20">
-                {/*Logo */}
-                <div className="flex items-center">
+        <nav className="bg-white">
+            <div className="flex flex-wrap items-center justify-between  sm:flex-nowrap sm:items-stretch sm:pl-8 lg:pl-20 md:px-0 px-2 shadow-lg">
+                <div className="flex w-full items-center justify-between sm:w-auto">
                     <Link to="/">
                         <img src={logo} alt="Logo" className="h-12 p-2 w-auto" />
                     </Link>
+                    <button
+                        type="button"
+                        className="p-2 text-2xl text-black sm:hidden cursor-pointer"
+                        aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
+                        aria-expanded={mobileMenuOpen}
+                        aria-controls="navigation-links"
+                        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                    >
+                        {mobileMenuOpen ? <FaTimes /> : <FaBars />}
+                    </button>
                 </div>
 
-                <section className="flex flex-row items-stretch">
+                <section
+                    id="navigation-links"
+                    className={`${mobileMenuOpen ? "grid" : "hidden"} w-full grid-cols-1 items-stretch sm:flex sm:w-auto`}
+                >
 
-                    <ul ref={menusRef} className="flex flex-row items-stretch">
-                        <li className="relative flex items-center">
+                    <ul ref={menusRef} className="contents sm:flex sm:flex-row sm:items-stretch">
+                        <li className="relative flex w-full items-center justify-center sm:w-auto">
                             <button
                                 type="button"
-                                className="hover:bg-gray-100 h-full px-4 text-black flex flex-row gap-2 items-center text-lg cursor-pointer"
+                                className="relative flex h-full w-full cursor-pointer items-center justify-center px-2 py-3 text-base text-black hover:bg-gray-100 sm:static sm:w-auto sm:gap-2 sm:px-4 sm:py-2 sm:text-lg"
                                 aria-expanded={openMenu === 'jpo'}
                                 aria-controls="jpo-menu"
                                 onClick={() => setOpenMenu(openMenu === 'jpo' ? null : 'jpo')}
                             >
-                                JPO
-                                <RiArrowDropDownLine className="mt-1" />
+                                <span className="w-full text-center sm:w-auto">JPO</span>
+                                <RiArrowDropDownLine className="absolute right-3 mt-1 sm:static" />
                             </button>
                             <ul
                                 id="jpo-menu"
-                                className={`${openMenu === 'jpo' ? 'visible opacity-100' : 'invisible opacity-0'} absolute left-0 top-full z-20 min-w-48 bg-white py-0 text-lg shadow-lg transition-opacity`}
+                                className={`${openMenu === 'jpo' ? 'visible opacity-100' : 'invisible opacity-0'} absolute left-0 top-full z-20 w-full min-w-0 bg-white py-0 text-center text-lg shadow-lg transition-opacity sm:w-auto sm:min-w-48 sm:text-left`}
                             >
                                 {JPO.map((page) => (
                                     <li key={page.id}>
-                                        <Link className="block whitespace-nowrap px-4 py-3 text-lg text-black hover:bg-gray-100" to={page.url}>
-                                            {page.name}
+                                        <Link className="block whitespace-normal px-4 py-3 text-center text-lg text-black hover:bg-gray-100 sm:whitespace-nowrap sm:text-left" to={page.url}>
+                                            {page.nom}
                                         </Link>
                                     </li>
                                 ))}
                             </ul>
                         </li>
 
-                        <li className="relative flex items-center">
+                        <li className="relative flex w-full items-center justify-center sm:w-auto">
                             <button
                                 type="button"
-                                className="hover:bg-gray-100 h-full px-4 text-black flex flex-row gap-2 items-center text-lg cursor-pointer"
+                                className="relative flex h-full w-full cursor-pointer items-center justify-center px-2 py-3 text-base text-black hover:bg-gray-100 sm:static sm:w-auto sm:gap-2 sm:px-4 sm:py-2 sm:text-lg"
                                 aria-expanded={openMenu === 'autres'}
                                 aria-controls="autres-menu"
                                 onClick={() => setOpenMenu(openMenu === 'autres' ? null : 'autres')}
                             >
-                                Autres
-                                <RiArrowDropDownLine className="mt-1"/>
+                                <span className="w-full text-center sm:w-auto">Autres</span>
+                                <RiArrowDropDownLine className="absolute right-3 mt-1 sm:static"/>
                             </button>
                             <ul
                                 id="autres-menu"
-                                className={`${openMenu === 'autres' ? 'visible opacity-100' : 'invisible opacity-0'} absolute left-0 top-full z-20 min-w-48 bg-white shadow-lg transition-opacity`}
+                                className={`${openMenu === 'autres' ? 'visible opacity-100' : 'invisible opacity-0'} absolute left-0 top-full z-20 w-full min-w-0 bg-white text-center shadow-lg transition-opacity sm:w-auto sm:min-w-48 sm:text-left`}
                             >
                                 {Autres.map((page) => (
                                     <li key={page.id}>
-                                        <Link className="block whitespace-nowrap px-4 py-3 text-lg text-black hover:bg-gray-100" to={page.url}>
-                                            {page.name}
+                                        <Link className="block whitespace-normal px-4 py-3 text-center text-lg text-black hover:bg-gray-100 sm:whitespace-nowrap sm:text-left" to={page.url}>
+                                            {page.nom}
                                         </Link>
                                     </li>
                                 ))}
@@ -102,24 +115,29 @@ export default function Navbar() {
                     </ul>
 
                     <Link
-                        className="px-4 inline-flex h-full w-auto items-center justify-center gap-2 text-lg text-black hover:bg-black hover:text-white"
+                        aria-label={Admin.nom}
+                        className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-3 text-center text-sm text-black hover:bg-black hover:text-white sm:w-auto sm:gap-2 sm:px-4 sm:py-2 sm:text-lg"
                         to={Admin.url}
                     >
                         <MdOutlineAdminPanelSettings />
-                        {Admin.name}
+                        <span className="sm:hidden">{Admin.nom}</span>
+                        <span className="hidden sm:inline">{Admin.nom}</span>
                     </Link>
                     <Link
-                        className="px-4 inline-flex h-full w-auto items-center justify-center gap-2 text-lg text-black hover:bg-black hover:text-white"
+                        aria-label={Compte.nom}
+                        className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-3 text-center text-sm text-black hover:bg-black hover:text-white sm:w-auto sm:gap-2 sm:px-4 sm:py-2 sm:text-lg"
                         to={Compte.url}
                     >
                         <FaUser />
-                        {Compte.name}
+                        <span className="sm:hidden">{Compte.nom}</span>
+                        <span className="hidden sm:inline">{Compte.nom}</span>
                     </Link>
                     <Link
-                        className="px-4 inline-flex h-full w-auto items-center justify-center gap-2 text-lg text-black hover:bg-black hover:text-white"
-                        to="/auth"
+                        aria-label={JPOinscription.nom}
+                        className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-3 text-center text-sm text-black hover:bg-black hover:text-white sm:w-auto sm:gap-2 sm:px-4 sm:py-2 sm:text-lg"
+                        to={JPOinscription.url}
                     >
-                        <p>S'inscrire à la JPO</p>
+                        {JPOinscription.nom}
                     </Link>
                 </section>
             </div>

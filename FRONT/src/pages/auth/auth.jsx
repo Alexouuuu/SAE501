@@ -58,7 +58,7 @@ export default function Authentification() {
             <div className="grid overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm lg:grid-cols-[0.8fr_1.2fr]">
                 <aside className="flex flex-col justify-between bg-[#212684] p-8 text-white sm:p-10">
                     <div>
-                        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-white">
+                        <p className="text-sm font-semibold uppercase tracking-[0.18em]">
                             Journée portes ouvertes
                         </p>
                         <h1 className="mt-4 text-3xl font-bold leading-tight sm:text-4xl">
@@ -78,7 +78,7 @@ export default function Authentification() {
                         </p>
                         <Link
                             to="/"
-                            className="mt-3 inline-flex font-semibold text-white underline decoration-gray-300 underline-offset-4 hover:text-gray-200"
+                            className="mt-3 inline-flex font-semibold underline decoration-gray-300 underline-offset-4 hover:text-gray-200"
                         >
                             Continuer en tant que visiteur
                         </Link>
@@ -91,7 +91,7 @@ export default function Authentification() {
                             type="button"
                             aria-pressed={mode === "connexion"}
                             onClick={() => changerMode("connexion")}
-                            className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                            className={`cursor-pointer rounded-full px-4 py-2 text-sm font-semibold transition ${
                                 mode === "connexion"
                                     ? "bg-[#212684] text-white"
                                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
@@ -103,7 +103,7 @@ export default function Authentification() {
                             type="button"
                             aria-pressed={isInscription}
                             onClick={() => changerMode("inscription")}
-                            className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                            className={`cursor-pointer rounded-full px-4 py-2 text-sm font-semibold transition ${
                                 isInscription
                                     ? "bg-[#212684] text-white"
                                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
@@ -115,7 +115,7 @@ export default function Authentification() {
                             type="button"
                             aria-pressed={isAdmin}
                             onClick={() => changerMode("admin")}
-                            className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                            className={`cursor-pointer rounded-full px-4 py-2 text-sm font-semibold transition ${
                                 isAdmin
                                     ? "bg-[#212684] text-white"
                                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
@@ -224,7 +224,7 @@ export default function Authentification() {
 
                             <button
                                 type="submit"
-                                className="w-full rounded-md bg-[#212684] px-5 py-3 font-semibold text-white transition hover:bg-[#161b7d] focus:outline-none focus:ring-2 focus:ring-[#212684] focus:ring-offset-2"
+                                className="w-full cursor-pointer rounded-md bg-[#212684] px-5 py-3 font-semibold text-white transition hover:bg-[#161b7d] focus:outline-none focus:ring-2 focus:ring-[#212684] focus:ring-offset-2"
                             >
                                 {isInscription
                                     ? "Créer mon compte"
@@ -244,19 +244,12 @@ export default function Authentification() {
                             </p>
                         )}
 
-                        {isAdmin && (
-                            <p className="mt-5 text-sm leading-6 text-gray-600">
-                                La création de comptes administrateur n’est pas proposée
-                                depuis cette page.
-                            </p>
-                        )}
-
                         {!isInscription && !isAdmin && (
                             <p className="mt-5 text-center text-sm text-gray-600">
                                 Pas encore de compte ?{" "}
                                 <button
                                     type="button"
-                                    className="font-semibold text-[#212684] underline underline-offset-2 hover:text-[#161b7d]"
+                                    className="cursor-pointer font-semibold text-[#212684] underline underline-offset-2 hover:text-[#161b7d]"
                                     onClick={() => changerMode("inscription")}
                                 >
                                     Créer un compte élève

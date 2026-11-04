@@ -1,5 +1,10 @@
-import { Navigate } from "react-router-dom";
+import TitreProps from "../../composants/titreProps"
 
 export default function MonEspace() {
-    return <Navigate to="/auth" replace />;
+    return (
+    <section>
+        <TitreProps titre={"Mon espace"}/>
+        {/*rajouter l'auth pour plus tard si on est pas co*/}
+    </section>
+    )
 }
