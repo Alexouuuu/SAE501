@@ -1,6 +1,6 @@
 export default function bandeauNavbar() {
     return (
-        <section className="bg-[#3c3792] py-1 text-center">
+        <section className="bg-[#3c3792] py-1 text-center shadow-xl">
             {/* <marquee direction="right" className="text-white text-lg font-bold">
                 a finir
             </marquee> */}
