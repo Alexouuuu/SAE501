@@ -20,7 +20,7 @@ export default function Evenements() {
             <TitreProps titre={"Les événements de la formation"} />
             <BannerHead />
             <Filarial titrePage={"Les événements"} />
-            <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8">
+            <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8">
                 <div className="mb-10 flex flex-col gap-5 rounded-2xl bg-[#212684] p-7 text-white sm:flex-row sm:items-center sm:justify-between sm:p-9">
                     <div>
                         <p className="text-sm font-semibold uppercase tracking-widest text-blue-200">À ne pas manquer</p>

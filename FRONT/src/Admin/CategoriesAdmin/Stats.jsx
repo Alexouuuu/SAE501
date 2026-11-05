@@ -55,7 +55,7 @@ export default function Stats() {
     const oui = (cle) => utilisateurs.filter((utilisateur) => utilisateur[cle] === true).length;
 
     return (
-        <section>
+        <section className="max-w-7xl">
             <h2 className="text-2xl font-bold text-gray-900">Statistiques des comptes</h2>
             <p className="mt-1 text-gray-600">Répartition calculée à partir des profils élèves enregistrés.</p>
             {erreur && <p role="alert" className="mt-5 rounded-lg bg-red-50 p-3 text-red-800">{erreur}</p>}

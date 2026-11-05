@@ -11,6 +11,7 @@ import Accueil from './pages/accueil/accueil';
 import VisiteVirtuelle from './pages/visiteVirtuelle/visiteVirtuelle';
 import Evenements from './pages/events/events';
 import JPO from './pages/events/JPO';
+import PlanningJPO from './pages/events/PlanningJPO';
 import Formation from './pages/formation/formation';
 
 import MonCompte from './pages/MonEspace/MonCompte';
@@ -79,6 +80,7 @@ function App() {
               <Route path="/visite-virtuelle" element={<VisiteVirtuelle />} />
               <Route path="/evenements" element={<Evenements />} />
               <Route path="/jpo" element={<JPO />} />
+              <Route path="/planning-jpo" element={<PlanningJPO />} />
               <Route path="/formation" element={<Formation />} />
 
               <Route path="/mon-compte" element={<MonCompte />} />

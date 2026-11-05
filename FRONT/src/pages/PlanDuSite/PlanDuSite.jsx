@@ -21,6 +21,7 @@ const planDuSiteData = [
             liens: [
                 { nom: "Événements de la formation", route: "/evenements" },
                 { nom: "S'inscrire à la JPO", route: "/jpo" },
+                { nom: "Programme de la JPO", route: "/planning-jpo" },
                 { nom: "Nous contacter", route: "/contact" },
             ]
         }]
@@ -64,7 +65,7 @@ export default function PlanDuSite() {
             <TitreProps titre={"Plan du site"} />
             <BannerHead />
             <Filarial titrePage={"Plan du site"} />
-            <div className="w-[85%] mx-auto my-10">
+            <div className="w-[85%] max-w-7xl mx-auto my-10">
                 {planDuSiteData.map((section, index) => (
                     <div key={section.id}>
                         <h2 className="text-3xl font-bold text-gray-800 mb-8">{section.titreSection}</h2>

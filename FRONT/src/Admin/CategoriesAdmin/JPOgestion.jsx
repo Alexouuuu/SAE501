@@ -96,7 +96,7 @@ export default function JPOGestion() {
     }
 
     return (
-        <section className="space-y-8">
+        <section className="space-y-8 max-w-7xl">
             <div>
                 <h2 className="text-2xl font-bold text-gray-900">Activités de la JPO</h2>
                 <p className="mt-1 text-gray-600">La JPO est unique : ajoutez ici ses réunions, visites, entretiens et présentations. Les activités publiées sont proposées aux élèves dans leur planning.</p>

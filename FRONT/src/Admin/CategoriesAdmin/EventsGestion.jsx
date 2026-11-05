@@ -93,7 +93,7 @@ export default function EventsGestion() {
     }
 
     return (
-        <section className="space-y-8">
+        <section className="space-y-8 max-w-7xl">
             <div>
                 <h2 className="text-2xl font-bold text-gray-900">Événements de la formation</h2>
                 <p className="mt-1 text-gray-600">Publiez, modifiez ou supprimez les événements visibles par les visiteurs.</p>

@@ -15,7 +15,8 @@ export default function Footer() {
         { id: 2, name: 'La formation', url: '/formation' },
         { id: 3, name: 'Visite Virtuelle', url: '/visite-virtuelle' },
         { id: 4, name: 'Evenements', url: '/evenements' },
-        { id: 5, name: 'Plan du site', url: '/planDuSite' },
+        { id: 5, name: 'Programme de la JPO', url: '/planning-jpo' },
+        { id: 6, name: 'Plan du site', url: '/planDuSite' },
 
     ];
 
@@ -109,7 +110,7 @@ export default function Footer() {
 
 
                 <div
-                    className="pl-4 relative z-10 mx-auto h-56 w-[calc(100%-2rem)] p-0 md:absolute md:inset-y-4 md:left-0 md:m-0 md:h-auto md:w-[46%] md:bg-transparent md:[clip-path:polygon(0_0,100%_0,84%_100%,0_100%)]"
+                    className="pl-4 relative z-10 mx-auto h-150 w-[calc(100%-2rem)] p-0 md:absolute md:inset-y-4 md:left-0 md:m-0 md:h-auto md:w-[46%] md:bg-transparent md:[clip-path:polygon(0_0,100%_0,84%_100%,0_100%)]"
                 >
 
                     <iframe

@@ -7,6 +7,8 @@ import EventsGestion from "../CategoriesAdmin/EventsGestion";
 import JPOGestion from "../CategoriesAdmin/JPOgestion";
 import UsersGestion from "../CategoriesAdmin/UsersGestion";
 import Stats from "../CategoriesAdmin/Stats";
+import CommentsGestion from "../CategoriesAdmin/CommentsGestion";
+
 import { useState } from "react";
 
 export default function DashBoardAdmin() {
@@ -16,6 +18,7 @@ export default function DashBoardAdmin() {
         { id: "jpo", label: "Activités JPO" },
         { id: "utilisateurs", label: "Utilisateurs" },
         { id: "stats", label: "Statistiques" },
+        { id: "commentaires", label: "Commentaires" },
     ];
 
     return(
@@ -31,12 +34,15 @@ export default function DashBoardAdmin() {
                         </button>
                     ))}
                 </div>
-                <div role="tabpanel" className="rounded-2xl bg-white p-5 shadow-sm sm:p-8">
+                <div role="tabpanel">
+                    <hr className="border-gray-200 my-5" />
                     {section === "evenements" && <EventsGestion />}
                     {section === "jpo" && <JPOGestion />}
                     {section === "utilisateurs" && <UsersGestion />}
                     {section === "stats" && <Stats />}
+                    {section === "commentaires" && <CommentsGestion />}
                 </div>
+                
             </div>
         </section>
     )

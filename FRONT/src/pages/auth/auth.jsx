@@ -111,7 +111,7 @@ export default function Authentification() {
             <BannerHead />
             <Filarial titrePage={"Connexion et inscription"} />
 
-            <section className="mx-auto px-5 py-12 sm:px-8 lg:py-16">
+            <section className="max-w-7xl mx-auto px-5 py-12 sm:px-8 lg:py-16">
                 <div className="grid overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm lg:grid-cols-[0.8fr_1.2fr]">
                     <aside className="flex flex-col justify-between bg-[#212684] p-8 text-white sm:p-10">
                         <div>
@@ -125,7 +125,7 @@ export default function Authentification() {
                             </h1>
                             <p className="mt-5 leading-7 text-gray-100">
                                 Créez un compte pour retrouver vos informations et vos
-                                inscriptions. <br></br>Juste envie de visiter ? Vous pouvez continuer sans
+                                inscriptions. <br></br><br></br>Juste envie de visiter ? Vous pouvez continuer sans
                                 compte.
                             </p>
                         </div>

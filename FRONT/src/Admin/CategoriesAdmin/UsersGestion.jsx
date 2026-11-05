@@ -26,13 +26,13 @@ export default function UsersGestion() {
 
     return (
         <section>
-            <div className="mb-6">
+            <div className="mb-6 max-w-7xl">
                 <h2 className="text-2xl font-bold text-gray-900">Comptes élèves</h2>
                 <p className="mt-1 text-gray-600">{utilisateurs.length} compte{utilisateurs.length > 1 ? "s" : ""} enregistré{utilisateurs.length > 1 ? "s" : ""}.</p>
             </div>
             {erreur && <p role="alert" className="mb-4 rounded-lg bg-red-50 p-3 text-red-800">{erreur}</p>}
             <div className="overflow-x-auto rounded-xl border border-gray-200">
-                <table className="w-full min-w-[850px] border-collapse text-left text-sm">
+                <table className="w-full min-w-212.5 border-collapse text-left text-sm">
                     <thead className="bg-gray-50 text-gray-700">
                         <tr>
                             <th className="px-4 py-3 font-semibold">Nom</th>

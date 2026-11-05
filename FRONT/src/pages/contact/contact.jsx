@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import TitreProps from "../../composants/titreProps";
 import Filarial from "../../composants/filArial";
 import BannerHead from "../../composants/bannerHead";
+import Espacement from "../../composants/espacement"
 
 import { MdAlternateEmail } from "react-icons/md";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { FaMapPin } from "react-icons/fa";
 import { RiMailSendLine } from "react-icons/ri";
 import { FaRegQuestionCircle } from "react-icons/fa";
+
 
 export default function Contact() {
     const [accepteDonnees, setAccepteDonnees] = useState(false);
@@ -30,7 +32,7 @@ export default function Contact() {
             <TitreProps titre={"Nous contacter"}></TitreProps>
             <BannerHead/>
             <Filarial titrePage={"Nous contacter"}/>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 min-h-[85vh] w-[90%] lg:w-[80%] mx-auto my-10 items-stretch">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 min-h-[85vh] w-[90%] lg:w-[80%] mx-auto my-10 items-stretch max-w-7xl">
                 <div className="flex flex-col h-full text-white">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="flex flex-col bg-[#00936e] rounded-md items-center justify-center p-6 text-center gap-3">
@@ -47,16 +49,12 @@ export default function Contact() {
                             <h3 className="text-xl font-semibold">Téléphone</h3>
                             <p className="text-sm text-white mt-1">01 64 36 44 15</p>
                         </div>
-                        <div className="flex flex-col bg-[#00936e] rounded-md items-center justify-center p-6 text-center gap-3">
+                        <div className="flex flex-col bg-[#00936e] rounded-md items-center justify-center p-6 text-center gap-3 sm:col-span-2">
                             <div className="mb-2">
                                 <FaMapPin size={30}/>
                             </div>
                             <h3 className="text-xl font-semibold">Adresse</h3>
                             <p className="text-sm text-white mt-1">17 Rue Jablinot, 77100 Meaux - France</p>
-                        </div>
-                        <div className="flex flex-col bg-[#00936e] rounded-md items-center justify-center p-6 text-center">
-                            <div><FaRegQuestionCircle size={30}/></div>
-                            <h3 className="text-xl font-semibold">à trouver</h3>
                         </div>
                     </div>
                     <div className="w-full mt-4 flex-1 min-h-62.5">
@@ -131,6 +129,7 @@ export default function Contact() {
                     </form>
                 </div>
             </div>
+            <Espacement/>
         </section>
     );
 }

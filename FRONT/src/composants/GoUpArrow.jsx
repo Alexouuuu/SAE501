@@ -21,7 +21,7 @@ export default function GoUpArrow() {
     };
 
     return (
-        <div className="fixed bottom-6 right-6 z-50 rounded-full border border-black/50 bg-white p-1">
+        <div className="fixed bottom-6 md:bottom-20 right-6 z-50 rounded-full border border-black/50 bg-white p-1">
             <button
                 type="button"
                 onClick={scrollToTop}
