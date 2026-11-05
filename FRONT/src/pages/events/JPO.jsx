@@ -28,7 +28,7 @@ export default function JPO() {
 
     useEffect(() => {
         localStorage.setItem(storageKey, JSON.stringify(planning));
-    }, [planning]);
+    }, [planning]); // stock le planning de l'utilisateur en local
 
     const monPlanning = useMemo(
         () => activites.filter((activite) => planning.includes(activite.id)),

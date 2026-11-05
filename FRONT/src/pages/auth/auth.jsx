@@ -29,15 +29,20 @@ export default function Authentification() {
     const [mode, setMode] = useState("connexion");
     const [message, setMessage] = useState("");
     const [chargement, setChargement] = useState(false);
+    const [accepteDonnees, setAccepteDonnees] = useState(false);
     const navigate = useNavigate();
 
     const isInscription = mode === "inscription";
-    const isAdmin = mode === "admin";
 
     async function handleSubmit(event) {
         event.preventDefault();
 
         const formData = new FormData(event.currentTarget);
+        if (isInscription && formData.get("accepteDonnees") !== "on") {
+            setMessage("Veuillez accepter le traitement de vos données pour créer un compte.");
+            return;
+        }
+
         if (
             isInscription &&
             formData.get("password") !== formData.get("passwordConfirmation")
@@ -58,11 +63,9 @@ export default function Authentification() {
                     prenom: donnees.prenom,
                     email: donnees.email,
                     password: donnees.password,
-                    sexe: donnees.sexe || null,
                     ville: donnees.ville,
-                    filiere: donnees.filiere,
                     dateNaissance: donnees.dateNaissance || null,
-                    interesseFormation: donnees.interesseFormation === "on",
+                    interesseFormation: donnees.interesseFormation === "on",    // what in the prompt?
                     }
                     : { email: donnees.email, password: donnees.password }),
             });
@@ -77,6 +80,7 @@ export default function Authentification() {
     function changerMode(nouveauMode) {
         setMode(nouveauMode);
         setMessage("");
+        setAccepteDonnees(false);
     }
 
     return (
@@ -97,9 +101,9 @@ export default function Authentification() {
                                 <br />
                                 personnel
                             </h1>
-                            <p className="mt-5 max-w-sm leading-7 text-gray-100">
-                                Créez un compte élève pour retrouver vos informations et vos
-                                inscriptions. Les parents et visiteurs peuvent continuer sans
+                            <p className="mt-5 leading-7 text-gray-100">
+                                Créez un compte pour retrouver vos informations et vos
+                                inscriptions. <br></br>Juste envie de visiter ? Vous pouvez continuer sans
                                 compte.
                             </p>
                         </div>
@@ -140,32 +144,17 @@ export default function Authentification() {
                             >
                                 Créer un compte
                             </button>
-                            <button
-                                type="button"
-                                aria-pressed={isAdmin}
-                                onClick={() => changerMode("admin")}
-                                className={`cursor-pointer rounded-full px-4 py-2 text-sm font-semibold transition ${isAdmin
-                                    ? "bg-[#212684] text-white"
-                                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                                    }`}
-                            >
-                                Administrateur
-                            </button>
                         </div>
 
                         <div className="pt-7">
                             <h2 className="text-2xl font-bold text-gray-900">
                                 {isInscription
                                     ? "Créer un compte élève"
-                                    : isAdmin
-                                        ? "Connexion administrateur"
                                         : "Ravi de vous revoir"}
                             </h2>
                             <p className="mt-2 text-sm leading-6 text-gray-600">
                                 {isInscription
                                     ? "Renseignez vos informations pour préparer votre espace."
-                                    : isAdmin
-                                        ? "L’accès administrateur est réservé aux comptes autorisés."
                                         : "Connectez-vous à votre espace élève."}
                             </p>
 
@@ -260,16 +249,48 @@ export default function Authentification() {
                                     />
                                 )}
 
+                                {isInscription && (
+                                    <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+                                        <div className="flex items-start gap-3">
+                                            <input
+                                                id="accepteDonnees"
+                                                name="accepteDonnees"
+                                                type="checkbox"
+                                                required
+                                                checked={accepteDonnees}
+                                                onChange={(event) =>
+                                                    setAccepteDonnees(event.target.checked)
+                                                }
+                                                className="mt-1 h-4 w-4 shrink-0 cursor-pointer rounded border-gray-300 accent-[#212684] focus:ring-2 focus:ring-[#212684]/20"
+                                            />
+                                            <label
+                                                htmlFor="accepteDonnees"
+                                                className="text-sm leading-6 text-gray-700"
+                                            >
+                                                Les informations recueillies dans ce formulaire sont traitées par l’Université Gustave Eiffel afin de gérer votre compte et de vous donner accès aux services proposés sur le site.
+                                                En cochant cette case, j’accepte que mes données personnelles soient
+                                                collectées et stockées conformément aux{" "}
+                                                <Link
+                                                    to="/mentions-legales"
+                                                    className="font-semibold text-[#212684] underline underline-offset-2 hover:text-[#161b7d]"
+                                                >
+                                                    mentions légales
+                                                </Link>.
+                                                
+                                            </label>
+                                        </div>
+                                    </div>
+                                )}
+
                                 <button
                                     type="submit"
-                                    className="w-full cursor-pointer rounded-md bg-[#212684] px-5 py-3 font-semibold text-white transition hover:bg-[#161b7d] focus:outline-none focus:ring-2 focus:ring-[#212684] focus:ring-offset-2"
+                                    disabled={chargement || (isInscription && !accepteDonnees)}
+                                    className="w-full cursor-pointer rounded-md bg-[#212684] px-5 py-3 font-semibold text-white transition hover:bg-[#161b7d] focus:outline-none focus:ring-2 focus:ring-[#212684] focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                                 >
                                     {chargement
                                         ? "Veuillez patienter…"
                                         : isInscription
                                         ? "Créer mon compte"
-                                        : isAdmin
-                                            ? "Se connecter en tant qu’administrateur"
                                             : "Se connecter"}
                                 </button>
                             </form>
@@ -284,7 +305,7 @@ export default function Authentification() {
                                 </p>
                             )}
 
-                            {!isInscription && !isAdmin && (
+                            {!isInscription && (
                                 <p className="mt-5 text-center text-sm text-gray-600">
                                     Pas encore de compte ?{" "}
                                     <button
@@ -292,7 +313,7 @@ export default function Authentification() {
                                         className="cursor-pointer font-semibold text-[#212684] underline underline-offset-2 hover:text-[#161b7d]"
                                         onClick={() => changerMode("inscription")}
                                     >
-                                        Créer un compte élève
+                                        Créer un compte
                                     </button>
                                 </p>
                             )}

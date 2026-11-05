@@ -14,8 +14,8 @@ export default function SectionEnseignements() {
         {
             id: 1,
             logo: <FaCode />,
-            matiere: "Développement",
-            soustitre: "et intégration web",
+            matiere: "Développement web",
+            soustitre: "et intégration",
             description: "Concevoir et réaliser des sites web et des applications interactives en mobilisant les langages du web et les bonnes pratiques d'intégration.",
             image: "/images/paccueil/devweb.webp"
         },
@@ -33,7 +33,7 @@ export default function SectionEnseignements() {
             matiere: "Audiovisuel",
             soustitre: "et production numérique",
             description: "Écrire un scénario, réaliser un tournage, monter des vidéos et créer des effets visuels en maîtrisant toute la chaîne de production audiovisuelle.",
-            image: "/images/IUT.webp"
+            image: "/images/paccueil/audiovisuel.webp"
         },
     ];
 

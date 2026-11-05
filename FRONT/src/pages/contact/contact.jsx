@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import TitreProps from "../../composants/titreProps";
 import Filarial from "../../composants/filArial";
 import BannerHead from "../../composants/bannerHead";
@@ -9,6 +11,20 @@ import { RiMailSendLine } from "react-icons/ri";
 import { FaRegQuestionCircle } from "react-icons/fa";
 
 export default function Contact() {
+    const [accepteDonnees, setAccepteDonnees] = useState(false);
+    const [champsValides, setChampsValides] = useState(false);
+
+    function verifierChamps(event) {
+        const champs = event.currentTarget.querySelectorAll(
+            "input[required]:not([type=checkbox]), textarea[required]"
+        );
+        setChampsValides(
+            Array.from(champs).every(
+                (champ) => champ.value.trim() !== "" && champ.validity.valid
+            )
+        );
+    }
+
     return (
         <section className="min-h-screen">
             <TitreProps titre={"Nous contacter"}></TitreProps>
@@ -55,36 +71,64 @@ export default function Contact() {
                 </div>
                 <div className="bg-white rounded-md px-8 py-8 border border-gray-300 flex flex-col justify-start">
                     <h2 className="text-3xl font-bold text-gray-900 mb-2">Nous Contacter</h2>
-                    <p className="text-sm text-gray-500 mb-6 leading-relaxed">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas inventore recusandae voluptate, ea quasi voluptatum nemo laudantium rerum non totam doloremque. Debitis ipsam voluptatibus officia corrupti dolore dolores alias aspernatur.</p>
+                    <p className="text-sm text-gray-500 mb-6 leading-relaxed italic">Les champs obligatoires sont indiqués d'une étoile (*).</p>
 
-                    <form className="flex flex-col gap-4">
+                    <form className="flex flex-col gap-4" onChange={verifierChamps}>
                         <div className="flex flex-col gap-2 mb-2">
-                            <label htmlFor="nom" className="text-xs font-semibold text-gray-700">Nom</label>
-                            <input id="nom" type="text" placeholder="Exemple : Dupont" className="w-full px-4 py-3 rounded-md border border-gray-300 text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#212684] focus:border-[#212684] transition" />
+                            <label htmlFor="nom" className="text-xs font-semibold text-gray-700">Nom*</label>
+                            <input id="nom" name="nom" type="text" required placeholder="Exemple : Dupont" className="w-full px-4 py-3 rounded-md border border-gray-300 text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#212684] focus:border-[#212684] transition" />
                         </div>
                         <div className="flex flex-col gap-2 mb-2">
-                            <label htmlFor="prenom" className="text-xs font-semibold text-gray-700">Prénom</label>
-                            <input id="prenom" type="text" placeholder="Exemple : Jean" className="w-full px-4 py-3 rounded-md border border-gray-300 text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#212684] focus:border-[#212684] transition" />
+                            <label htmlFor="prenom" className="text-xs font-semibold text-gray-700">Prénom*</label>
+                            <input id="prenom" name="prenom" type="text" required placeholder="Exemple : Jean" className="w-full px-4 py-3 rounded-md border border-gray-300 text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#212684] focus:border-[#212684] transition" />
                         </div>
                         <div className="flex flex-col gap-2 mb-2">
-                            <label htmlFor="email" className="text-xs font-semibold text-gray-700">Email</label>
-                            <input id="email" type="email" placeholder="Exemple : JeanDupont@univ-eiffel.fr" className="w-full px-4 py-3 rounded-md border border-gray-300 text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#212684] focus:border-[#212684] transition" />
+                            <label htmlFor="email" className="text-xs font-semibold text-gray-700">Email*</label>
+                            <input id="email" name="email" type="email" required placeholder="Exemple : JeanDupont@univ-eiffel.fr" className="w-full px-4 py-3 rounded-md border border-gray-300 text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#212684] focus:border-[#212684] transition" />
                         </div>
                         <div className="flex flex-col gap-2 mb-2">
-                            <label htmlFor="sujet" className="text-xs font-semibold text-gray-700">Sujet</label>
-                            <input id="sujet" type="text" placeholder="Exemple : Renseignement" className="w-full px-4 py-3 rounded-md border border-gray-300 text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#212684] focus:border-[#212684] transition" />
+                            <label htmlFor="sujet" className="text-xs font-semibold text-gray-700">Sujet*</label>
+                            <input id="sujet" name="sujet" type="text" required placeholder="Exemple : Renseignement" className="w-full px-4 py-3 rounded-md border border-gray-300 text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#212684] focus:border-[#212684] transition" />
                         </div>
                         <div className="flex flex-col gap-2 mb-2">
-                            <label htmlFor="message" className="text-xs font-semibold text-gray-700">Message</label>
-                            <textarea id="message" rows="13" placeholder="Ecrivez votre message ici" className="w-full px-4 py-3 rounded-md border border-gray-300 text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#212684] focus:border-[#212684] transition resize-none" />
+                            <label htmlFor="message" className="text-xs font-semibold text-gray-700">Message*</label>
+                            <textarea id="message" name="message" rows="13" required placeholder="Ecrivez votre message ici" className="w-full px-4 py-3 rounded-md border border-gray-300 text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#212684] focus:border-[#212684] transition resize-none" />
+                        </div>
+                        <div className="rounded-lg border border-gray-200 bg-gray-50 p-4">
+                            <div className="flex items-start gap-3">
+                                <input
+                                    id="accepteDonnees"
+                                    name="accepteDonnees"
+                                    type="checkbox"
+                                    required
+                                    checked={accepteDonnees}
+                                    onChange={(event) => setAccepteDonnees(event.target.checked)}
+                                    className="mt-1 h-4 w-4 shrink-0 cursor-pointer rounded border-gray-300 accent-[#212684] focus:ring-2 focus:ring-[#212684]/20"
+                                />
+                                <label
+                                    htmlFor="accepteDonnees"
+                                    className="text-sm leading-6 text-gray-700"
+                                >
+                                    Les informations recueillies dans ce formulaire sont traitées par
+                                    l’Université Gustave Eiffel afin de répondre à votre demande.
+                                    En cochant cette case, j’accepte que mes données personnelles
+                                    soient collectées et stockées conformément aux{" "}
+                                    <Link
+                                        to="/mentions-legales"
+                                        className="font-semibold text-[#212684] underline underline-offset-2 hover:text-[#161b7d]"
+                                    >
+                                        mentions légales
+                                    </Link>.
+                                </label>
+                            </div>
+                        </div>
+                        <div className="flex justify-end">
+                            <button type="submit" disabled={!accepteDonnees || !champsValides} className="flex flex-row p-3 items-center gap-2 mt-2 bg-[#31379A] hover:bg-[#4146aa] text-white font-medium rounded-md transition duration-200 cursor-pointer text-sm disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-[#31379A]">
+                                <p>Envoyer</p>
+                                <RiMailSendLine/>
+                            </button>
                         </div>
                     </form>
-                    <div className="flex justify-end">
-                        <button type="submit" className="flex flex-row p-3 items-center gap-2 mt-2 bg-[#31379A] hover:bg-[#4146aa] text-white font-medium rounded-md transition duration-200 cursor-pointer text-sm">
-                            <p>Envoyer</p> 
-                            <RiMailSendLine/>
-                        </button>
-                    </div>
                 </div>
             </div>
         </section>

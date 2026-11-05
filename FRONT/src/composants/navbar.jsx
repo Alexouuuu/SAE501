@@ -32,7 +32,7 @@ export default function Navbar() {
         { id: 3, nom: 'Visite Virtuelle', url: '/visite-virtuelle' },
     ];
 
-    const Autres = [
+    const Services = [
         { id: 1, nom: 'Plan du Site', url: '/planDuSite' },
         { id: 2, nom: 'Nous contacter', url: '/contact' },
     ];
@@ -96,18 +96,18 @@ export default function Navbar() {
                             <button
                                 type="button"
                                 className="bg-[#3c3792] text-white hover:bg-[#2a266c] relative flex h-full w-full cursor-pointer items-center justify-center px-2 py-3 text-base  lg:static lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
-                                aria-expanded={openMenu === 'autres'}
-                                aria-controls="autres-menu"
-                                onClick={() => setOpenMenu(openMenu === 'autres' ? null : 'autres')}
+                                aria-expanded={openMenu === 'services'}
+                                aria-controls="services-menu"
+                                onClick={() => setOpenMenu(openMenu === 'services' ? null : 'services')}
                             >
-                                <span className="w-full text-center lg:w-auto">Autres</span>
+                                <span className="w-full text-center lg:w-auto">services</span>
                                 <RiArrowDropDownLine className="absolute right-3 mt-1 lg:static" />
                             </button>
                             <ul
-                                id="autres-menu"
-                                className={`${openMenu === 'autres' ? 'visible opacity-100' : 'invisible opacity-0'} absolute left-0 top-full z-20 w-full min-w-0 bg-white text-center shadow-lg transition-opacity lg:w-auto lg:min-w-48 lg:text-left transform duration-300`}
+                                id="services-menu"
+                                className={`${openMenu === 'services' ? 'visible opacity-100' : 'invisible opacity-0'} absolute left-0 top-full z-20 w-full min-w-0 bg-white text-center shadow-lg transition-opacity lg:w-auto lg:min-w-48 lg:text-left transform duration-300`}
                             >
-                                {Autres.map((page) => (
+                                {Services.map((page) => (
                                     <li key={page.id}>
                                         <Link className="block whitespace-normal px-4 py-3 text-center text-lg text-black hover:bg-gray-100 transform transition duration-300 lg:whitespace-nowrap lg:text-left" to={page.url}>
                                             {page.nom}
