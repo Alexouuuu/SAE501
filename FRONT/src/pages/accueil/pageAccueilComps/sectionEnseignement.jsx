@@ -7,8 +7,19 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function SectionEnseignements() {
+    const introRef = useRef(null);
+    const introWordsRef = useRef([]);
+    const introDecorRef = useRef([]);
     const sectionRef = useRef(null);
     const slidesRef = useRef([]);
+    const introWords = "C’est quoi la formation MMI ?".split(" ");
+    const introDecorations = [
+        { symbol: "?", position: "left-0 top-0 text-3xl text-[#00936e] sm:-left-12 sm:-top-8 sm:text-7xl" },
+        { symbol: "?", position: "left-1/2 -top-1 -translate-x-1/2 -rotate-12 text-2xl text-[#2f2a85] sm:left-1/4 sm:-top-16 sm:translate-x-0 sm:text-6xl" },
+        { symbol: "?", position: "bottom-0 left-0 rotate-12 text-3xl text-[#2f2a85] sm:-bottom-8 sm:-left-10 sm:text-6xl" },
+        { symbol: "?", position: "right-0 top-0 -rotate-12 text-3xl text-[#00936e] sm:-right-12 sm:-top-8 sm:text-7xl" },
+        { symbol: "?", position: "bottom-0 right-0 -rotate-12 text-3xl text-[#00936e] sm:-right-12 sm:-bottom-8 sm:text-7xl" },
+    ];
 
     const enseign = [
         {
@@ -43,6 +54,37 @@ export default function SectionEnseignements() {
         if (!section || slides.length === 0) return;
 
         const ctx = gsap.context(() => {
+            const intro = introRef.current;
+            const introWords = introWordsRef.current.filter(Boolean);
+            const introDecorations = introDecorRef.current.filter(Boolean);
+
+            if (intro && introWords.length > 0 && introDecorations.length > 0) {
+                gsap.set(introWords, { autoAlpha: 0, y: 24 });
+                gsap.set(introDecorations, { autoAlpha: 0, y: 16, scale: 0.6 });
+
+                const introTimeline = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: intro,
+                        start: "top top",
+                        end: () => `+=${window.innerHeight * 1.25}`,
+                        pin: true, // permet de fixer la section pendant l'animation
+                        scrub: 1, // permet de synchroniser l'animation avec le défilement de la page
+                        anticipatePin: 1,
+                        invalidateOnRefresh: true, // permet de recalculer les positions lors du redimensionnement de la fenêtre
+                    }
+                });
+
+                introWords.forEach((word, index) => {
+                    introTimeline.to([word, introDecorations[index]], {
+                        autoAlpha: 1,
+                        y: 0,
+                        scale: 1,
+                        duration: 0.3,
+                        ease: "none",
+                    }, index * 0.3);
+                });
+            }
+
             // Placement initial des slides
             slides.forEach((slide, index) => {
                 gsap.set(slide, {
@@ -90,52 +132,89 @@ export default function SectionEnseignements() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="relative h-screen w-full overflow-hidden bg-black text-white">
-            {enseign.map((enseignement, index) => (
-                <article
-                    key={enseignement.id}
-                    ref={(el) => (slidesRef.current[index] = el)}
-                    className="absolute inset-0 flex h-full w-full min-w-0 flex-col justify-between p-5 sm:p-8 md:p-14 lg:p-20"
-                >
-                    {/* Image bg */}
-                    <div className="absolute inset-0 z-0">
-                        <img
-                            src={enseignement.image}
-                            alt={enseignement.matiere}
-                            className="h-full w-full object-cover"
-                        />
-                    </div>
+        <>
+            <section
+                ref={introRef}
+                className="relative flex min-h-screen w-full items-center justify-center bg-white px-6 text-center text-slate-950 sm:px-10"
+            >
+                <div className="relative w-full max-w-7xl px-8 py-12 sm:px-0 sm:py-0">
+                    {introDecorations.map((decoration, index) => (
+                        <span
+                            key={`decoration-${index}`}
+                            ref={(element) => (introDecorRef.current[index] = element)}
+                            aria-hidden="true"
+                            className={`pointer-events-none absolute z-10 inline-block font-bold opacity-0 ${decoration.position}`}
+                        >
+                            {decoration.symbol}
+                        </span>
+                    ))}
+                    <h2
+                        aria-label="C’est quoi la formation MMI ?"
+                        className="relative text-3xl font-extrabold leading-tight tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
+                    >
+                        {introWords.map((word, index) => (
+                            <span
+                                key={`${word}-${index}`}
+                                ref={(element) => (introWordsRef.current[index] = element)}
+                                aria-hidden="true"
+                                className="mr-[0.22em] inline-block opacity-0"
+                            >
+                                {word}
+                            </span>
+                        ))}
+                    </h2>
+                </div>
+            </section>
 
-                    <div className="relative z-10 flex min-w-0 max-w-full flex-col items-start">
-                        <div className="flex w-fit max-w-full flex-col gap-1 rounded-xl bg-black/10 p-4 backdrop-blur-sm sm:p-6">
-                            <span className="text-2xl text-white/80">{enseignement.logo}</span>
-                            <h2 className="max-w-full wrap-break-word text-[clamp(2rem,10vw,3rem)] font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
-                                {enseignement.matiere}
-                            </h2>
-                            {enseignement.soustitre && (
-                                <span className="text-lg font-light text-white/80 sm:text-xl lg:text-3xl">
-                                    {enseignement.soustitre}
-                                </span>
-                            )}
+
+            {/*Les slides avec les formations etc*/}
+            <section ref={sectionRef} className="relative h-screen w-full overflow-hidden bg-black text-white">
+                {enseign.map((enseignement, index) => (
+                    <article
+                        key={enseignement.id}
+                        ref={(el) => (slidesRef.current[index] = el)}
+                        className="absolute inset-0 flex h-full w-full min-w-0 flex-col justify-between p-5 sm:p-8 md:p-14 lg:p-20"
+                    >
+                        {/* Image bg */}
+                        <div className="absolute inset-0 z-0">
+                            <img
+                                src={enseignement.image}
+                                alt={enseignement.matiere}
+                                className="h-full w-full object-cover"
+                            />
                         </div>
-                    </div>
 
-                    <div className="absolute left-1/2 top-1/2 z-10 w-[calc(100%-2.5rem)] max-w-sm -translate-x-1/2 -translate-y-1/2 text-center sm:relative sm:left-auto sm:top-auto sm:ml-auto sm:mt-auto sm:w-full sm:max-w-lg sm:translate-x-0 sm:translate-y-0 sm:pb-4 sm:text-right lg:max-w-2xl">
-                        <div className="inline-block max-w-full rounded-xl bg-black/10 p-4 backdrop-blur-sm sm:p-6">
-                            <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-white drop-shadow-lg sm:mb-4 sm:text-sm">
-                                <strong>En BUT MMI</strong>, on vous apprend à
-                            </h3>
-                            <p className="text-pretty text-xl font-medium leading-relaxed tracking-wide text-white drop-shadow-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl">
-                                {enseignement.description}
-                            </p>
+                        <div className="relative z-10 flex min-w-0 max-w-full flex-col items-start">
+                            <div className="flex w-fit max-w-full flex-col gap-1 rounded-xl bg-black/10 p-4 backdrop-blur-sm sm:p-6">
+                                <span className="text-2xl text-white/80">{enseignement.logo}</span>
+                                <h2 className="max-w-full wrap-break-word text-[clamp(1.5rem,10vw,2.5rem)] font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
+                                    {enseignement.matiere}
+                                </h2>
+                                {enseignement.soustitre && (
+                                    <span className="text-lg font-light text-white/80 sm:text-xl lg:text-3xl">
+                                        {enseignement.soustitre}
+                                    </span>
+                                )}
+                            </div>
                         </div>
-                    </div>
 
-                    {/* <div className="relative z-10 flex items-center justify-between border-t border-white/20 pt-4 text-xs font-mono text-white/60">
-                        <span>0{index + 1} / 0{enseign.length}</span>
-                    </div> */}
-                </article>
-            ))}
-        </section>
+                        <div className="absolute left-1/2 top-1/2 z-10 w-[calc(100%-2.5rem)] max-w-sm -translate-x-1/2 -translate-y-1/2 text-center sm:relative sm:left-auto sm:top-auto sm:ml-auto sm:mt-auto sm:w-full sm:max-w-lg sm:translate-x-0 sm:translate-y-0 sm:pb-4 sm:text-right lg:max-w-2xl">
+                            <div className="inline-block max-w-full rounded-xl bg-black/10 p-4 backdrop-blur-sm sm:p-6">
+                                <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-white drop-shadow-lg sm:mb-4 sm:text-sm">
+                                    <strong>En BUT MMI</strong>, on vous apprend à
+                                </h3>
+                                <p className="text-pretty text-xl font-medium leading-relaxed tracking-wide text-white drop-shadow-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl">
+                                    {enseignement.description}
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* <div className="relative z-10 flex items-center justify-between border-t border-white/20 pt-4 text-xs font-mono text-white/60">
+                            <span>0{index + 1} / 0{enseign.length}</span>
+                        </div> */}
+                    </article>
+                ))}
+            </section>
+        </>
     );
 }

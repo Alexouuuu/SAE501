@@ -13,7 +13,7 @@ export default function Accueil() {
             <TitreProps titre={"Accueil"} />
             <LandingAccueil /> {/* banner avec img de l'iut ou de quoi attirer des gens + info dates / btn redirection*/}
             <Espacement/>
-            <SectionJPO /> {/*Présentation de la JPO et etat ouverture/fermé avec les dates et détails*/}
+            <SectionJPO /> {/*Comment se rendre à la JPO*/}
             <Espacement/>
             
             <SectionEnseignements />
