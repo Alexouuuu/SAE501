@@ -30,6 +30,7 @@ export default function Authentification() {
     const [message, setMessage] = useState("");
     const [chargement, setChargement] = useState(false);
     const [accepteDonnees, setAccepteDonnees] = useState(false);
+    const [formulaireValide, setFormulaireValide] = useState(false);
     const navigate = useNavigate();
 
     const isInscription = mode === "inscription";
@@ -81,6 +82,27 @@ export default function Authentification() {
         setMode(nouveauMode);
         setMessage("");
         setAccepteDonnees(false);
+        setFormulaireValide(false);
+    }
+
+    function verifierFormulaire(event) {
+        const formulaire = event.currentTarget;
+        const champsRequis = Array.from(
+            formulaire.querySelectorAll("input[required], select[required], textarea[required]")
+        );
+        const champsRenseignes = champsRequis.every((champ) =>
+            champ.type === "checkbox"
+                ? champ.checked && champ.validity.valid
+                : champ.value.trim() !== "" && champ.validity.valid
+        );
+        const motsDePasseCorrespondent =
+            !isInscription ||
+            formulaire.elements.password.value ===
+                formulaire.elements.passwordConfirmation.value;
+
+        setFormulaireValide(
+            formulaire.checkValidity() && champsRenseignes && motsDePasseCorrespondent
+        );
     }
 
     return (
@@ -131,7 +153,7 @@ export default function Authentification() {
                                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                                     }`}
                             >
-                                Connexion élève
+                                Connexion
                             </button>
                             <button
                                 type="button"
@@ -149,33 +171,38 @@ export default function Authentification() {
                         <div className="pt-7">
                             <h2 className="text-2xl font-bold text-gray-900">
                                 {isInscription
-                                    ? "Créer un compte élève"
+                                    ? "Créer un compte"
                                         : "Ravi de vous revoir"}
                             </h2>
                             <p className="mt-2 text-sm leading-6 text-gray-600">
                                 {isInscription
-                                    ? "Renseignez vos informations pour préparer votre espace."
-                                        : "Connectez-vous à votre espace élève."}
+                                    ? "Les champs obligatoires sont indiqués d'une étoile (*)."
+                                    
+                                        : "Connectez-vous à votre espace."}
                             </p>
 
-                            <form className="mt-7 space-y-5" onSubmit={handleSubmit}>
+                            <form
+                                className="mt-7 space-y-5"
+                                onSubmit={handleSubmit}
+                                onChange={verifierFormulaire}
+                            >
                                 {isInscription && (
                                     <>
                                         <div className="grid gap-5 sm:grid-cols-2">
                                             <Champ
-                                                label="Prénom"
+                                                label="Prénom*"
                                                 name="prenom"
                                                 autoComplete="given-name"
                                             />
                                             <Champ
-                                                label="Nom"
+                                                label="Nom*"
                                                 name="nom"
                                                 autoComplete="family-name"
                                             />
                                         </div>
                                         <div className="grid gap-5 sm:grid-cols-2">
                                             <Champ
-                                                label="Date de naissance"
+                                                label="Date de naissance*"
                                                 name="dateNaissance"
                                                 type="date"
                                                 autoComplete="bday"
@@ -188,7 +215,7 @@ export default function Authentification() {
                                                     defaultValue=""
                                                     required={false}
                                                 >
-                                                    <option value="" disabled>
+                                                    <option className="cursor-pointer" value="" disabled>
                                                         Choisir une option
                                                     </option>
                                                     <option value="femme">Femme</option>
@@ -203,11 +230,10 @@ export default function Authentification() {
                                         </div>
                                         <div className="grid gap-5 sm:grid-cols-2">
                                             <Champ
-                                                label="Ville"
+                                                label="Ville*"
                                                 name="ville"
                                                 autoComplete="address-level2"
                                             />
-                                            <Champ label="Filière" name="filiere" />
                                         </div>
                                         <label className="flex items-start gap-3 text-sm leading-6 text-gray-700">
                                             <input
@@ -224,13 +250,13 @@ export default function Authentification() {
                                 )}
 
                                 <Champ
-                                    label="Adresse e-mail"
+                                    label="Adresse e-mail*"
                                     name="email"
                                     type="email"
                                     autoComplete="email"
                                 />
                                 <Champ
-                                    label="Mot de passe"
+                                    label="Mot de passe*"
                                     name="password"
                                     type="password"
                                     autoComplete={
@@ -241,7 +267,7 @@ export default function Authentification() {
 
                                 {isInscription && (
                                     <Champ
-                                        label="Confirmer le mot de passe"
+                                        label="Confirmer le mot de passe*"
                                         name="passwordConfirmation"
                                         type="password"
                                         autoComplete="new-password"
@@ -284,7 +310,11 @@ export default function Authentification() {
 
                                 <button
                                     type="submit"
-                                    disabled={chargement || (isInscription && !accepteDonnees)}
+                                    disabled={
+                                        chargement ||
+                                        !formulaireValide ||
+                                        (isInscription && !accepteDonnees)
+                                    }
                                     className="w-full cursor-pointer rounded-md bg-[#212684] px-5 py-3 font-semibold text-white transition hover:bg-[#161b7d] focus:outline-none focus:ring-2 focus:ring-[#212684] focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                                 >
                                     {chargement
