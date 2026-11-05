@@ -25,7 +25,7 @@ export default function SectionEnseignements() {
             matiere: "Création graphique",
             soustitre: "et infographie",
             description: "Maîtriser les fondamentaux du design visuel, élaborer une charte graphique et créer des supports de communication numérique.",
-            image: "/images/IUT.webp"
+            image: "/images/paccueil/creationgraphique.webp"
         },
         {
             id: 3,
