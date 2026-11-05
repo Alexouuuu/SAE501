@@ -15,11 +15,15 @@ export default function Footer() {
         { id: 1, name: 'Accueil', url: '/' },
         { id: 2, name: 'La formation', url: '/formation' },
         { id: 3, name: 'Visite Virtuelle', url: '/visite-virtuelle' },
-        { id: 4, name: 'Evenements', url: '/evenements' },
-        { id: 5, name: 'Programme de la JPO', url: '/planning-jpo' },
-        { id: 6, name: 'Plan du site', url: '/planDuSite' },
-
+        { id: 4, name: 'Plan du site', url: '/planDuSite' },
     ];
+
+    const JPO = [
+        { id: 1, name: 'Inscription JPO', url: '/jpo' },
+        { id: 2, name: 'Programme JPO', url: '/planning-jpo' },
+        { id: 3, name: 'Les évènements', url: '/evenements' },
+
+    ]
 
     const liensPersos = [
         { id: 1, name: 'Mon Compte', url: '/mon-compte' },
@@ -57,9 +61,9 @@ export default function Footer() {
                 <div className="relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Navigation */}
                     <div className="mb-8 grid grid-cols-1 text-center md:mb-0 md:min-h-80 md:grid-cols-2 md:items-center md:text-left">
-                        <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 md:col-start-2">
+                        <div className="grid grid-cols-1 gap-12 sm:grid-cols-4 md:col-start-2">
                             <div>
-                                <h4 className="mb-6 text-lg font-bold uppercase tracking-wider text-white">PAGES</h4>
+                                <h4 className="mb-6 text-lg font-bold uppercase tracking-wider text-white underlineblanc">PAGES</h4>
                                 <ul className="m-2 space-y-4 font-medium">
                                     {liens.map((lien) => (
                                         <li key={lien.id}>
@@ -70,9 +74,21 @@ export default function Footer() {
                                     ))}
                                 </ul>
                             </div>
+                            <div>
+                                <h4 className="mb-6 text-lg font-bold uppercase tracking-wider text-white underlineblanc">JPO</h4>
+                                <ul className="m-2 space-y-4 font-medium">
+                                    {JPO.map((jpokey) => (
+                                        <li key={jpokey.id}>
+                                            <Link to={jpokey.url} className="OnHoverLeftBorderAppear inline-block cursor-pointer py-2 px-2 text-base">
+                                                {jpokey.name}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
                             <section className="flex flex-col gap-8">
                                 <div>
-                                    <h4 className="mb-6 text-lg font-bold uppercase tracking-wider text-white">VOTRE ESPACE</h4>
+                                    <h4 className="mb-6 text-lg font-bold uppercase tracking-wider text-white underlineblanc">VOTRE ESPACE</h4>
                                     <ul className="m-2 space-y-4 font-medium">
                                         {liensPersos.map((lien) => (
                                             <li key={lien.id}>
@@ -84,7 +100,7 @@ export default function Footer() {
                                     </ul>
                                 </div>
                                 <div className="flex flex-col items-center text-center text-sm text-white md:items-start md:text-left">
-                                    <h1 className="text-lg font-bold uppercase tracking-wider text-white">Contact</h1>
+                                    <h1 className="text-lg font-bold uppercase tracking-wider text-white underlineblanc">Contact</h1>
                                     <div className="m-2 flex flex-col gap-2">
                                         <ul className="py-2 space-y-4 font-medium">
                                             {liencontact.map((lien) => (

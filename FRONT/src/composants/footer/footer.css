@@ -1,5 +1,7 @@
 /*maxime derènes*/
 
+/*hover pour les cases*/
+
 .OnHoverLeftBorderAppear {
     position: relative;
     color: white;
@@ -25,4 +27,28 @@
 
 .OnHoverLeftBorderAppear:hover::before {
     opacity: 1;
+}
+
+/*underline pour mettre sous les titres */
+
+.underlineblanc {
+    position: relative;
+    display: inline-block;
+}
+
+.underlineblanc::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    border-radius: 2px;
+}
+
+@media (min-width: 640px) {
+    .underlineblanc::after {
+        width: 70%;
+    }
 }
