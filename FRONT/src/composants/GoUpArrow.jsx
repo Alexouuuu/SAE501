@@ -1,3 +1,5 @@
+// maxime derènes
+
 import { gsap } from "gsap";
 import { FaArrowUp } from "react-icons/fa";
 import { ScrollSmoother } from "gsap/ScrollSmoother";

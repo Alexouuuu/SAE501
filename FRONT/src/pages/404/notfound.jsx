@@ -1,3 +1,5 @@
+// sebastian chisiu
+
 import { Link } from "react-router-dom";
 
 function NotFound() {

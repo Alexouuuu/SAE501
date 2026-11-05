@@ -1,7 +1,8 @@
+// maxime derènes
+
 import { FaLocationArrow } from "react-icons/fa";
 
 const youtube = "https://www.youtube.com/@iutmlv6116"
-
 const videos = [
     {
         id: "OU2niH-FJI4",

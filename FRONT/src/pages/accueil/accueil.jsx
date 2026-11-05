@@ -1,4 +1,6 @@
 // sections
+// maxime derènes
+
 import LandingAccueil from "./pageAccueilComps/landingAccueil"
 import SectionJPO from "./pageAccueilComps/sectionJPO"
 import Enseignements from "./pageAccueilComps/Enseignement";
@@ -7,6 +9,7 @@ import PrecisionFormation from "./pageAccueilComps/PrecisionFormation";
 import ProjetsEtudiants from "./pageAccueilComps/projetsetudiants";
 import VisiteVirtuelleTeaser from "./pageAccueilComps/visitevirtuelleteaser";
 import VideoIUT from "./pageAccueilComps/videoIUT";
+
 // autres
 import TitreProps from "../../composants/titreProps";
 import Espacement from "../../composants/espacement"

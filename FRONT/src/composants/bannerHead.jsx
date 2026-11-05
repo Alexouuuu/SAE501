@@ -1,3 +1,5 @@
+// maxime derènes
+
 import pattern from "/images/pattern.webp"
 
 export default function bannerHead(){
