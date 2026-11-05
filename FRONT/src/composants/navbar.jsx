@@ -101,7 +101,7 @@ export default function Navbar() {
                                 aria-controls="services-menu"
                                 onClick={() => setOpenMenu(openMenu === 'services' ? null : 'services')}
                             >
-                                <span className="w-full text-center lg:w-auto">services</span>
+                                <span className="w-full text-center lg:w-auto">Services</span>
                                 <RiArrowDropDownLine className="absolute right-3 mt-1 lg:static" />
                             </button>
                             <ul

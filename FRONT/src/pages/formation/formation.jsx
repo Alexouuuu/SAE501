@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 
-
 // icons
 import {
     FaArrowRight,
@@ -10,9 +9,12 @@ import {
     FaPalette,
 } from "react-icons/fa6";
 import { MdOutlineVideoLibrary } from "react-icons/md";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
 
 import TitreProps from "../../composants/titreProps";
 import Filarial from "../../composants/filArial";
+
+const bg = "../images/IUT.webp"
 
 const domaines = [
     {
@@ -20,28 +22,24 @@ const domaines = [
         description:
             "Imaginez et développez des sites et des applications : interface, intégration, programmation et expérience utilisateur.",
         icon: <FaCode />,
-        media: "Emplacement image — projet de développement web",
     },
     {
         titre: "Graphisme et design",
         description:
             "Explorez la typographie, la composition et la création visuelle pour concevoir des identités et des supports numériques.",
         icon: <FaPalette />,
-        media: "Emplacement image — création graphique",
     },
     {
         titre: "Audiovisuel",
         description:
             "De l’idée au montage, découvrez les étapes de la production vidéo, de la prise de vue et du travail du son.",
         icon: <MdOutlineVideoLibrary />,
-        media: "Emplacement image — tournage ou montage vidéo",
     },
     {
-        titre: "Création 3D",
+        titre: "Modélisation 3D",
         description:
-            "Donnez forme à vos idées avec la modélisation, la mise en scène et la création d’univers en trois dimensions.",
+            "Donnez forme à vos idées avec la modélisation, la mise en scène et la création d’univers en 3D.",
         icon: <FaCube />,
-        media: "Emplacement image — réalisation 3D",
     },
 ];
 
@@ -63,31 +61,42 @@ const annees = [
     },
 ];
 
-function EmplacementImage({ description, className = "" }) {
-    return (
-        <div className={`relative overflow-hidden bg-gray-200 ${className}`}>
-            <img
-                src="/images/placeholder.png"
-                alt=""
-                className="h-full w-full object-cover"
-                loading="lazy"
-            />
-            <span className="absolute inset-x-0 bottom-0 bg-black/65 px-4 py-3 text-xs font-medium text-white sm:text-sm">
-                {description}
-            </span>
-        </div>
-    );
-}
 
 export default function Formation() {
+        
+    // pour le scroll jusqu'a la section formation : maxime derènes
+    const scrollToFormation = (event) => {
+        event.preventDefault();
+        const target = document.querySelector("#formation");
+        if (!target) return;
+
+        const smoother = ScrollSmoother.get();
+        if (smoother) {
+            smoother.scrollTo(target, true);
+        } else {
+            target.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
     return (
         <section className="text-gray-900">
             <TitreProps titre="BUT MMI - La formation" />
-            
 
-            <header className="bg-[#2f2a85] text-white">
-                <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-14 sm:px-8 sm:py-20 lg:grid-cols-2 lg:gap-16 lg:px-12">
-                    <div>
+
+            <header className="relative isolate overflow-hidden bg-[#2f2a85] text-white">
+
+                {/*image de fond*/}
+                <img
+                    src={bg}
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute inset-0 -z-10 h-full w-full object-cover"
+                />
+
+                <div className="absolute inset-0 -z-10 bg-[#2f2a85]/60" /> {/*filtre bleu*/}
+
+                <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20 lg:px-12">
+                    <div className="max-w-2xl">
                         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-white">
                             Métiers du multimédia et de l’internet
                         </p>
@@ -105,6 +114,7 @@ export default function Formation() {
                         <div className="mt-10 flex flex-wrap gap-4">
                             <a
                                 href="#formation"
+                                onClick={scrollToFormation}
                                 className="inline-flex min-h-12 items-center gap-2 rounded-md bg-white px-5 py-3 font-semibold text-[#2f2a85] transition hover:bg-gray-200"
                                 style={{ color: "#2f2a85" }}
                             >
@@ -118,15 +128,11 @@ export default function Formation() {
                             </Link>
                         </div>
                     </div>
-                    <EmplacementImage
-                        description="Emplacement image — étudiants et projets MMI"
-                        className="aspect-4/3 rounded-xl border border-white/20 shadow-2xl"
-                    />
                 </div>
 
             </header>
 
-            <Filarial titrePage={"La formation"}/>
+            <Filarial titrePage={"La formation"} />
 
             <section id="formation" className="scroll-mt-8 px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
                 <div className="mx-auto max-w-7xl">
@@ -137,12 +143,6 @@ export default function Formation() {
                         <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
                             Des idées aux projets numériques
                         </h2>
-                        <p className="mt-5 leading-7 text-gray-600">
-                            Le BUT MMI associe communication, design et technologies
-                            numériques. Les étudiants apprennent à comprendre un besoin,
-                            concevoir une réponse et la réaliser en mobilisant plusieurs
-                            compétences.
-                        </p>
                     </div>
 
                     <div className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
@@ -151,10 +151,6 @@ export default function Formation() {
                                 key={domaine.titre}
                                 className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm"
                             >
-                                <EmplacementImage
-                                    description={domaine.media}
-                                    className="aspect-16/10"
-                                />
                                 <div className="p-5">
                                     <span
                                         className="flex h-11 w-11 items-center justify-center rounded-lg bg-gray-100 text-xl text-[#2f2a85]"
@@ -172,24 +168,26 @@ export default function Formation() {
                     </div>
                 </div>
             </section>
-            <section className="bg-gray-50 px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
+
+            <section className="bg-[#2f2a85] px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
                 <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
 
                     <div>
-                        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#2f2a85]">
+                        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white">
                             À découvrir en images
                         </p>
-                        <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
+                        <h1 className="mt-3 text-3xl font-bold sm:text-4xl text-white">
                             La formation en vidéo
-                        </h2>
-                        <p className="mt-5 leading-7 text-gray-600">
+                        </h1>
+                        <div aria-hidden="true" className="mt-3 h-1 w-16 rounded-full bg-white" />
+                        <p className="mt-5 leading-7 text-white">
                             Présentez ici les projets étudiants, les ateliers et la vie
                             de la formation. Cet emplacement pourra accueillir une vidéo
                             dès qu’un fichier ou un lien de diffusion sera disponible.
                         </p>
                     </div>
                     <iframe
-                        className="mt-5 aspect-video w-full rounded-xl"
+                        className="aspect-video w-full rounded-xl"
                         src="https://www.youtube.com/embed/CfbjPIsLt-M"
                         title="Vidéo de présentation de la formation MMI"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -233,21 +231,22 @@ export default function Formation() {
                 </div>
             </section>
 
-            <section className="bg-gray-50 px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
+            <section className="bg-[#2f2a85] px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
                 <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:gap-16">
                     <article>
-                        <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-white text-2xl text-[#2f2a85] shadow-sm">
-                            <FaGraduationCap aria-hidden="true" />
+                        <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-white text-2xl text-white shadow-sm">
+                            <FaGraduationCap aria-hidden="true" color="#2f2a85"/>
                         </span>
-                        <h2 className="mt-5 text-3xl font-bold">Comment candidater ?</h2>
-                        <p className="mt-4 leading-7 text-gray-600">
+                        <h2 className="mt-5 text-3xl font-bold text-white">Comment candidater ?</h2>
+                        <div aria-hidden="true" className="mt-3 h-1 w-16 rounded-full bg-white" />
+                        <p className="mt-4 leading-7 text-white">
                             Le BUT MMI est une formation post-bac. Les candidatures
                             passent par Parcoursup ; les profils issus des baccalauréats
                             généraux ou technologiques peuvent candidater. Consultez la
                             fiche de la formation pour connaître les attendus et les
                             modalités de sélection à jour.
                         </p>
-                        <p className="mt-4 leading-7 text-gray-600">
+                        <p className="mt-4 leading-7 text-white">
                             La curiosité pour le numérique, l’envie de créer et la
                             capacité à travailler en équipe sont de bons points de
                             départ. Il n’est pas nécessaire de maîtriser tous les
@@ -256,14 +255,15 @@ export default function Formation() {
                     </article>
 
                     <article>
-                        <h2 className="text-3xl font-bold">Après le BUT</h2>
-                        <p className="mt-4 leading-7 text-gray-600">
+                        <h2 className="text-3xl font-bold text-white">Après le BUT</h2>
+                        <div aria-hidden="true" className="mt-3 h-1 w-16 rounded-full bg-white" />
+                        <p className="mt-4 leading-7 text-white">
                             Selon ses compétences et son projet, un diplômé peut
                             s’orienter vers des métiers du développement web, du design
                             numérique, de la communication, de l’audiovisuel ou de la
                             création multimédia.
                         </p>
-                        <p className="mt-4 leading-7 text-gray-600">
+                        <p className="mt-4 leading-7 text-white">
                             Une poursuite d’études est également possible, par exemple
                             en master ou dans une école spécialisée. Les choix
                             dépendent du parcours suivi, du dossier et du projet de

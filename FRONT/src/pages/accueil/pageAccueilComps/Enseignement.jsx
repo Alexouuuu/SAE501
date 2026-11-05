@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function SectionEnseignements() {
+export default function Enseignements() {
     const introRef = useRef(null);
     const introWordsRef = useRef([]);
     const introDecorRef = useRef([]);

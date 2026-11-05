@@ -1,22 +1,34 @@
 import { useRef, useState } from "react";
+import { Link } from 'react-router-dom';
+
 import gsap from "gsap";
 
 const faqItems = [
     {
-        question: "Lorem ipsum dolor sit amet, consectetur adipiscing elit ?",
-        answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        question: "Peut on visiter l'université sans inscription préalable ?",
+        answer: "Non, une inscription préalable est requise pour visiter l'université. Vous pouvez vous inscrire en vous rendant sur la page d'inscription à la journée portes ouvertes :",
+        urltitle: "Inscription à la journée porte ouverte",
+        url: "/jpo"
     },
     {
-        question: "Quis autem vel eum iure reprehenderit qui in ea voluptate ?",
-        answer: "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.",
+        question: "La journée porte ouverte est elle gratuite ?",
+        answer: "Oui, l'entrée est gratuite pour tous les visiteurs.",
+        url: null
     },
     {
-        question: "Duis aute irure dolor in reprehenderit in voluptate velit ?",
-        answer: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        question: "Est-ce que l'université a des parkings pour les visiteurs ?",
+        answer: "Non, il n'y a pas de parking pour les visiteurs. Il est recommandé d'utiliser les transports en commun ou de se garer dans les parkings publics à proximité.",
+        url: null
+    },
+    {
+        question: "Que faire si j'ai un problème / plus de questions ?",
+        answer: "Vous pouvez nous contacter via le formulaire de contact disponible sur notre site web.",
+        urltitle: "Formulaire de contact",
+        url: "/contact"
     },
 ];
 
-export default function SectionFAQ({ items = faqItems }) {
+export default function FAQ({ items = faqItems }) {
     const [openId, setOpenId] = useState(null);
     const panelsRef = useRef([]);
 
@@ -73,7 +85,7 @@ export default function SectionFAQ({ items = faqItems }) {
     return (
         <section
             aria-labelledby="faq-title"
-            className="mx-auto my-16 grid min-h-152 w-full max-w-7xl content-start grid-cols-1 gap-8 px-4 sm:px-6 md:min-h-120 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-16"
+            className="mx-auto mt-16 grid min-h-152 w-full max-w-7xl content-start grid-cols-1 gap-8 px-4 sm:px-6 md:min-h-120 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-16"
         >
             <div>
                 <h2
@@ -108,9 +120,8 @@ export default function SectionFAQ({ items = faqItems }) {
                                     type="button"
                                     aria-expanded={isOpen}
                                     aria-controls={answerId}
-                                    className={`flex w-full cursor-pointer items-center justify-between gap-4 px-4 py-3 text-left text-base font-semibold text-gray-900 sm:text-lg ${
-                                        isOpen ? "rounded-t-lg" : "rounded-lg"
-                                    }`}
+                                    className={`flex w-full cursor-pointer items-center justify-between gap-4 px-4 py-3 text-left text-base font-semibold text-gray-900 sm:text-lg ${isOpen ? "rounded-t-lg" : "rounded-lg"
+                                        }`}
                                     onClick={() => toggleItem(id)}
                                 >
                                     <span>{item.question}</span>
@@ -132,6 +143,14 @@ export default function SectionFAQ({ items = faqItems }) {
                                 <p className="px-4 py-3 text-sm leading-relaxed text-gray-600 sm:text-base">
                                     {item.answer}
                                 </p>
+                                {item.url && (
+                                    <Link
+                                        to={item.url}
+                                        className="block px-4 py-3 text-sm font-medium text-[#2f2a85] hover:underline sm:text-base"
+                                    >
+                                        {item.urltitle || "En savoir plus"}
+                                    </Link>
+                                )}
                             </div>
                         </article>
                     );
