@@ -1,10 +1,11 @@
 // Dashboard admin gestion Coms
-import TitreProps from "../../composants/titreProps";
-
 export default function CommentsGestion(){
     return(
         <section>
-            <TitreProps titre={"Gestion Commentaires"}></TitreProps>
+                    <section className="max-w-7xl">
+            <h2 className="text-2xl font-bold text-gray-900">Les commentaires</h2>
+            <p className="mt-1 text-gray-600">Gestion des commentaires</p>
+        </section>
         </section>
     )
 }

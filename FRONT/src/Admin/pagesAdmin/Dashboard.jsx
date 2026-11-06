@@ -23,11 +23,11 @@ export default function DashBoardAdmin() {
 
     return(
         <section>
-            <TitreProps titre={"Administration"} />
+            <TitreProps titre={"Gestion du site"} />
             <BannerHead />
-            <Filarial titrePage={"Administration"} />
+            <Filarial titrePage={"Gestion du site"} />
             <div className="mx-auto max-w-7xl px-5 pb-12 pt-8 sm:px-8">
-                <div className="mb-8 flex flex-wrap gap-3" role="tablist" aria-label="Administration">
+                <div className="mb-8 flex flex-wrap gap-3" role="tablist" aria-label="Gestion du site">
                     {sections.map((item) => (
                         <button key={item.id} type="button" role="tab" aria-selected={section === item.id} onClick={() => setSection(item.id)} className={`cursor-pointer rounded-full px-5 py-2.5 font-semibold ${section === item.id ? "bg-[#212684] text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}>
                             {item.label}

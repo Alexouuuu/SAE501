@@ -1,20 +1,10 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import TitreProps from "../../composants/titreProps";
 import Filarial from "../../composants/filArial";
 import BannerHead from "../../composants/bannerHead";
-import { api, dateEtHeure } from "../../services/api";
 
 export default function Evenements() {
-    const [evenements, setEvenements] = useState([]);
-    const [erreur, setErreur] = useState("");
-
-    useEffect(() => {
-        api("/api/evenements")
-            .then(setEvenements)
-            .catch(() => setErreur("Les événements ne sont pas disponibles pour le moment."));
-    }, []);
-
+    // Présentation de la page événements
     return (
         <section>
             <TitreProps titre={"Les événements de la formation"} />
@@ -33,25 +23,8 @@ export default function Evenements() {
                 </div>
 
                 <h2 className="mb-6 text-2xl font-bold text-gray-900">Tous les événements</h2>
-                {erreur && <p role="alert" className="rounded-lg bg-red-50 p-4 text-red-800">{erreur}</p>}
-                {!erreur && evenements.length === 0 && (
-                    <p className="rounded-xl border border-dashed border-gray-300 p-8 text-center text-gray-600">Aucun événement n’est annoncé pour le moment.</p>
-                )}
-                <div className="grid gap-5 md:grid-cols-2">
-                    {evenements.map((evenement) => (
-                        <article key={evenement.id} className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-                            <p className="text-sm font-semibold text-[#3c3792]">{dateEtHeure(evenement.debut)}</p>
-                            <h3 className="mt-2 text-xl font-bold text-gray-900">{evenement.titre}</h3>
-                            {evenement.fin && <p className="mt-1 text-sm text-gray-600">Jusqu’à {new Intl.DateTimeFormat("fr-FR", { timeStyle: "short" }).format(new Date(evenement.fin))}</p>}
-                            <p className="mt-4 whitespace-pre-line leading-7 text-gray-700">{evenement.description || "Plus d’informations seront communiquées prochainement."}</p>
-                            {evenement.titre.toLowerCase().includes("jpo") && (
-                                <Link to="/jpo" className="mt-5 inline-flex font-semibold text-[#212684] underline underline-offset-4">
-                                    Découvrir le programme JPO
-                                </Link>
-                            )}
-                        </article>
-                    ))}
-                </div>
+                {/* Affiche l'état vide tant qu'aucun contenu local n'est défini. */}
+                <p className="rounded-xl border border-dashed border-gray-300 p-8 text-center text-gray-600">Aucun événement n’est annoncé pour le moment.</p>
             </div>
         </section>
     );

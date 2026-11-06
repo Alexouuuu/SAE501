@@ -1,15 +1,14 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import TitreProps from "../../composants/titreProps";
 import Filarial from "../../composants/filArial";
 import BannerHead from "../../composants/bannerHead";
-import { api } from "../../services/api";
 
-const fieldClassName =
-    "mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none transition focus:border-[#212684] focus:ring-2 focus:ring-[#212684]/20";
+// Champs du formulaire
+const fieldClassName = "mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none transition focus:border-[#212684] focus:ring-2 focus:ring-[#212684]/20";
 
-function Champ({ label, name, type = "text", autoComplete, required = true, ...props }) {
+function Champ({ label, name, type = "text", autoComplete, minLength }) {
     return (
         <label className="block text-sm font-medium text-gray-800">
             {label}
@@ -18,24 +17,24 @@ function Champ({ label, name, type = "text", autoComplete, required = true, ...p
                 name={name}
                 type={type}
                 autoComplete={autoComplete}
-                required={required}
-                {...props}
+                minLength={minLength}
+                required
             />
         </label>
     );
 }
 
 export default function Authentification() {
+    // État de l'interface
     const [mode, setMode] = useState("connexion");
     const [message, setMessage] = useState("");
-    const [chargement, setChargement] = useState(false);
     const [accepteDonnees, setAccepteDonnees] = useState(false);
     const [formulaireValide, setFormulaireValide] = useState(false);
-    const navigate = useNavigate();
 
     const isInscription = mode === "inscription";
 
-    async function handleSubmit(event) {
+    // Vérification locale du formulaire
+    function handleSubmit(event) {
         event.preventDefault();
 
         const formData = new FormData(event.currentTarget);
@@ -52,30 +51,7 @@ export default function Authentification() {
             return;
         }
 
-        setChargement(true);
-        setMessage("");
-        const donnees = Object.fromEntries(formData.entries());
-        try {
-            const profil = await api(isInscription ? "/api/auth/register" : "/api/auth/login", {
-                method: "POST",
-                body: JSON.stringify(isInscription
-                    ? {
-                    nom: donnees.nom,
-                    prenom: donnees.prenom,
-                    email: donnees.email,
-                    password: donnees.password,
-                    ville: donnees.ville,
-                    dateNaissance: donnees.dateNaissance || null,
-                    interesseFormation: donnees.interesseFormation === "on",    // what in the prompt?
-                    }
-                    : { email: donnees.email, password: donnees.password }),
-            });
-            navigate(profil.role === "ADMIN" ? "/admin/dashboard" : "/mon-compte");
-        } catch (cause) {
-            setMessage(cause.message || "La connexion a échoué. Vérifiez vos informations.");
-        } finally {
-            setChargement(false);
-        }
+        setMessage("La connexion et la création de compte nécessitent le serveur.");
     }
 
     function changerMode(nouveauMode) {
@@ -105,6 +81,7 @@ export default function Authentification() {
         );
     }
 
+    // Affichage de la page
     return (
         <section>
             <TitreProps titre="Connexion et inscription" />
@@ -143,6 +120,7 @@ export default function Authentification() {
                     </aside>
 
                     <div className="p-6 sm:p-10">
+                        {/* Les boutons conservent le basculement entre connexion et inscription. */}
                         <div className="flex flex-wrap gap-2 border-b border-gray-200 pb-5">
                             <button
                                 type="button"
@@ -186,6 +164,7 @@ export default function Authentification() {
                                 onSubmit={handleSubmit}
                                 onChange={verifierFormulaire}
                             >
+                                {/* Affiche les champs de profil uniquement lors de l'inscription. */}
                                 {isInscription && (
                                     <>
                                         <div className="grid gap-5 sm:grid-cols-2">
@@ -310,21 +289,16 @@ export default function Authentification() {
 
                                 <button
                                     type="submit"
-                                    disabled={
-                                        chargement ||
-                                        !formulaireValide ||
-                                        (isInscription && !accepteDonnees)
-                                    }
+                                    disabled={!formulaireValide || (isInscription && !accepteDonnees)}
                                     className="w-full cursor-pointer rounded-md bg-[#212684] px-5 py-3 font-semibold text-white transition hover:bg-[#161b7d] focus:outline-none focus:ring-2 focus:ring-[#212684] focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                                 >
-                                    {chargement
-                                        ? "Veuillez patienter…"
-                                        : isInscription
+                                    {isInscription
                                         ? "Créer mon compte"
                                             : "Se connecter"}
                                 </button>
                             </form>
 
+                            {/* Affiche le résultat de la vérification ou de la soumission. */}
                             {message && (
                                 <p
                                     className="mt-5 rounded-md border border-amber-300 bg-amber-50 p-4 text-sm leading-6 text-amber-950"
