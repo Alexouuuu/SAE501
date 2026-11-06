@@ -35,6 +35,7 @@ public class EvenementService {
         evenement.setSalle(payload.salle());
         evenement.setMatiere(payload.matiere());
         evenement.setActiviteJpo(Boolean.TRUE.equals(payload.activiteJpo()));
+        evenement.setJpo(null);
         return evenementRepo.save(evenement);
     }
     
