@@ -1,5 +1,7 @@
 package SAE501._PC.controller;
 
+import SAE501._PC.dto.PresenceJpoPayload;
+import SAE501._PC.dto.UtilisateurAdminPayload;
 import SAE501._PC.service.SessionAuth;
 import SAE501._PC.service.UtilisateurService;
 import jakarta.servlet.http.HttpSession;
@@ -27,6 +29,4 @@ public class UtilisateurController {
         sessionAuth.exigerAdmin(session);
         return utilisateurService.modifierPresenceJpo(id, Boolean.TRUE.equals(payload.present()));
     }
-
-    public record PresenceJpoPayload(Boolean present) {}
 }

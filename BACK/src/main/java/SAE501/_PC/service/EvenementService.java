@@ -2,7 +2,7 @@ package SAE501._PC.service;
 
 import SAE501._PC.entity.Evenement;
 import SAE501._PC.repository.EvenementRepo;
-import SAE501._PC.controller.EvenementPayload;
+import SAE501._PC.dto.EvenementPayload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -35,7 +35,6 @@ public class EvenementService {
         evenement.setSalle(payload.salle());
         evenement.setMatiere(payload.matiere());
         evenement.setActiviteJpo(Boolean.TRUE.equals(payload.activiteJpo()));
-        evenement.setJpo(null);
         return evenementRepo.save(evenement);
     }
     

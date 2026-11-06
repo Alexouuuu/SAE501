@@ -1,5 +1,7 @@
 package SAE501._PC.controller;
 
+import SAE501._PC.dto.ConnexionPayload;
+import SAE501._PC.dto.InscriptionPayload;
 import SAE501._PC.entity.Utilisateur;
 import SAE501._PC.enums.Role;
 import SAE501._PC.repository.UtilisateurRepo;

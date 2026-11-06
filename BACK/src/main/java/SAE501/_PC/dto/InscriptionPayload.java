@@ -1,4 +1,4 @@
-package SAE501._PC.controller;
+package SAE501._PC.dto;
 
 import java.time.LocalDate;
 

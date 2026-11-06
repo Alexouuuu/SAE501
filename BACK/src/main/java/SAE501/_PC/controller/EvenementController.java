@@ -1,5 +1,6 @@
 package SAE501._PC.controller;
 
+import SAE501._PC.dto.EvenementPayload;
 import SAE501._PC.entity.Evenement;
 import SAE501._PC.service.EvenementService;
 import SAE501._PC.service.SessionAuth;
