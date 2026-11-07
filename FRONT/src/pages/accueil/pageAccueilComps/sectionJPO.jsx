@@ -3,7 +3,7 @@
 export default function sectionJPO() {
     return (
         <section>
-            <div className="h-150 bg-gray-200">
+            <div className="h-64 bg-[#2f2a85]">
             </div>
         </section>
 

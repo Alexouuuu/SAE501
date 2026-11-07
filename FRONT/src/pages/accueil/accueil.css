@@ -1,0 +1,5 @@
+.shape-divider {
+	display: block;
+	width: 100%;
+	height: clamp(3rem, 9vw, 7rem);
+}

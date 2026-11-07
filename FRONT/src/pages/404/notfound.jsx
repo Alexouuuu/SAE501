@@ -12,7 +12,7 @@ function NotFound() {
                     <p className="text-gray-500 text-sm sm:text-base mb-8 leading-relaxed">Désolé, nous ne parvenons pas à trouver la page que vous recherchez.<br />L'adresse a peut-être changé ou elle n'existe plus.</p>
                     <Link to="/" className="inline-flex items-center gap-2.5 px-6 py-3 bg-[#252B90] hover:bg-[#212684] text-white text-sm font-semibold cursor-pointer duration-200 transition">Retourner à L'accueil</Link>
                 </div>
-                <div className="w-full h-full flex items-center justify-center"><img src="/images/IUT.jpg" alt="Photo de l'IUT" className="w-full h-full object-cover" /></div>
+                <div className="w-full h-full flex items-center justify-center"><img src="/images/IUT.webp" alt="Photo de l'IUT" className="w-full h-full object-cover" /></div>
             </div>
         </section>
     );
