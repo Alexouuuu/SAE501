@@ -61,7 +61,7 @@ export default function Footer() {
                 <div className="relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Navigation */}
                     <div className="mb-8 grid grid-cols-1 text-center md:mb-0 md:min-h-80 md:grid-cols-2 md:items-center md:text-left">
-                        <div className="grid grid-cols-1 gap-12 sm:grid-cols-4 md:col-start-2">
+                        <div className="grid grid-cols-2 gap-12 sm:grid-cols-4 md:col-start-2">
                             <div>
                                 <h4 className="mb-6 text-lg font-bold uppercase tracking-wider text-white underlineblanc">PAGES</h4>
                                 <ul className="m-2 space-y-4 font-medium">
@@ -86,38 +86,38 @@ export default function Footer() {
                                     ))}
                                 </ul>
                             </div>
-                            <section className="flex flex-col gap-8">
-                                <div>
-                                    <h4 className="mb-6 text-lg font-bold uppercase tracking-wider text-white underlineblanc">VOTRE ESPACE</h4>
-                                    <ul className="m-2 space-y-4 font-medium">
-                                        {liensPersos.map((lien) => (
-                                            <li key={lien.id}>
-                                                <Link to={lien.url} className="OnHoverLeftBorderAppear inline-block cursor-pointer py-2 px-2 text-base">
-                                                    {lien.name}
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
+
+                            <div>
+                                <h4 className="mb-6 text-lg font-bold uppercase tracking-wider text-white underlineblanc">VOTRE ESPACE</h4>
+                                <ul className="m-2 space-y-4 font-medium">
+                                    {liensPersos.map((lien) => (
+                                        <li key={lien.id}>
+                                            <Link to={lien.url} className="OnHoverLeftBorderAppear inline-block cursor-pointer py-2 px-2 text-base">
+                                                {lien.name}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="flex flex-col items-center text-center text-white md:items-start md:text-left">
+                                <h4 className="mb-6 text-lg font-bold uppercase tracking-wider text-white underlineblanc">CONTACT</h4>
+                                <ul className="m-2 space-y-4 font-medium">
+                                    {liencontact.map((lien) => (
+                                        <li key={lien.id}>
+                                            <Link to={lien.url} className="OnHoverLeftBorderAppear inline-block cursor-pointer py-2 px-2 text-base">
+                                                {lien.name}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div className="m-2 flex flex-col gap-2 text-sm">
+                                    <address className="not-italic">{adresse}</address>
+                                    <a href="tel:+33164364415" className="hover:underline">
+                                        {telephone}
+                                    </a>
                                 </div>
-                                <div className="flex flex-col items-center text-center text-sm text-white md:items-start md:text-left">
-                                    <h1 className="text-lg font-bold uppercase tracking-wider text-white underlineblanc">Contact</h1>
-                                    <div className="m-2 flex flex-col gap-2">
-                                        <ul className="py-2 space-y-4 font-medium">
-                                            {liencontact.map((lien) => (
-                                                <li key={lien.id}>
-                                                    <Link to={lien.url} className="OnHoverLeftBorderAppear inline-block cursor-pointer py-2 px-2 text-base">
-                                                        {lien.name}
-                                                    </Link>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                        <address className="not-italic">{adresse}</address>
-                                        <a href="tel:+33164364415" className="hover:underline">
-                                            {telephone}
-                                        </a>
-                                    </div>
-                                </div>
-                            </section>
+                            </div>
+
                         </div>
                     </div>
                 </div>
