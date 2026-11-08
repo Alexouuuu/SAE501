@@ -1,7 +1,6 @@
 
 // import pages
 import Navbar from './composants/navbar'
-import BandeauNavbar from './composants/bandeauNavbar';
 import Footer from './composants/footer/footer'
 import GoUpArrow from './composants/GoUpArrow'
 
@@ -73,7 +72,6 @@ function App() {
         <div id="smooth-content">
           <OnPageChangeScrollToTop /> 
           <Navbar />
-          <BandeauNavbar />
           <main className="min-h-screen">
             <Routes>
               <Route path="/" element={<Accueil />} />
