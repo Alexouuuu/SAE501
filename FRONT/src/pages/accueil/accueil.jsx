@@ -23,7 +23,6 @@ export default function Accueil() {
 
             <SectionJPO /> {/*Comment se rendre à la JPO*/}
             <Separator/>
-            <Espacement />
 
             {/*Animation gsap : présentation MMI*/}
             <Enseignements />

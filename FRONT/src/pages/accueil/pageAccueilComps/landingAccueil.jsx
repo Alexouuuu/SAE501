@@ -30,7 +30,7 @@ export default function LandingAccueil({
                     </p>
                 </div>
             </section>
-            <section className="bg-[#2f2a85] py-2 text-center text-white"></section>
+            <section className="bg-[#2f2a85] py-1 text-center text-white"></section>
         </section>
     );
 }
