@@ -60,7 +60,7 @@ export default function projetsEtudiants() {
                             {liste.map((projet) => (
                                 <article
                                     key={projet.id}
-                                    className="relative isolate overflow-hidden bg-white text-slate-900 shadow-lg transition duration-200 hover:-translate-y-1 hover:shadow-xl"
+                                    className="relative isolate overflow-hidden bg-white text-black transition duration-200 hover:-translate-y-1 hover:shadow-xl"
                                 >
                                     <img
                                         src={projet.img}

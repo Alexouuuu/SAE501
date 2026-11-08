@@ -70,7 +70,7 @@ export default function Enseignements() {
                         start: "top top",
                         end: () => `+=${window.innerHeight * 1.25}`,
                         pin: true, // permet de fixer la section pendant l'animation
-                        scrub: 1, // permet de synchroniser l'animation avec le défilement de la page
+                        scrub: true,
                         anticipatePin: 1,
                         invalidateOnRefresh: true, // permet de recalculer les positions lors du redimensionnement de la fenêtre
                     }
@@ -187,7 +187,7 @@ export default function Enseignements() {
                         </div>
 
                         <div className="relative z-10 flex min-w-0 max-w-full flex-col items-start">
-                            <div className="flex w-fit max-w-full flex-col gap-1 rounded-xl bg-black/10 p-4 backdrop-blur-sm sm:p-6">
+                            <div className="flex w-fit max-w-full flex-col gap-1 rounded-xl bg-black/50 p-4 backdrop-blur-sm sm:p-6">
                                 <span className="text-2xl text-white/80">{enseignement.logo}</span>
                                 <h2 className="max-w-full wrap-break-word text-[clamp(1.5rem,10vw,2.5rem)] font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
                                     {enseignement.matiere}
@@ -201,7 +201,7 @@ export default function Enseignements() {
                         </div>
 
                         <div className="absolute left-1/2 top-1/2 z-10 w-[calc(100%-2.5rem)] max-w-sm -translate-x-1/2 -translate-y-1/2 text-center sm:relative sm:left-auto sm:top-auto sm:ml-auto sm:mt-auto sm:w-full sm:max-w-lg sm:translate-x-0 sm:translate-y-0 sm:pb-4 sm:text-right lg:max-w-2xl">
-                            <div className="inline-block max-w-full rounded-xl bg-black/10 p-4 backdrop-blur-sm sm:p-6">
+                            <div className="inline-block max-w-full rounded-xl bg-black/50 p-4 backdrop-blur-sm sm:p-6">
                                 <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-white drop-shadow-lg sm:mb-4 sm:text-sm">
                                     <strong>En BUT MMI</strong>, on vous apprend à
                                 </h3>

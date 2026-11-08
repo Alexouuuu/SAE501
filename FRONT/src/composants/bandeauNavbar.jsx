@@ -25,6 +25,7 @@ export default function BandeauNavbar() {
             <div className="marquee-track" aria-hidden="true">
                 <MarqueeContent />
                 <MarqueeContent />
+                <MarqueeContent />
             </div>
         </section>
     );
