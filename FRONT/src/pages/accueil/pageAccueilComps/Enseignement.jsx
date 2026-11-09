@@ -63,21 +63,31 @@ export default function Enseignements() {
             if (intro && introWords.length > 0 && introDecorations.length > 0) {
                 gsap.set(introWords, { autoAlpha: 0, y: 24 });
                 gsap.set(introDecorations, { autoAlpha: 0, y: 16, scale: 0.6 });
+            }
 
-                const introTimeline = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: intro,
-                        start: "top top",
-                        end: () => `+=${window.innerHeight * 1.25}`,
-                        pin: true, // permet de fixer la section pendant l'animation
-                        scrub: true,
-                        anticipatePin: 1,
-                        invalidateOnRefresh: true, // permet de recalculer les positions lors du redimensionnement de la fenêtre
-                    }
+            // Placement initial des slides
+            slides.forEach((slide, index) => {
+                gsap.set(slide, {
+                    xPercent: index === 0 ? 0 : 100,
+                    autoAlpha: 0
                 });
+            });
 
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top top",
+                    end: () => `+=${window.innerHeight * (slides.length + 1)}`,
+                    pin: true,
+                    scrub: 1,
+                    anticipatePin: 1,
+                    invalidateOnRefresh: true,
+                }
+            });
+
+            if (intro && introWords.length > 0 && introDecorations.length > 0) {
                 introWords.forEach((word, index) => {
-                    introTimeline.to([word, introDecorations[index]], {
+                    tl.to([word, introDecorations[index]], {
                         autoAlpha: 1,
                         y: 0,
                         scale: 1,
@@ -85,28 +95,21 @@ export default function Enseignements() {
                         ease: "none",
                     }, index * 0.3);
                 });
+
+                tl.to(intro, {
+                    autoAlpha: 0,
+                    duration: 0.8,
+                    ease: "none",
+                }, ">+=0.4");
+                tl.to(slides[0], {
+                    xPercent: 0,
+                    autoAlpha: 1,
+                    duration: 0.8,
+                    ease: "none",
+                }, "<");
+            } else {
+                gsap.set(slides[0], { autoAlpha: 1 });
             }
-
-            // Placement initial des slides
-            slides.forEach((slide, index) => {
-                gsap.set(slide, {
-                    xPercent: index === 0 ? 0 : 100,
-                    autoAlpha: index === 0 ? 1 : 0
-                });
-            });
-
-            // Timeline ScrollTrigger globale
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: section,
-                    start: "top top",
-                    end: () => `+=${window.innerHeight * slides.length}`,
-                    pin: true,
-                    scrub: 1,
-                    anticipatePin: 1,
-                    invalidateOnRefresh: true,
-                }
-            });
 
             // Animation de glissement horizontal vers la gauche
             slides.forEach((slide, index) => {
@@ -134,10 +137,10 @@ export default function Enseignements() {
     }, []);
 
     return (
-        <>
-            <section
+        <section ref={sectionRef} className="relative h-screen w-full overflow-hidden bg-black text-white">
+            <div
                 ref={introRef}
-                className="relative flex min-h-screen w-full items-center justify-center bg-white px-6 text-center text-slate-950 sm:px-10"
+                className="absolute inset-0 z-20 flex items-center justify-center bg-white px-6 text-center text-slate-950 sm:px-10"
             >
                 <div className="relative w-full max-w-7xl px-8 py-12 sm:px-0 sm:py-0">
                     {introDecorations.map((decoration, index) => (
@@ -166,57 +169,55 @@ export default function Enseignements() {
                         ))}
                     </h2>
                 </div>
-            </section>
+            </div>
 
 
             {/*Les slides avec les formations etc*/}
-            <section ref={sectionRef} className="relative h-screen w-full overflow-hidden bg-black text-white">
-                {enseign.map((enseignement, index) => (
-                    <article
-                        key={enseignement.id}
-                        ref={(el) => (slidesRef.current[index] = el)}
-                        className="absolute inset-0 flex h-full w-full min-w-0 flex-col justify-between p-5 sm:p-8 md:p-14 lg:p-20"
-                    >
-                        {/* Image bg */}
-                        <div className="absolute inset-0 z-0">
-                            <img
-                                src={enseignement.image}
-                                alt={enseignement.matiere}
-                                className="h-full w-full object-cover"
-                            />
-                        </div>
+            {enseign.map((enseignement, index) => (
+                <article
+                    key={enseignement.id}
+                    ref={(el) => (slidesRef.current[index] = el)}
+                    className="absolute inset-0 flex h-full w-full min-w-0 flex-col justify-between p-5 sm:p-8 md:p-14 lg:p-20"
+                >
+                    {/* Image bg */}
+                    <div className="absolute inset-0 z-0">
+                        <img
+                            src={enseignement.image}
+                            alt={enseignement.matiere}
+                            className="h-full w-full object-cover"
+                        />
+                    </div>
 
-                        <div className="relative z-10 flex min-w-0 max-w-full flex-col items-start">
-                            <div className="flex w-fit max-w-full flex-col gap-1 rounded-xl bg-black/50 p-4 backdrop-blur-sm sm:p-6">
-                                <span className="text-2xl text-white/80">{enseignement.logo}</span>
-                                <h2 className="max-w-full wrap-break-word text-[clamp(1.5rem,10vw,2.5rem)] font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
-                                    {enseignement.matiere}
-                                </h2>
-                                {enseignement.soustitre && (
-                                    <span className="text-lg font-light text-white/80 sm:text-xl lg:text-3xl">
-                                        {enseignement.soustitre}
-                                    </span>
-                                )}
-                            </div>
+                    <div className="relative z-10 flex min-w-0 max-w-full flex-col items-start">
+                        <div className="flex w-fit max-w-full flex-col gap-1 rounded-xl bg-black/50 p-4 backdrop-blur-sm sm:p-6">
+                            <span className="text-2xl text-white/80">{enseignement.logo}</span>
+                            <h2 className="max-w-full wrap-break-word text-[clamp(1.5rem,10vw,2.5rem)] font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
+                                {enseignement.matiere}
+                            </h2>
+                            {enseignement.soustitre && (
+                                <span className="text-lg font-light text-white/80 sm:text-xl lg:text-3xl">
+                                    {enseignement.soustitre}
+                                </span>
+                            )}
                         </div>
+                    </div>
 
-                        <div className="absolute left-1/2 top-1/2 z-10 w-[calc(100%-2.5rem)] max-w-sm -translate-x-1/2 -translate-y-1/2 text-center sm:relative sm:left-auto sm:top-auto sm:ml-auto sm:mt-auto sm:w-full sm:max-w-lg sm:translate-x-0 sm:translate-y-0 sm:pb-4 sm:text-right lg:max-w-2xl">
-                            <div className="inline-block max-w-full rounded-xl bg-black/50 p-4 backdrop-blur-sm sm:p-6">
-                                <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-white drop-shadow-lg sm:mb-4 sm:text-sm">
-                                    <strong>En BUT MMI</strong>, on vous apprend à
-                                </h3>
-                                <p className="text-pretty text-xl font-medium leading-relaxed tracking-wide text-white drop-shadow-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl">
-                                    {enseignement.description}
-                                </p>
-                            </div>
+                    <div className="absolute left-1/2 top-1/2 z-10 w-[calc(100%-2.5rem)] max-w-sm -translate-x-1/2 -translate-y-1/2 text-center sm:relative sm:left-auto sm:top-auto sm:ml-auto sm:mt-auto sm:w-full sm:max-w-lg sm:translate-x-0 sm:translate-y-0 sm:pb-4 sm:text-right lg:max-w-2xl">
+                        <div className="inline-block max-w-full rounded-xl bg-black/50 p-4 backdrop-blur-sm sm:p-6">
+                            <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.25em] text-white drop-shadow-lg sm:mb-4 sm:text-sm">
+                                <strong>En BUT MMI</strong>, on vous apprend à
+                            </h3>
+                            <p className="text-pretty text-xl font-medium leading-relaxed tracking-wide text-white drop-shadow-lg sm:text-base md:text-lg lg:text-xl xl:text-2xl">
+                                {enseignement.description}
+                            </p>
                         </div>
+                    </div>
 
-                        {/* <div className="relative z-10 flex items-center justify-between border-t border-white/20 pt-4 text-xs font-mono text-white/60">
-                            <span>0{index + 1} / 0{enseign.length}</span>
-                        </div> */}
-                    </article>
-                ))}
-            </section>
-        </>
+                    {/* <div className="relative z-10 flex items-center justify-between border-t border-white/20 pt-4 text-xs font-mono text-white/60">
+                        <span>0{index + 1} / 0{enseign.length}</span>
+                    </div> */}
+                </article>
+            ))}
+        </section>
     );
 }
