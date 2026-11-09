@@ -87,7 +87,7 @@ export default function Navbar() {
                             >
                                 {JPO.map((page) => (
                                     <li key={page.id}>
-                                        <Link className="block whitespace-normal px-4 py-3 text-center text-lg text-black hover:bg-gray-100 transform transition duration-300 lg:whitespace-nowrap lg:text-left" to={page.url}>
+                                        <Link className="hover:border-l-3 hover:border-[#3c3792] block whitespace-normal px-4 py-3 text-center text-lg text-black hover:bg-gray-100 transform transition-all duration-100 lg:whitespace-nowrap lg:text-left" to={page.url}>
                                             {page.nom}
                                         </Link>
                                     </li>
@@ -112,7 +112,7 @@ export default function Navbar() {
                             >
                                 {Services.map((page) => (
                                     <li key={page.id}>
-                                        <Link className="block whitespace-normal px-4 py-3 text-center text-lg text-black hover:bg-gray-100 transform transition duration-300 lg:whitespace-nowrap lg:text-left" to={page.url}>
+                                        <Link className="hover:border-l-3 hover:border-[#3c3792] block whitespace-normal px-4 py-3 text-center text-lg text-black hover:bg-gray-100 transform transition-all duration-100 lg:whitespace-nowrap lg:text-left" to={page.url}>
                                             {page.nom}
                                         </Link>
                                     </li>
