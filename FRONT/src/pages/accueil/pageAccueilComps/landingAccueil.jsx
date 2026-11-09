@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 export default function LandingAccueil({
     ecole = "Journée Portes Ouvertes 2026",
     titre = "Le numérique, la création et la communication réunis en une formation",
-    description = "Découvrez le BUT Métiers du Multimédia et de l’Internet : une formation pluridisciplinaire pour imaginer, concevoir et réaliser des projets numériques.",
     backgroundImage = "/images/IUT.webp",
 }) {
     return (
@@ -26,7 +25,7 @@ export default function LandingAccueil({
                         {titre}
                     </h1>
                     <p className="mx-auto mt-6 text-base leading-7 text-white/90 sm:text-lg sm:leading-8 md:mx-0">
-                        {description}
+                        Découvrez le BUT Métiers du Multimédia et de l’Internet : <br></br> une formation pluridisciplinaire pour imaginer, concevoir et réaliser des projets numériques.
                     </p>
                 </div>
             </section>

@@ -70,7 +70,7 @@ function App() {
     <BrowserRouter>
       <div id="smooth-wrapper">
         <div id="smooth-content">
-          <OnPageChangeScrollToTop /> 
+          <OnPageChangeScrollToTop />
           <Navbar />
           <main className="min-h-screen">
             <Routes>
@@ -91,14 +91,14 @@ function App() {
               <Route path="/mentions-legales" element={<MentionsLegales />} />
               <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
 
-            <Route path="/contact" element={<Contact/>}/>
-            <Route path="/planDuSite" element={<PlanDuSite/>}/>
-            <Route path="*" element={<NotFound/>}/>
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-      <GoUpArrow />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/planDuSite" element={<PlanDuSite />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+        <GoUpArrow />
       </div>
     </BrowserRouter>
   )
