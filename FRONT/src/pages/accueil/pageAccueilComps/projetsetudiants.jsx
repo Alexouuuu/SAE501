@@ -41,7 +41,7 @@ export default function projetsEtudiants() {
             className="bg-[#2f2a85] px-5 py-14 text-white sm:px-8 sm:py-16 lg:px-12"
         >
             <div className="mx-auto max-w-7xl">
-                <header className="mb-8 flex flex-col items-end text-right sm:mb-10">
+                <header className="mb-8 flex flex-col items-start text-right sm:mb-10">
                     <h2
                         id="projets-etudiants-title"
                         className="text-3xl font-bold tracking-tight sm:text-4xl"

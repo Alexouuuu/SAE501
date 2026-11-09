@@ -10,11 +10,6 @@ export default function VideoFormation() {
                         La formation en vidéo
                     </h2>
                     <div aria-hidden="true" className="mt-3 h-1 w-16 rounded-full bg-white" />
-                    <p className="mt-5 leading-7 text-white">
-                        Présentez ici les projets étudiants, les ateliers et la vie
-                        de la formation. Cet emplacement pourra accueillir une vidéo
-                        dès qu’un fichier ou un lien de diffusion sera disponible.
-                    </p>
                 </div>
                 <iframe
                     className="aspect-video w-full rounded-xl"
