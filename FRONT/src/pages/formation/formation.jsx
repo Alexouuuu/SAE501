@@ -86,7 +86,9 @@ export default function Formation() {
                 <SeparatorBas/>
             </div>
             <div className="fadeInOnScroll">
+                <Espacement/>
                 <LiensFormation />
+                <Espacement/>
             </div>
 
             {/*faudra rajouter des espacements, c'est trop proches les sections*/}
