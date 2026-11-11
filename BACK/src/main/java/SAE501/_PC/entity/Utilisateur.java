@@ -33,7 +33,10 @@ public class Utilisateur {
     public String getNom() { return this.nom; }
     public String getPrenom() { return this.prenom; }
     public String getEmail() { return this.email; }
+    
+    @JsonIgnore 
     public String getPassword() { return this.password; }
+    
     public Role getRole() { return this.role; }
     public String getSexe() { return this.sexe; }
     public String getVille() { return this.ville; }
