@@ -1,9 +1,7 @@
 // Dashboard admin
 import TitreProps from "../../composants/titreProps";
 import Filarial from "../../composants/filArial";
-import BannerHead from "../../composants/bannerHead";
 
-import EventsGestion from "../CategoriesAdmin/EventsGestion";
 import JPOGestion from "../CategoriesAdmin/JPOgestion";
 import UsersGestion from "../CategoriesAdmin/UsersGestion";
 import Stats from "../CategoriesAdmin/Stats";
@@ -14,8 +12,7 @@ import { useState } from "react";
 export default function DashBoardAdmin() {
     const [section, setSection] = useState("evenements");
     const sections = [
-        { id: "evenements", label: "Événements" },
-        { id: "jpo", label: "Activités JPO" },
+        { id: "jpo", label: "Journée Porte Ouverte" },
         { id: "utilisateurs", label: "Utilisateurs" },
         { id: "stats", label: "Statistiques" },
         { id: "commentaires", label: "Commentaires" },
@@ -24,7 +21,6 @@ export default function DashBoardAdmin() {
     return(
         <section>
             <TitreProps titre={"Gestion du site"} />
-            <BannerHead />
             <Filarial titrePage={"Gestion du site"} />
             <div className="mx-auto max-w-7xl px-5 pb-12 pt-8 sm:px-8">
                 <div className="mb-8 flex flex-wrap gap-3" role="tablist" aria-label="Gestion du site">
@@ -36,7 +32,6 @@ export default function DashBoardAdmin() {
                 </div>
                 <div role="tabpanel">
                     <hr className="border-gray-200 my-5" />
-                    {section === "evenements" && <EventsGestion />}
                     {section === "jpo" && <JPOGestion />}
                     {section === "utilisateurs" && <UsersGestion />}
                     {section === "stats" && <Stats />}
