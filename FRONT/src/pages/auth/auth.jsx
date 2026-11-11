@@ -102,8 +102,8 @@ export default function Authentification() {
                             </h1>
                             <p className="mt-5 leading-7 text-gray-100">
                                 Créez un compte pour retrouver vos informations et vos
-                                inscriptions. <br></br><br></br>Juste envie de visiter ? Vous pouvez continuer sans
-                                compte.
+                                inscriptions aux évènements de la journée porte ouverte. <br></br><br></br>Juste envie de visiter ? Vous pouvez continuer sans
+                                compte mais n'aurez pas accès à toute les fonctionnalités.
                             </p>
                         </div>
                         <div className="mt-10 border-t border-white/30 pt-6">

@@ -19,14 +19,12 @@ export default function Footer() {
     ];
 
     const JPO = [
-        { id: 1, name: 'Inscription JPO', url: '/jpo' },
+        { id: 1, name: 'JPO', url: '/jpo' },
         { id: 2, name: 'Programme JPO', url: '/planning-jpo' },
-        { id: 3, name: 'Les évènements', url: '/evenements' },
-
     ]
 
     const liensPersos = [
-        { id: 1, name: 'Mon Compte', url: '/mon-compte' },
+        { id: 1, name: 'Mon Compte', url: '/mon-espace' },
     ];
 
     const liensdroits = [

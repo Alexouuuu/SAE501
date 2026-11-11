@@ -30,7 +30,7 @@ export default function Navbar() {
 
     const JPO = [
         { id: 1, nom: 'La formation', url: '/formation' },
-        { id: 2, nom: 'Les évènements', url: '/evenements' },
+        { id: 2, nom: 'JPO', url: '/jpo' },
         { id: 3, nom: 'Programme de la JPO', url: '/planning-jpo' },
         { id: 4, nom: 'Visite Virtuelle', url: '/visite-virtuelle' },
     ];
@@ -41,9 +41,8 @@ export default function Navbar() {
     ];
 
     const Admin = { nom: 'Admin', url: '/admin/dashboard' }
-    const Compte = { nom: 'Mon espace', url: '/mon-compte' }
-    const Auth = { nom: 'Connexion / inscription', url: '/auth' }
-    const JPOinscription = { nom: "S'inscrire à la JPO", url: '/jpo' }
+    const Compte = { nom: 'Mon espace', url: '/mon-espace' }
+    const JPOinscription = { nom: "S'inscrire à la JPO", url: '/auth' }
 
     return (
         <nav className="bg-white">
@@ -138,15 +137,6 @@ export default function Navbar() {
                         <FaUser />
                         <span className="lg:hidden">{Compte.nom}</span>
                         <span className="hidden lg:inline">{Compte.nom}</span>
-                    </Link>
-                    <Link
-                        aria-label={Auth.nom}
-                        className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm bg-[#3c3792] text-white hover:bg-[#2a266c] lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
-                        to={Auth.url}
-                    >
-                        <FaUser />
-                        <span className="lg:hidden">{Auth.nom}</span>
-                        <span className="hidden lg:inline">{Auth.nom}</span>
                     </Link>
                     <Link
                         aria-label={JPOinscription.nom}

@@ -2,13 +2,12 @@
 // maxime derènes
 
 import LandingAccueil from "./pageAccueilComps/landingAccueil"
-import SectionJPO from "./pageAccueilComps/sectionJPO"
 import FAQ from "./pageAccueilComps/FAQ";
 import PrecisionFormation from "./pageAccueilComps/PrecisionFormation";
 import ProjetsEtudiants from "./pageAccueilComps/projetsetudiants";
 import VisiteVirtuelleTeaser from "./pageAccueilComps/visitevirtuelleteaser";
 import VideoIUT from "./pageAccueilComps/videoIUT";
-// import Separator from "./pageAccueilComps/separator";
+import Separator from "./pageAccueilComps/separator";
 
 // autres
 import TitreProps from "../../composants/titreProps";
@@ -52,9 +51,7 @@ export default function Accueil() {
         <section ref={accueilRef}>
             <TitreProps titre={"Accueil"} />
             <LandingAccueil /> {/* banner avec img de l'iut ou de quoi attirer des gens + info dates / btn redirection*/}
-
-            <SectionJPO /> {/*Comment se rendre à la JPO*/}
-            {/* <Separator/> */}
+            <Separator/>
 
             <div className="fadeInOnScroll">
                 <PrecisionFormation /> {/* préciser que le site de meaux enseigne : Développement web et dispositifs interactifs - site de Meaux */}
