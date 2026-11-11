@@ -36,8 +36,8 @@ export default function DashBoardAdmin() {
                             aria-label="Sections de gestion du site"
                             aria-orientation="vertical"
                         >
-                            <p className="px-3 pb-3 pt-2 text-xs font-semibold uppercase tracking-wider text-slate-400">Navigation</p>
-                            <div className="flex gap-2 overflow-x-auto lg:flex-col lg:overflow-visible">
+                            <p className="px-3 pb-3 pt-2 text-xs font-semibold uppercase tracking-wider text-[#212684]">Navigation</p>
+                            <div className="flex flex-col gap-2">
                                 {sections.map(({ id, label, Icon }) => (
                                     <button
                                         key={id}
@@ -48,7 +48,7 @@ export default function DashBoardAdmin() {
                                         aria-controls={`${id}-panel`}
                                         tabIndex={section === id ? 0 : -1}
                                         onClick={() => setSection(id)}
-                                        className={`flex shrink-0 cursor-pointer items-center gap-3 rounded-xl px-3 py-3 text-left text-sm font-medium transition-colors lg:w-full ${
+                                        className={`flex w-full cursor-pointer items-center gap-3 rounded-xl px-3 py-3 text-left text-sm font-medium transition-colors ${
                                             section === id
                                                 ? "bg-[#212684]/10 text-[#212684]"
                                                 : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
