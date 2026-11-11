@@ -35,7 +35,7 @@ export default function visiteVirtuelleTeaser() {
                         className="group mt-7 inline-flex items-center gap-3 bg-[#2f2a85] px-5 py-3 font-semibold text-white transition hover:bg-[#24206b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f2a85]"
                     >
                         Commencer la visite
-                        <FaLocationArrow color="white" className="transform transition-transform duration-300 group-hover:rotate-45" />
+                        <FaLocationArrow color="white" className="mt-1 transform transition-transform duration-300 group-hover:rotate-45" />
                     </Link>
                 </div>
 

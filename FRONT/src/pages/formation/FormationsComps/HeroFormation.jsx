@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
-import { FaArrowRight } from "react-icons/fa6";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
+
+import { FaLocationArrow } from "react-icons/fa";
 
 const bg = "../images/IUT.webp";
 
@@ -39,19 +40,12 @@ export default function HeroFormation() {
                         de l’audiovisuel à la création 3D.
                     </p>
                     <div className="mt-10 flex flex-wrap gap-4">
-                        <a
-                            href="#formation"
-                            onClick={scrollToFormation}
-                            className="inline-flex min-h-12 items-center gap-2 rounded-md bg-white px-5 py-3 font-semibold text-[#2f2a85] transition hover:bg-gray-200"
-                            style={{ color: "#2f2a85" }}
-                        >
-                            Découvrir la formation <FaArrowRight aria-hidden="true" />
-                        </a>
                         <Link
                             to="/visite-virtuelle"
-                            className="inline-flex min-h-12 items-center rounded-md border border-white/70 px-5 py-3 font-semibold text-white transition hover:bg-white/10"
+                            className="gap-3 group inline-flex min-h-12 items-center rounded-md border px-5 py-3 font-semibold text-white transition hover:bg-white/20"
                         >
                             Visiter le bâtiment
+                            <FaLocationArrow color="white" className="mt-1 transform transition-transform duration-300 group-hover:rotate-45" />
                         </Link>
                     </div>
                 </div>

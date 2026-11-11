@@ -1,37 +1,40 @@
-// maxime derènes
-
-import { Link } from "react-router-dom";
+import InfoJPO from "./InfoJPO";
+import SeparatorHaut from "../../../composants/separatorhaut";
+import SeparatorBas from "../../../composants/separatorbas";
 
 export default function LandingAccueil({
     ecole = "Journée Portes Ouvertes 2026",
-    titre = "Le numérique, la création et la communication réunis en une formation",
+    titre = "Université Gustave Eiffel",
+    soustitre = "17 Rue Jablinot, 77100 Meaux",
     backgroundImage = "/images/IUT.webp",
 }) {
     return (
         <section>
-            <section className="relative isolate flex min-h-144 w-full items-center overflow-hidden py-16 sm:min-h-160 sm:py-20">
+            <section className="relative isolate flex min-h-[70svh] w-full items-center overflow-hidden py-20 sm:min-h-[65svh] sm:py-24 lg:min-h-[70svh]">
                 <img
                     src={backgroundImage}
                     alt=""
                     aria-hidden="true"
                     className="absolute inset-0 -z-10 h-full w-full object-cover object-center"
                 />
-                
-                <div className="absolute inset-0 -z-10 bg-linear-to-r from-[#2f2a85]/85 via-[#2f2a85]-950/65 to-[#2f2a85]-950/25" />
+                <div className="absolute inset-0 -z-10 bg-linear-to-r from-[#2f2a85]/85 via-[#2f2a85]/65 to-[#2f2a85]/25" />
 
-                <div className="relative z-10 mx-auto max-w-4xl w-full px-6 text-center text-white sm:px-10 md:mx-0 md:px-16 md:text-left">
-                    <p className="mb-3 text-lg font-medium sm:text-xl">{ecole}</p>
-                    <h1 className="mx-auto max-w-6xl text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:mx-0 md:text-4xl lg:text-6xl">
+                <div className="relative z-10 mx-auto w-full max-w-7xl px-6 text-center text-white sm:px-10 md:px-16">
+                    <p className="mb-3 text-base font-semibold uppercase tracking-wider sm:text-lg md:text-xl">
+                        {ecole}
+                    </p>
+                    <h1 className="mx-auto max-w-5xl text-center text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
                         {titre}
                     </h1>
-                    <p className="mx-auto mt-6 text-base leading-7 text-white/90 sm:text-lg sm:leading-8 md:mx-0">
-                        Découvrez le BUT Métiers du Multimédia et de l’Internet : <br></br> une formation pluridisciplinaire pour imaginer, concevoir et réaliser des projets numériques.
+                    <p className="mt-5 text-base text-white/70 font-semibold uppercase tracking-wider sm:text-lg md:text-xl">
+                        {soustitre}
                     </p>
                 </div>
             </section>
-
-            
-            <section className="bg-[#2f2a85] h-64 text-center text-white"></section>
+            {/*separator*/}
+            <SeparatorHaut/>
+            <InfoJPO/>
+            <SeparatorBas/>
         </section>
     );
 }

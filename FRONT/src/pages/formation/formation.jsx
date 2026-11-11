@@ -11,11 +11,14 @@ import AnneesFormation from "./FormationsComps/AnneesFormation";
 import OrientationFormation from "./FormationsComps/OrientationFormation";
 import LiensFormation from "./FormationsComps/LiensFormation";
 
-
+import SeparatorHaut from "../../composants/separatorhaut";
+import SeparatorBas from "../../composants/separatorbas";
 
 // bonus
 import TitreProps from "../../composants/titreProps";
 import Filarial from "../../composants/filArial";
+
+import Espacement from "../../composants/espacement";
 // gsap
 
 import { useLayoutEffect, useRef } from "react";
@@ -62,17 +65,25 @@ export default function Formation() {
             <AnimationMMI /> {/*animation*/}
 
             <div className="fadeInOnScroll">
+                <Espacement/>
                 <DomainesFormation />
+                <Espacement/>
             </div>
 
             <div className="fadeInOnScroll">
+                <SeparatorHaut/>
                 <VideoFormation />
+                <SeparatorBas/>
             </div>
             <div className="fadeInOnScroll">
+                <Espacement/>
                 <AnneesFormation />
+                <Espacement/>
             </div>
             <div className="fadeInOnScroll">
+                <SeparatorHaut/>
                 <OrientationFormation />
+                <SeparatorBas/>
             </div>
             <div className="fadeInOnScroll">
                 <LiensFormation />

@@ -7,12 +7,13 @@ import PrecisionFormation from "./pageAccueilComps/PrecisionFormation";
 import ProjetsEtudiants from "./pageAccueilComps/projetsetudiants";
 import VisiteVirtuelleTeaser from "./pageAccueilComps/visitevirtuelleteaser";
 import VideoIUT from "./pageAccueilComps/videoIUT";
-import Separator from "./pageAccueilComps/separator";
 
 // autres
 import TitreProps from "../../composants/titreProps";
 import Espacement from "../../composants/espacement"
 
+import SeparatorHaut from "../../composants/separatorhaut";
+import SeparatorBas from "../../composants/separatorbas";
 // gsap
 
 import { useLayoutEffect, useRef } from "react";
@@ -51,8 +52,9 @@ export default function Accueil() {
         <section ref={accueilRef}>
             <TitreProps titre={"Accueil"} />
             <LandingAccueil /> {/* banner avec img de l'iut ou de quoi attirer des gens + info dates / btn redirection*/}
-            <Separator/>
 
+            <Espacement />
+            
             <div className="fadeInOnScroll">
                 <PrecisionFormation /> {/* préciser que le site de meaux enseigne : Développement web et dispositifs interactifs - site de Meaux */}
             </div>
@@ -60,7 +62,9 @@ export default function Accueil() {
             <Espacement />
 
             <div className="fadeInOnScroll">
+                <SeparatorHaut/>
                 <VideoIUT />
+                <SeparatorBas/>
             </div>
 
             <Espacement />
@@ -72,7 +76,9 @@ export default function Accueil() {
             <Espacement />
 
             <div className="fadeInOnScroll">
+                <SeparatorHaut/>
                 <ProjetsEtudiants /> {/* NOUVEAU : Exemples concrets de réalisations d'étudiants */}
+                <SeparatorBas/>
             </div>
 
             <Espacement />
@@ -80,6 +86,6 @@ export default function Accueil() {
             <div className="fadeInOnScroll">
                 <FAQ /> {/*questions fréquentes*/}
             </div>
-        </section>
+        </section >
     )
 }
