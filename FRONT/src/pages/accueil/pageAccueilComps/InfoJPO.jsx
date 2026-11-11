@@ -3,8 +3,8 @@ import { FaLocationArrow } from "react-icons/fa";
 
 export default function InfoJPO() {
     return (
-        <section className="bg-[#2f2a85] px-5 pt-12 pb-24 text-white sm:px-8 sm:pt-16 sm:pb-28 lg:px-12 lg:pb-32">
-            <div className="mx-auto flex max-w-7xl flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+        <section className="bg-[#2f2a85] px-5 pt-12 pb-24 text-center text-white sm:px-8 sm:pt-16 sm:pb-28 lg:hidden">
+            <div className="mx-auto flex max-w-7xl flex-col items-center gap-8">
                 <div className="max-w-2xl">
                     <h2 className="mt-2 text-3xl font-extrabold tracking-tight sm:text-4xl">
                         Venez découvrir l’IUT de Meaux
@@ -13,7 +13,7 @@ export default function InfoJPO() {
                         Adresse : 17 Rue Jablinot, 77100 Meaux
                     </p>
                 </div>
-                <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <div className="flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap">
                     <Link
                         to="/auth"
                         className="group inline-flex min-h-12 items-center justify-center gap-3 bg-white px-5 py-3 font-semibold text-[#2f2a85] transition hover:bg-white/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
