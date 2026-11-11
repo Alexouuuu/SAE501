@@ -31,7 +31,7 @@ const domaines = [
 
 export default function DomainesFormation() {
     return (
-        <section id="formation" className="scroll-mt-8 px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
+        <section id="formation" className="my-15 scroll-mt-8 px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
             <div className="mx-auto max-w-7xl">
                 <div className="max-w-3xl">
                     <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#2f2a85]">

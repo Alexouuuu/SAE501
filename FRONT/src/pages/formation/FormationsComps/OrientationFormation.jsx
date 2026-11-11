@@ -2,7 +2,7 @@ import { FaGraduationCap } from "react-icons/fa6";
 
 export default function OrientationFormation() {
     return (
-        <section className="bg-[#2f2a85] px-5 py-16 sm:px-8 lg:px-12 lg:py-20">
+        <section className="bg-[#2f2a85] px-5 py-16 sm:px-8 lg:px-12 lg:py-20 my-15">
             <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2 lg:gap-16">
                 <article>
                     <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-white text-2xl shadow-sm">

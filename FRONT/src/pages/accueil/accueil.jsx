@@ -3,7 +3,6 @@
 
 import LandingAccueil from "./pageAccueilComps/landingAccueil"
 import SectionJPO from "./pageAccueilComps/sectionJPO"
-import Enseignements from "./pageAccueilComps/Enseignement";
 import FAQ from "./pageAccueilComps/FAQ";
 import PrecisionFormation from "./pageAccueilComps/PrecisionFormation";
 import ProjetsEtudiants from "./pageAccueilComps/projetsetudiants";
@@ -56,10 +55,6 @@ export default function Accueil() {
 
             <SectionJPO /> {/*Comment se rendre à la JPO*/}
             {/* <Separator/> */}
-
-            {/*Animation gsap : présentation MMI*/}
-            <Enseignements />
-            <Espacement />
 
             <div className="fadeInOnScroll">
                 <PrecisionFormation /> {/* préciser que le site de meaux enseigne : Développement web et dispositifs interactifs - site de Meaux */}

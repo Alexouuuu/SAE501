@@ -1,11 +1,17 @@
 
+//maxime derenes
+
 // sections
+import ScrollFormation from "./FormationsComps/ScrollFormation";
+import AnimationMMI from "./FormationsComps/AnimationMMI";
 import HeroFormation from "./FormationsComps/HeroFormation";
 import DomainesFormation from "./FormationsComps/DomainesFormation";
 import VideoFormation from "./FormationsComps/VideoFormation";
 import AnneesFormation from "./FormationsComps/AnneesFormation";
 import OrientationFormation from "./FormationsComps/OrientationFormation";
 import LiensFormation from "./FormationsComps/LiensFormation";
+
+
 
 // bonus
 import TitreProps from "../../composants/titreProps";
@@ -51,9 +57,14 @@ export default function Formation() {
             <HeroFormation />
             <Filarial titrePage="La formation" />
 
+            <ScrollFormation/> {/*incite a scroll*/}
+
+            <AnimationMMI /> {/*animation*/}
+
             <div className="fadeInOnScroll">
                 <DomainesFormation />
             </div>
+
             <div className="fadeInOnScroll">
                 <VideoFormation />
             </div>

@@ -137,7 +137,7 @@ export default function Enseignements() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="relative h-screen w-full overflow-hidden bg-black text-white">
+        <section ref={sectionRef} className="relative h-screen w-full overflow-hidden text-white">
             <div
                 ref={introRef}
                 className="absolute inset-0 z-20 flex items-center justify-center bg-white px-6 text-center text-slate-950 sm:px-10"
