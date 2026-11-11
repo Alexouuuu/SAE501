@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaLocationArrow } from "react-icons/fa";
+import { IoMdMail } from "react-icons/io";
 
 export default function InfoJPO() {
     return (
@@ -26,12 +27,22 @@ export default function InfoJPO() {
                     </Link>
                     <Link
                         to="/jpo"
-                        className="group inline-flex min-h-12 items-center justify-center gap-3 border-2 border-white bg-transparent px-5 py-3 font-semibold text-white transition hover:bg-white hover:text-[#2f2a85] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                        className="w-full group inline-flex min-h-12 items-center justify-center gap-3 border-2 border-white bg-transparent px-5 py-3 font-semibold text-white transition hover:bg-white hover:text-[#2f2a85] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                     >
                         Infos sur la JPO
                         <FaLocationArrow
                             aria-hidden="true"
-                            className="transform transition-transform duration-300 group-hover:rotate-45"
+                            className="transform mt-1 transition-transform duration-300 group-hover:rotate-45"
+                        />
+                    </Link>
+                    <Link
+                        to="/contact"
+                        className="w-full group inline-flex min-h-12 items-center justify-center gap-3 border-2 border-white bg-transparent px-5 py-3 font-semibold text-white transition hover:bg-white hover:text-[#2f2a85] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                    >
+                        Nous contacter
+                        <IoMdMail
+                            aria-hidden="true"
+                            className="transform mt-1 transition-transform duration-300 group-hover:translate-x-1"
                         />
                     </Link>
                 </div>

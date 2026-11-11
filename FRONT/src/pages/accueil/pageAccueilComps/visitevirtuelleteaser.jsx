@@ -1,7 +1,7 @@
 // maxime derènes
 
 import { Link } from "react-router-dom";
-const img = "/images/goat.jpg";
+const img = "/images/placeholder.webp";
 
 import { FaLocationArrow } from "react-icons/fa";
 
@@ -25,7 +25,7 @@ export default function visiteVirtuelleTeaser() {
                         </span>
                     </h3>
                     <h2 className="text-3xl font-extrabold leading-tight tracking-tight text-[#2f2a85] sm:text-4xl lg:text-5xl">
-                        Envie de découvrir le site de Meaux ?
+                        Envie de découvrir le site de Meaux en ligne ?
                     </h2>
                     <p className="mt-5 max-w-3xl leading-7 text-slate-600 sm:text-lg">
                         Explorez nos salles, nos couloirs, nos studios et espaces de création comme si vous y étiez grâce à notre <span className="font-semibold text-[#2f2a85]">visite 3D interactive</span> accessible directement depuis le site.

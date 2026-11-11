@@ -3,10 +3,10 @@ import CircularGallery from "../../../composants/carrousel/CircularGallery";
 
 const projetsListe = [
     {
-        titre: "PROJET 1",
-        img: "/images/IUT.webp",
-        alt: "Illustration de la spécialité audiovisuelle",
-        liens: "https://iut.univ-gustave-eiffel.fr",
+        titre: "Le Cube",
+        img: "/images/paccueil/petudiants/lecube.webp",
+        alt: "Webdocumentaire : Le Cube",
+        liens: "https://mloks77.github.io/SAE302-LeCube/",
     },
     {
         titre: "PROJET 2",

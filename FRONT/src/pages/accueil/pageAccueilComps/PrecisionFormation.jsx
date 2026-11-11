@@ -25,13 +25,15 @@ export default function PrecisionFormation() {
                         </span>
                     </h3>
                     <h2 className="text-3xl font-extrabold leading-tight tracking-tight text-[#2f2a85] sm:text-4xl lg:text-5xl">
-                        Développement web et dispositifs interactifs
+                        La formation BUT MMI
                     </h2>
                     <p className="mt-5 leading-7 text-slate-600 sm:text-lg">
-                        L'Université Gustave Eiffel de Meaux <span className="underline decoration-[#2f2a85] font-bold">propose exclusivement la formation BUT MMI : Développement web
-                        et dispositifs interactifs.</span>
-                        <br></br><br></br>Sur le site de Meaux, ce parcours vous forme à concevoir et développer des sites web,
-                        des applications et des expériences interactives en associant compétences techniques, créativité et travail en équipe.
+                        Sur les 3 formations différentes du BUT MMI, l'Université Gustave Eiffel de Meaux <span className="underline decoration-[#2f2a85] font-bold">propose exclusivement la formation BUT MMI : Développement web
+                        et dispositifs interactifs.</span><br></br><br></br>
+                        Vous apprendrez à créer des sites web dynamiques, des applications interactives et à maîtriser les technologies utilisées dans l'industrie numérique.
+                        
+                        
+                        
                     </p>
                     <Link
                         to="/formation"
