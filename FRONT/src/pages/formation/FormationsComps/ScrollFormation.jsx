@@ -41,7 +41,7 @@ export default function ScrollFormation() {
                     className="fleche shrink-0 text-4xl text-[#2f2a85] sm:text-5xl md:text-6xl lg:text-7xl"
                 />
                 <p className="texte text-2xl font-extrabold uppercase tracking-widest text-[#2f2a85] sm:text-3xl md:text-4xl lg:text-5xl">
-                    Scroll
+                    Scroll plus bas
                 </p>
                 <FaArrowDownLong
                     aria-hidden="true"

@@ -15,6 +15,7 @@ const parcours = [
             "Développeur·se web",
             "Développeur·se mobile",
             "Webmaster",
+            "Intégrateur de réalité virtuelle / dispositifs interactifs",
         ],
         lien: "https://www.onisep.fr/ressources/univers-formation/formations/post-bac/but-metiers-du-multimedia-et-de-l-internet-parcours-developpement-web-et-dispositifs-interactifs",
     },
@@ -146,9 +147,9 @@ export default function DomainesFormation() {
                             href={parcoursSelectionne.lien}
                             target="_blank"
                             rel="noreferrer"
-                            className="group mt-7 inline-flex min-h-12 items-center justify-center gap-3 bg-[#2f2a85] px-5 py-3 font-semibold text-white transition hover:bg-[#24206b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f2a85]"
+                            className="group mt-7 inline-flex items-center justify-center gap-3 bg-[#2f2a85] px-5 py-3 font-semibold text-white transition hover:bg-[#24206b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f2a85] md:mt-auto"
                         >
-                            En savoir plus sur Onisep
+                            En savoir plus sur le site de l'Onisep
                             <FaLocationArrow
                                 aria-hidden="true"
                                 className="transform mt-1 transition-transform duration-300 group-hover:rotate-45"

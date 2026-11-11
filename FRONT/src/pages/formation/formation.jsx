@@ -7,7 +7,6 @@ import AnimationMMI from "./FormationsComps/AnimationMMI";
 import HeroFormation from "./FormationsComps/HeroFormation";
 import DomainesFormation from "./FormationsComps/DomainesFormation";
 import VideoFormation from "./FormationsComps/VideoFormation";
-import AnneesFormation from "./FormationsComps/AnneesFormation";
 import OrientationFormation from "./FormationsComps/OrientationFormation";
 import LiensFormation from "./FormationsComps/LiensFormation";
 
@@ -60,36 +59,31 @@ export default function Formation() {
             <HeroFormation />
             <Filarial titrePage="La formation" />
 
-            <ScrollFormation/> {/*incite a scroll*/}
+            <ScrollFormation /> {/*incite a scroll*/}
 
             <AnimationMMI />
-            <SeparatorBas/>
+            
+            <div className="fadeInOnScroll">
+                <SeparatorHaut />
+                <OrientationFormation /> {/*a refaire*/}
+                <SeparatorBas />
+            </div>
 
             <div className="fadeInOnScroll">
-                <Espacement/>
+                <Espacement />
                 <DomainesFormation />
-                <Espacement/>
+                <Espacement />
             </div>
 
             <div className="fadeInOnScroll">
-                <SeparatorHaut/>
+                <SeparatorHaut />
                 <VideoFormation />
-                <SeparatorBas/>
+                <SeparatorBas />
             </div>
             <div className="fadeInOnScroll">
-                <Espacement/>
-                <AnneesFormation />
-                <Espacement/>
-            </div>
-            <div className="fadeInOnScroll">
-                <SeparatorHaut/>
-                <OrientationFormation />
-                <SeparatorBas/>
-            </div>
-            <div className="fadeInOnScroll">
-                <Espacement/>
+                <Espacement />
                 <LiensFormation />
-                <Espacement/>
+                <Espacement />
             </div>
 
             {/*faudra rajouter des espacements, c'est trop proches les sections*/}

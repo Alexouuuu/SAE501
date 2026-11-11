@@ -11,8 +11,8 @@ export default function OrientationFormation() {
                     <h2 className="mt-5 text-3xl font-bold text-white">Comment candidater ?</h2>
                     <div aria-hidden="true" className="mt-3 h-1 w-16 rounded-full bg-white" />
                     <p className="mt-4 leading-7 text-white">
-                        Le BUT MMI est une formation post-bac. Les candidatures
-                        passent par Parcoursup ; les profils issus des baccalauréats
+                        Le BUT MMI est une formation <strong>post-bac</strong>. Les candidatures
+                        passent par <strong>Parcoursup</strong> ; les profils issus des baccalauréats
                         généraux ou technologiques peuvent candidater. Consultez la
                         fiche de la formation pour connaître les attendus et les
                         modalités de sélection à jour.
@@ -30,13 +30,13 @@ export default function OrientationFormation() {
                     <div aria-hidden="true" className="mt-3 h-1 w-16 rounded-full bg-white" />
                     <p className="mt-4 leading-7 text-white">
                         Selon ses compétences et son projet, un diplômé peut
-                        s’orienter vers des métiers du développement web, du design
-                        numérique, de la communication, de l’audiovisuel ou de la
-                        création multimédia.
+                        s’orienter vers des métiers du <strong>développement web</strong>, du{" "}
+                        <strong>design numérique</strong>, de la <strong>communication</strong>,
+                        de l’<strong>audiovisuel</strong> ou de la <strong>création multimédia</strong>.
                     </p>
                     <p className="mt-4 leading-7 text-white">
-                        Une poursuite d’études est également possible, par exemple
-                        en master ou dans une école spécialisée. Les choix
+                        Une <strong>poursuite d’études</strong> est également possible, par exemple
+                        en <strong>master</strong> ou dans une <strong>école spécialisée</strong>. Les choix
                         dépendent du parcours suivi, du dossier et du projet de
                         chacun.
                     </p>
