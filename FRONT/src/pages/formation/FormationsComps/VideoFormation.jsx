@@ -1,8 +1,11 @@
+import { FaLocationArrow } from "react-icons/fa";
+const youtube = "https://www.youtube.com/@iutmlv6116"
+
 export default function VideoFormation() {
     return (
         <section className="bg-[#2f2a85] px-5 py-14 sm:px-8 sm:py-16 lg:px-12">
             <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-                <div>
+                <div className="gap-4">
                     <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white">
                         À découvrir en images
                     </p>
@@ -10,6 +13,17 @@ export default function VideoFormation() {
                         La formation en vidéo
                     </h2>
                     <div aria-hidden="true" className="mt-3 h-1 w-16 rounded-full bg-white" />
+                    <p className="mt-6 text-lg text-white">
+                        Cette vidéo vous présente la formation MMI, ses objectifs, les compétences que vous allez acquérir et la poursuite d'étude possible.
+                    </p>
+                    <a
+                        href={youtube}
+                        target='_blank'
+                        className="group mt-7 cursor-pointer inline-flex items-center gap-3 border-white border px-5 py-3 font-semibold text-[#24206b] transition bg-white hover:bg-white/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f2a85]"
+                    >
+                        Chaîne youtube
+                        <FaLocationArrow color="#24206b" className="mt-1 transform transition-transform duration-300 group-hover:rotate-45" />
+                    </a>
                 </div>
                 <iframe
                     className="aspect-video w-full rounded-xl"

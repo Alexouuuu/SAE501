@@ -62,7 +62,8 @@ export default function Formation() {
 
             <ScrollFormation/> {/*incite a scroll*/}
 
-            <AnimationMMI /> {/*animation*/}
+            <AnimationMMI />
+            <SeparatorBas/>
 
             <div className="fadeInOnScroll">
                 <Espacement/>

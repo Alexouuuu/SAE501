@@ -176,7 +176,7 @@ export default function Navbar() {
                     </Link>
                 </section>
             </div>
-            <div className="hidden h-2 w-full bg-[#3c3792] lg:block"></div>
+            {/* <div className="hidden h-2 w-full bg-[#3c3792] lg:block"></div> */}
         </nav>
     )
 }

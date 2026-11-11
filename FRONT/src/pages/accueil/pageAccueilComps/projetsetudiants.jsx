@@ -76,7 +76,7 @@ export default function projetsEtudiants() {
                         fadeEdges={0.2}
                         shadow={0.25}
                         scrollSpeed={2}
-                        autoScroll={0.6}
+                        autoScroll={0.9}
                         snap
                         grayscale={false}
                         showTitles
