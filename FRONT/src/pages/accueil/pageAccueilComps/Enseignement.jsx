@@ -121,7 +121,7 @@ export default function Enseignements() {
                         autoAlpha: 0,
                         duration: 1,
                         ease: "power2.inOut"
-                    }, `+=0.2`); // Temps d'arrêt pour lecture
+                    }, `+=0.4`); // Temps d'arrêt pour lecture
 
                     tl.to(nextSlide, {
                         xPercent: 0,

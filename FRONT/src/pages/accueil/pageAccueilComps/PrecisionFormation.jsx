@@ -35,10 +35,10 @@ export default function PrecisionFormation() {
                     </p>
                     <Link
                         to="/formation"
-                        className="mt-7 inline-flex items-center gap-3 bg-[#2f2a85] px-5 py-3 font-semibold text-white transition hover:bg-[#24206b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f2a85]"
+                        className="group mt-7 inline-flex items-center gap-3 bg-[#2f2a85] px-5 py-3 font-semibold text-white transition hover:bg-[#24206b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f2a85]"
                     >
                         Découvrir la formation
-                        <FaLocationArrow color="white" />
+                        <FaLocationArrow color="white" className="transform transition-transform duration-300 group-hover:rotate-45" />
                     </Link>
                 </div>
 
@@ -46,4 +46,3 @@ export default function PrecisionFormation() {
         </section>
     );
 }
-
