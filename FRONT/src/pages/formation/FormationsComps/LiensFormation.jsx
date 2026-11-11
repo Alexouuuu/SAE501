@@ -3,7 +3,7 @@ import { FaArrowRight } from "react-icons/fa6";
 
 export default function LiensFormation() {
     return (
-        <section className="px-5 py-16 sm:px-8 lg:px-12 lg:py-20 my-15">
+        <section className="px-5 py-14 sm:px-8 sm:py-16 lg:px-12">
             <div className="mx-auto grid max-w-7xl gap-5 md:grid-cols-2">
                 <article className="flex min-w-0 flex-col items-start overflow-hidden rounded-2xl bg-[#2f2a85] p-10 text-white sm:p-12 lg:p-14">
                     <p className="max-w-full text-sm font-semibold uppercase tracking-[0.12em] text-white sm:tracking-[0.16em]">
