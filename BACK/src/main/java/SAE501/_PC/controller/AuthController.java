@@ -2,95 +2,114 @@ package SAE501._PC.controller;
 
 import SAE501._PC.entity.Utilisateur;
 import SAE501._PC.enums.Role;
+import SAE501._PC.dto.InscriptionRequest;
+import SAE501._PC.dto.ConnexionRequest;
 import SAE501._PC.repository.UtilisateurRepo;
 import SAE501._PC.service.SessionAuth;
-import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpStatusCodeException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.server.ResponseStatusException;
-
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
-import java.util.Map;
+import java.util.Locale;
 
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
-    @Autowired private UtilisateurRepo utilisateurRepo;
-    @Autowired private PasswordEncoder passwordEncoder;
-    @Autowired private SessionAuth sessionAuth;
+
+    private final UtilisateurRepo utilisateurRepo; //rechercher les comptes
+    private final PasswordEncoder passwordEncoder; //hacher le mdp
+    private final SessionAuth sessionAuth;
+
+    public AuthController(
+        UtilisateurRepo utilisateurRepo,
+        PasswordEncoder passwordEncoder,
+        SessionAuth sessionAuth
+    ) {
+        this.utilisateurRepo = utilisateurRepo;
+        this.passwordEncoder = passwordEncoder;
+        this.sessionAuth = sessionAuth;
+    }
 
     @PostMapping("/register")
-    public Map<String, Object> inscrire(@RequestBody InscriptionPayload payload, HttpSession session, HttpServletRequest request) {
-        if (payload.nom() == null || payload.nom().isBlank()
-            || payload.prenom() == null || payload.prenom().isBlank()
-            || payload.email() == null || !payload.email().matches("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$")
-            || payload.password() == null || payload.password().length() < 8
-            || payload.ville() == null || payload.ville().isBlank()
-            || payload.filiere() == null || payload.filiere().isBlank()
-            || payload.dateNaissance() == null || payload.dateNaissance().isAfter(LocalDate.now())) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Vérifiez les champs obligatoires et utilisez un mot de passe d’au moins 8 caractères.");
+    @ResponseStatus(HttpStatus.CREATED)
+    public Utilisateur register(@RequestBody InscriptionRequest donnees, HttpServletRequest request) {
+        if (donnees.nom() == null || donnees.nom().isBlank() || donnees.prenom() == null || donnees.prenom().isBlank() || donnees.email() == null || donnees.email().isBlank() || donnees.password() == null || donnees.password().isBlank()){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Le nom, prénom, l'email et le mot de passe sont obligatoires.");
         }
-        if (utilisateurRepo.existsByEmailIgnoreCase(payload.email().trim())) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "Cette adresse e-mail possède déjà un compte.");
+        String email = donnees.email().trim().toLowerCase(Locale.ROOT); //vérifier format email
+        if (email.length() > 254 || !email.matches("^[^\\\\s@]+@[^\\\\s@]+\\\\.[^\\\\s@]+$")) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"L'adresse email est invalide.");
         }
+        if (donnees.password().length() < 8) { //vérifier longueur mdp
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Le mot de passe doit contenir au moins 8 caractères.");
+        }
+        if (donnees.dateNaissance() != null && donnees.dateNaissance().isAfter(LocalDate.now())) { //vérifier date de naissance
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Vous ne pouvez pas être né dans le futur.");
+        }
+        if (utilisateurRepo.existsByEmailIgnoreCase(email)) { // vérifier utilisation d'un email
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "L'adresse email est déjà utilisée.");
+        }
+        //créer le compte 
         Utilisateur utilisateur = new Utilisateur();
-        utilisateur.setNom(payload.nom().trim());
-        utilisateur.setPrenom(payload.prenom().trim());
-        utilisateur.setEmail(payload.email().trim().toLowerCase());
-        utilisateur.setPassword(passwordEncoder.encode(payload.password()));
+        
+        utilisateur.setNom(donnees.nom().trim());
+        utilisateur.setPrenom(donnees.prenom().trim());
+        utilisateur.setEmail(email);
+        utilisateur.setPassword(passwordEncoder.encode(donnees.password()));
+        
         utilisateur.setRole(Role.VISITEUR);
-        utilisateur.setSexe(payload.sexe());
-        utilisateur.setVille(payload.ville());
-        utilisateur.setDateNaissance(payload.dateNaissance());
-        utilisateur.setFiliere(payload.filiere());
-        utilisateur.setInteresseFormation(Boolean.TRUE.equals(payload.interesseFormation()));
-        utilisateur.setPresentJpo(false);
-        utilisateurRepo.save(utilisateur);
-        request.changeSessionId();
-        sessionAuth.ouvrir(session, utilisateur);
-        return profil(utilisateur);
+        utilisateur.setSexe(donnees.sexe());
+        utilisateur.setVille(donnees.ville());
+        utilisateur.setDateNaissance(donnees.dateNaissance());
+        utilisateur.setFiliere(donnees.filiere());
+        
+        utilisateur.setInteresseFormation(Boolean.TRUE.equals(donnees.interesseFormation()));
+        
+        //enregistrer le compte en base de données
+        try {
+            utilisateur = utilisateurRepo.save(utilisateur);
+        } catch (DataIntegrityViolationException exception) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Impossible de créer le compte: vérifiez les informations fournies.");
+        }
+        
+        sessionAuth.fermer(request.getSession(false));
+        sessionAuth.ouvrir(request.getSession(true), utilisateur);
+        
+        return utilisateur;
     }
-
+    
     @PostMapping("/login")
-    public Map<String, Object> connecter(@RequestBody ConnexionPayload payload, HttpSession session, HttpServletRequest request) {
-        Utilisateur utilisateur = payload.email() == null
-            ? null
-            : utilisateurRepo.findByEmailIgnoreCase(payload.email().trim()).orElse(null);
-        if (utilisateur == null || utilisateur.getRole() == null || payload.password() == null
-            || !passwordEncoder.matches(payload.password(), utilisateur.getPassword())) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Adresse e-mail ou mot de passe incorrect.");
+    public Utilisateur login(@RequestBody ConnexionRequest donnees, HttpServletRequest request) {
+        if (donnees.email() == null || donnees.email().isBlank() || donnees.password() == null || donnees.password().isBlank()){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Le mot de passe ou l'email sont obligatoires.");
         }
-        request.changeSessionId();
-        sessionAuth.ouvrir(session, utilisateur);
-        return profil(utilisateur);
+        String email = donnees.email().trim().toLowerCase(Locale.ROOT);
+        Utilisateur utilisateur = utilisateurRepo.findByEmailIgnoreCase(email).orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Email ou mot de passe incorrect"));
+        if (!passwordEncoder.matches(donnees.password(),utilisateur.getPassword())) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Email ou mot de passe incorrect.");
+        }
+        
+        sessionAuth.fermer(request.getSession(false));
+        sessionAuth.ouvrir(request.getSession(true), utilisateur);
+        
+        return utilisateur;
     }
-
+    
     @GetMapping("/me")
-    public Map<String, Object> profilConnecte(HttpSession session) {
-        if (sessionAuth.isDevelopmentAccessEnabled()) {
-            return Map.of("id", 0L, "nom", "Développement", "prenom", "Compte", "email", "", "role", Role.ADMIN.name());
-        }
-        Long id = sessionAuth.utilisateurId(session);
-        Utilisateur utilisateur = utilisateurRepo.findById(id)
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Session invalide."));
-        return profil(utilisateur);
+    public Utilisateur me(HttpServletRequest request) { //recupere l'utilisateur connecté -> si pas de session renvoie null
+        return sessionAuth.utilisateurConnecte(
+            request.getSession(false)
+        );
     }
 
     @PostMapping("/logout")
-    public void deconnecter(HttpSession session) {
-        if (session != null) session.invalidate();
-    }
-
-    private Map<String, Object> profil(Utilisateur utilisateur) {
-        return Map.of(
-            "id", utilisateur.getId(),
-            "nom", utilisateur.getNom(),
-            "prenom", utilisateur.getPrenom(),
-            "email", utilisateur.getEmail(),
-            "role", utilisateur.getRole().name()
-        );
+    @ResponseStatus(HttpStatus.NO_CONTENT) //appelle la méthode fermer pour detruire la session
+    public void logout(HttpServletRequest request) {
+        sessionAuth.fermer(request.getSession(false));
     }
 }

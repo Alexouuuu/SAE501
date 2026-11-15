@@ -1,8 +1,6 @@
 package SAE501._PC.entity;
 
 import SAE501._PC.enums.Role;
-import java.util.List;
-import java.util.ArrayList;
 import java.time.LocalDate;
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -21,6 +19,7 @@ public class Utilisateur {
     private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
+    
     private String sexe;
     private String ville;
     private LocalDate dateNaissance;
@@ -28,28 +27,24 @@ public class Utilisateur {
     private Boolean interesseFormation = false;
     private Boolean presentJpo = false;
     
-    @OneToMany(mappedBy = "auteur")//un utilisateur peut ecrire plusieurs commentaires
-    private List<Commentaire> commentaires = new ArrayList<>();
+    public Utilisateur() {} 
     
-    //Constructeur
-    public Utilisateur() {}
+    public Long getId() { return this.id; }
+    public String getNom() { return this.nom; }
+    public String getPrenom() { return this.prenom; }
+    public String getEmail() { return this.email; }
     
-    //getters
-    public Long getId() { return this.id;}
-    public String getNom() { return this.nom;}
-    public String getPrenom() { return this.prenom;}
-    public String getEmail() { return this.email;}
-    @JsonIgnore
-    public String getPassword() { return this.password;}
-    public Role getRole() { return this.role;}
-    public String getSexe() { return this.sexe;}
-    public String getVille() { return this.ville;}
-    public LocalDate getDateNaissance() { return this.dateNaissance;}
-    public String getFiliere() { return this.filiere;}
-    public Boolean getInteresseFormation() { return this.interesseFormation;}
-    public Boolean getPresentJpo() { return this.presentJpo;}
+    @JsonIgnore 
+    public String getPassword() { return this.password; }
     
-    //setters
+    public Role getRole() { return this.role; }
+    public String getSexe() { return this.sexe; }
+    public String getVille() { return this.ville; }
+    public LocalDate getDateNaissance() { return this.dateNaissance; }
+    public String getFiliere() { return this.filiere; }
+    public Boolean getInteresseFormation() { return this.interesseFormation; }
+    public Boolean getPresentJpo() { return this.presentJpo; }
+    
     public void setNom(String nom) { this.nom = nom;}
     public void setPrenom(String prenom) { this.prenom = prenom;}
     public void setEmail(String email) { this.email = email;}
@@ -59,14 +54,6 @@ public class Utilisateur {
     public void setVille(String ville) { this.ville = ville;}
     public void setDateNaissance(LocalDate dateNaissance) { this.dateNaissance = dateNaissance;}
     public void setFiliere(String filiere) { this.filiere = filiere;}
-    public void setInteresseFormation(Boolean interesseFormation) { this.interesseFormation = interesseFormation;}
+    public void setInteresseFormation(boolean interesseFormation) { this.interesseFormation = interesseFormation; }
     public void setPresentJpo(Boolean presentJpo) { this.presentJpo = presentJpo;}
-    
-    //methodes
-    public void changerRole(Role nouveauRole) { this.role = nouveauRole;}
-    public void modifierProfil(String nom, String prenom, String email) { 
-        this.nom = nom;
-        this.prenom = prenom;
-        this.email = email;
-    }
 }
