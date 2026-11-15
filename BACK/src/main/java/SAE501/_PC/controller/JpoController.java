@@ -1,0 +1,47 @@
+package SAE501._PC.controller;
+
+import SAE501._PC.entity.JPO;
+import SAE501._PC.service.JpoService;
+import SAE501._PC.service.SessionAuth;
+import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/jpo")
+@CrossOrigin(origins = "http://localhost:5173")
+public class JpoController {
+    
+    @Autowired 
+    private JpoService jpoService;
+    @Autowired
+    private SessionAuth sessionAuth;
+    
+    @PostMapping
+    public JPO createJpo(@RequestBody JPO jpo, HttpSession session){
+        sessionAuth.exigerAdmin(session);
+        return jpoService.saveJpo(jpo);
+    }
+
+    @PutMapping("/{id}")
+    public JPO updateJpo(@PathVariable Long id, @RequestBody JPO jpo, HttpSession session){
+        sessionAuth.exigerAdmin(session);
+        return jpoService.updateJpo(id, jpo);
+    }
+    
+    @GetMapping 
+    public Iterable<JPO> getAllJpos() {
+        return jpoService.getAllJpos();
+    }
+    
+    @GetMapping("/{id}")
+    public JPO getJpoById(@PathVariable Long id) {
+        return jpoService.getJpoById(id);
+    }
+    
+    @DeleteMapping("/{id}")
+    public void deleteJpo(@PathVariable Long id, HttpSession session) {
+        sessionAuth.exigerAdmin(session);
+        jpoService.deleteJpoById(id);
+    }
+}
