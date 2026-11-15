@@ -21,8 +21,7 @@ const planDuSiteData = [
         }, {
             titre: "Évènements & Contact",
             liens: [
-                { nom: "Événements de la formation", route: "/evenements" },
-                { nom: "S'inscrire à la JPO", route: "/jpo" },
+                { nom: "Journée Porte Ouverte", route: "/jpo" },
                 { nom: "Programme de la JPO", route: "/planning-jpo" },
                 { nom: "Nous contacter", route: "/contact" },
             ]
@@ -33,8 +32,8 @@ const planDuSiteData = [
         categories: [{
             titre: "Gestion du Compte",
             liens: [
-                { nom: "Mon Compte", route: "/mon-compte" },
-                { nom: "Connexion/Inscription", route: "/auth" },
+                { nom: "Mon espace", route: "/mon-espace" },
+                { nom: "S'inscrire à la JPO", route: "/auth" },
             ]
         }, {
             titre: "Navigation",

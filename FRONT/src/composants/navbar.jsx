@@ -28,11 +28,14 @@ export default function Navbar() {
         return () => document.removeEventListener('pointerdown', handleOutsideClick);
     }, []);
 
-    const JPO = [
+    const BUTMMI = [
         { id: 1, nom: 'La formation', url: '/formation' },
-        { id: 2, nom: 'Les évènements', url: '/evenements' },
-        { id: 3, nom: 'Programme de la JPO', url: '/planning-jpo' },
-        { id: 4, nom: 'Visite Virtuelle', url: '/visite-virtuelle' },
+        { id: 2, nom: 'Visite Virtuelle', url: '/visite-virtuelle' },
+    ]
+
+    const JPO = [
+        { id: 1, nom: 'JPO', url: '/jpo' },
+        { id: 2, nom: 'Programme de la JPO', url: '/planning-jpo' },
     ];
 
     const Services = [
@@ -41,9 +44,8 @@ export default function Navbar() {
     ];
 
     const Admin = { nom: 'Admin', url: '/admin/dashboard' }
-    const Compte = { nom: 'Mon espace', url: '/mon-compte' }
-    const Auth = { nom: 'Connexion / inscription', url: '/auth' }
-    const JPOinscription = { nom: "S'inscrire à la JPO", url: '/jpo' }
+    const Compte = { nom: 'Mon espace', url: '/mon-espace' }
+    const JPOinscription = { nom: "S'inscrire à la JPO", url: '/auth' }
 
     return (
         <nav className="bg-white">
@@ -74,6 +76,31 @@ export default function Navbar() {
                             <button
                                 type="button"
                                 className="bg-[#3c3792] text-white hover:bg-[#2a266c] relative flex h-full w-full cursor-pointer items-center justify-center px-2 py-3 text-base lg:static lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg"
+                                aria-expanded={openMenu === 'BUTMMI'}
+                                aria-controls="BUTMMI-menu"
+                                onClick={() => setOpenMenu(openMenu === 'BUTMMI' ? null : 'BUTMMI')}
+                            >
+                                <span className="w-full text-center lg:w-auto">BUT MMI</span>
+                                <RiArrowDropDownLine className="absolute right-3 mt-1 lg:static" />
+                            </button>
+                            <ul
+                                id="BUTMMI-menu"
+                                className={`${openMenu === 'BUTMMI' ? 'visible opacity-100' : 'invisible opacity-0'} absolute left-0 top-full z-20 w-full min-w-0 bg-white py-0 text-center text-lg shadow-lg transition-opacity lg:w-auto lg:min-w-48 lg:text-left`}
+                            >
+                                {BUTMMI.map((page) => (
+                                    <li key={page.id}>
+                                        <Link className="hover:border-l-3 hover:border-[#3c3792] block whitespace-normal px-4 py-3 text-center text-lg text-black hover:bg-gray-100 transform transition-all duration-100 lg:whitespace-nowrap lg:text-left" to={page.url}>
+                                            {page.nom}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </li>
+
+                        <li className="relative flex w-full items-center justify-center lg:w-auto">
+                            <button
+                                type="button"
+                                className="bg-[#3c3792] text-white hover:bg-[#2a266c] relative flex h-full w-full cursor-pointer items-center justify-center px-2 py-3 text-base lg:static lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg"
                                 aria-expanded={openMenu === 'jpo'}
                                 aria-controls="jpo-menu"
                                 onClick={() => setOpenMenu(openMenu === 'jpo' ? null : 'jpo')}
@@ -87,7 +114,7 @@ export default function Navbar() {
                             >
                                 {JPO.map((page) => (
                                     <li key={page.id}>
-                                        <Link className="block whitespace-normal px-4 py-3 text-center text-lg text-black hover:bg-gray-100 transform transition duration-300 lg:whitespace-nowrap lg:text-left" to={page.url}>
+                                        <Link className="hover:border-l-3 hover:border-[#3c3792] block whitespace-normal px-4 py-3 text-center text-lg text-black hover:bg-gray-100 transform transition-all duration-100 lg:whitespace-nowrap lg:text-left" to={page.url}>
                                             {page.nom}
                                         </Link>
                                     </li>
@@ -112,7 +139,7 @@ export default function Navbar() {
                             >
                                 {Services.map((page) => (
                                     <li key={page.id}>
-                                        <Link className="block whitespace-normal px-4 py-3 text-center text-lg text-black hover:bg-gray-100 transform transition duration-300 lg:whitespace-nowrap lg:text-left" to={page.url}>
+                                        <Link className="hover:border-l-3 hover:border-[#3c3792] block whitespace-normal px-4 py-3 text-center text-lg text-black hover:bg-gray-100 transform transition-all duration-100 lg:whitespace-nowrap lg:text-left" to={page.url}>
                                             {page.nom}
                                         </Link>
                                     </li>
@@ -140,15 +167,6 @@ export default function Navbar() {
                         <span className="hidden lg:inline">{Compte.nom}</span>
                     </Link>
                     <Link
-                        aria-label={Auth.nom}
-                        className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm bg-[#3c3792] text-white hover:bg-[#2a266c] lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
-                        to={Auth.url}
-                    >
-                        <FaUser />
-                        <span className="lg:hidden">{Auth.nom}</span>
-                        <span className="hidden lg:inline">{Auth.nom}</span>
-                    </Link>
-                    <Link
                         aria-label={JPOinscription.nom}
                         className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm text-white bg-[#00936e] hover:bg-[#92c56e] lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
                         to={JPOinscription.url}
@@ -158,6 +176,7 @@ export default function Navbar() {
                     </Link>
                 </section>
             </div>
+            {/* <div className="hidden h-2 w-full bg-[#3c3792] lg:block"></div> */}
         </nav>
     )
 }

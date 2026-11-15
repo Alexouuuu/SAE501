@@ -1,7 +1,6 @@
 
 // import pages
 import Navbar from './composants/navbar'
-import BandeauNavbar from './composants/bandeauNavbar';
 import Footer from './composants/footer/footer'
 import GoUpArrow from './composants/GoUpArrow'
 
@@ -9,12 +8,11 @@ import NotFound from './pages/404/notfound'
 
 import Accueil from './pages/accueil/accueil';
 import VisiteVirtuelle from './pages/visiteVirtuelle/visiteVirtuelle';
-import Evenements from './pages/events/events';
-import JPO from './pages/events/JPO';
-import PlanningJPO from './pages/events/PlanningJPO';
+import JPO from './pages/JPO/JPO';
+import PlanningJPO from './pages/JPO/PlanningJPO';
 import Formation from './pages/formation/formation';
 
-import MonCompte from './pages/MonEspace/MonCompte';
+import MonEspace from './pages/MonEspace/MonEspace';
 import Authentification from './pages/auth/auth';
 
 import DashBoardAdmin from './Admin/pagesAdmin/Dashboard';
@@ -71,19 +69,17 @@ function App() {
     <BrowserRouter>
       <div id="smooth-wrapper">
         <div id="smooth-content">
-          <OnPageChangeScrollToTop /> 
+          <OnPageChangeScrollToTop />
           <Navbar />
-          <BandeauNavbar />
           <main className="min-h-screen">
             <Routes>
               <Route path="/" element={<Accueil />} />
               <Route path="/visite-virtuelle" element={<VisiteVirtuelle />} />
-              <Route path="/evenements" element={<Evenements />} />
               <Route path="/jpo" element={<JPO />} />
               <Route path="/planning-jpo" element={<PlanningJPO />} />
               <Route path="/formation" element={<Formation />} />
 
-              <Route path="/mon-compte" element={<MonCompte />} />
+              <Route path="/mon-espace" element={<MonEspace />} />
               <Route path="/auth" element={<Authentification />} />
 
               <Route path="/admin/dashboard" element={<DashBoardAdmin />} />
@@ -93,14 +89,14 @@ function App() {
               <Route path="/mentions-legales" element={<MentionsLegales />} />
               <Route path="/politique-confidentialite" element={<PolitiqueConfidentialite />} />
 
-            <Route path="/contact" element={<Contact/>}/>
-            <Route path="/planDuSite" element={<PlanDuSite/>}/>
-            <Route path="*" element={<NotFound/>}/>
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-      <GoUpArrow />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/planDuSite" element={<PlanDuSite />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+        <GoUpArrow />
       </div>
     </BrowserRouter>
   )

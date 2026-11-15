@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Filarial({ titrePage }) {
     return (
         <section className="flex flex-row w-full bg1 h-10 items-center justify-start space-x-2 border border-black/20 md:pl-20 pl-2">
-            <Link to="/" className="text-[10px] font-bold uppercase tracking-[0.2em] text1ch hover:text-black transition-colors cursor-pointer">
+            <Link to="/" className="text-[10px] hover:underline font-bold uppercase tracking-[0.2em] hover:text-black transition-colors cursor-pointer">
                 Accueil
             </Link>
 

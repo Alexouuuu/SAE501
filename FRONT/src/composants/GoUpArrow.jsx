@@ -28,9 +28,9 @@ export default function GoUpArrow() {
                 type="button"
                 onClick={scrollToTop}
                 aria-label="Revenir en haut de la page"
-                className="flex h-12 w-12 items-center justify-center rounded-full bg-[#2f2a85] cursor-pointer text-white shadow-lg transition hover:bg-[#3c3796] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#003b71]"
+                className="group flex h-12 w-12 items-center justify-center rounded-full bg-[#2f2a85] cursor-pointer text-white shadow-lg transition hover:bg-[#3c3796] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#003b71]"
             >
-                <FaArrowUp aria-hidden="true" />
+                <FaArrowUp aria-hidden="true" className="transform transition-transform duration-300 group-hover:scale-140"/>
             </button>
         </div>
     );
