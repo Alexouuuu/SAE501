@@ -1,14 +1,14 @@
 
 import TitreProps from "../../composants/titreProps";
 import Filarial from "../../composants/filArial";
-import BannerHead from "../../composants/bannerHead";
+import JPOHero from "./JPOcomps/JPOhero"
 
 export default function JPO() {
     // Présentation de la page événements
     return (
         <section>
             <TitreProps titre={"JPO"} />
-            <BannerHead />
+            <JPOHero/>
             <Filarial titrePage={"JPO"} />
         </section>
     );

@@ -86,9 +86,6 @@ export default function DomainesFormation() {
         <section className="scroll-mt-8 bg-white px-5 py-14 sm:px-8 sm:py-16 lg:px-12">
             <div className="mx-auto max-w-7xl">
                 <header className="max-w-7xl">
-                    <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#2f2a85]">
-                        Le BUT MMI et ses spécialisations
-                    </p>
                     <h2 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
                         Trois parcours pour façonner vos études.
                     </h2>
@@ -140,7 +137,7 @@ export default function DomainesFormation() {
                         <h3 className="mt-2 text-pretty text-xl font-extrabold leading-snug text-gray-900 sm:text-2xl">
                             {parcoursSelectionne.titre}
                         </h3>
-                        <p className="mt-4 leading-7 text-gray-600">
+                        <p className="mt-4 text-lg leading-7 text-gray-600">
                             {parcoursSelectionne.objectif}
                         </p>
                         <a
@@ -163,7 +160,7 @@ export default function DomainesFormation() {
                             <ul className="mt-3 space-y-2 text-sm leading-6 text-gray-600">
                                 {parcoursSelectionne.competences.map((competence) => (
                                     <li key={competence} className="flex gap-2">
-                                        <span aria-hidden="true" className="font-bold text-[#2f2a85]">•</span>
+                                        <span aria-hidden="true" className="font-bold text-lg text-[#2f2a85]">•</span>
                                         {competence}
                                     </li>
                                 ))}
@@ -174,7 +171,7 @@ export default function DomainesFormation() {
                             <ul className="mt-3 space-y-2 text-sm leading-6 text-gray-600">
                                 {parcoursSelectionne.debouches.map((debouche) => (
                                     <li key={debouche} className="flex gap-2">
-                                        <span aria-hidden="true" className="font-bold text-[#2f2a85]">•</span>
+                                        <span aria-hidden="true" className="font-bold text-lg text-[#2f2a85]">•</span>
                                         {debouche}
                                     </li>
                                 ))}

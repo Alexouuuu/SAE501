@@ -1,24 +1,9 @@
 import { Link } from "react-router-dom";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
-
 import { FaLocationArrow } from "react-icons/fa";
 
 const bg = "../images/IUT.webp";
 
 export default function HeroFormation() {
-    function scrollToFormation(event) {
-        event.preventDefault();
-        const target = document.querySelector("#formation");
-        if (!target) return;
-
-        const smoother = ScrollSmoother.get();
-        if (smoother) {
-            smoother.scrollTo(target, true);
-        } else {
-            target.scrollIntoView({ behavior: "smooth" });
-        }
-    }
-
     return (
         <header className="relative isolate overflow-hidden bg-[#2f2a85] text-white">
             <img src={bg} alt="" aria-hidden="true" className="absolute inset-0 -z-10 h-full w-full object-cover" />

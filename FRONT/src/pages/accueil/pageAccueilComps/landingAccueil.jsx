@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 import { FaLocationArrow } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
+import { CiCircleInfo } from "react-icons/ci";
 
 export default function LandingAccueil({
     ecole = "Université Gustave Eiffel - Meaux",
@@ -37,7 +38,7 @@ export default function LandingAccueil({
                         </p>
                     </div>
 
-                    <aside className="hidden rounded-2xl border border-white/30 bg-white/10 p-7 text-left shadow-2xl backdrop-blur-md lg:block xl:p-9">
+                    <aside className="hidden rounded-2xl border border-white/30 bg-white/10 p-7 text-left shadow-2xl backdrop-blur:sm lg:block xl:p-9">
                         <h2 className="mt-2 text-2xl text-center font-extrabold leading-tight xl:text-3xl">
                             Venez découvrir l’IUT de Meaux
                         </h2>
@@ -61,9 +62,9 @@ export default function LandingAccueil({
                                 className="w-full group inline-flex min-h-12 items-center justify-center gap-3 border-2 border-white bg-transparent px-5 py-3 font-semibold text-white transition hover:bg-white hover:text-[#2f2a85] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                             >
                                 Infos sur la JPO
-                                <FaLocationArrow
+                                <CiCircleInfo
                                     aria-hidden="true"
-                                    className="transform mt-1 transition-transform duration-300 group-hover:rotate-45"
+                                    className="transform mt-1 transition-transform duration-300 scale-110 group-hover:scale-130"
                                 />
                             </Link>
                             <Link

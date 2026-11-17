@@ -11,7 +11,7 @@ import { useState } from "react";
 import { FaCalendarAlt, FaClipboardList, FaListAlt, FaUserCog } from "react-icons/fa";
 
 export default function MonEspace() {
-    const [section, setSection] = useState("jpo");
+    const [section, setSection] = useState("parametres");
     const sections = [
         { id: "parametres", label: "Paramètres", Icon: FaUserCog },
         { id: "planning", label: "Mon planning", Icon: FaListAlt },
