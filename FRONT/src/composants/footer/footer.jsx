@@ -53,13 +53,13 @@ export default function Footer() {
             <section className="relative overflow-hidden bg-[#3c3796] border-t border-gray-200 pt-16 pb-8 text-gray-600">
                 {/* Fond de la zone carte et séparation diagonale */}
                 <div
-                    className="absolute inset-y-0 left-0 hidden w-[48%] bg-[#2f2a85] [clip-path:polygon(0_0,100%_0,84%_100%,0_100%)] md:block"
+                    className="absolute inset-y-0 left-0 hidden w-[48%] bg-[#2f2a85] [clip-path:polygon(0_0,100%_0,84%_100%,0_100%)] xl:block"
                     aria-hidden="true"
                 />
                 <div className="relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Navigation */}
-                    <div className="mb-8 grid grid-cols-1 text-center md:mb-0 md:min-h-80 md:grid-cols-2 md:items-center md:text-left">
-                        <div className="grid grid-cols-2 gap-12 sm:grid-cols-4 md:col-start-2">
+                    <div className="mb-8 grid grid-cols-1 text-center xl:mb-0 xl:min-h-80 xl:grid-cols-2 xl:items-center xl:text-left">
+                        <div className="grid grid-cols-2 gap-12 sm:grid-cols-4 xl:col-start-2">
                             <div>
                                 <h4 className="mb-6 text-lg font-bold uppercase tracking-wider text-white underlineblanc">PAGES</h4>
                                 <ul className="m-2 space-y-4 font-medium">
@@ -97,7 +97,7 @@ export default function Footer() {
                                     ))}
                                 </ul>
                             </div>
-                            <div className="flex flex-col items-center text-center text-white md:items-start md:text-left">
+                            <div className="flex flex-col items-center text-center text-white xl:items-start xl:text-left">
                                 <h4 className="mb-6 text-lg font-bold uppercase tracking-wider text-white underlineblanc">CONTACT</h4>
                                 <ul className="m-2 space-y-4 font-medium">
                                     {liencontact.map((lien) => (
@@ -125,7 +125,7 @@ export default function Footer() {
 
 
                 <div
-                    className="pl-4 relative z-10 mx-auto h-150 w-[calc(100%-2rem)] p-0 md:absolute md:inset-y-4 md:left-0 md:m-0 md:h-auto md:w-[46%] md:bg-transparent md:[clip-path:polygon(0_0,100%_0,84%_100%,0_100%)]"
+                    className="pl-4 relative z-10 mx-auto h-150 w-[calc(100%-2rem)] p-0 xl:absolute xl:inset-y-4 xl:left-0 xl:m-0 xl:h-auto xl:w-[46%] xl:bg-transparent xl:[clip-path:polygon(0_0,100%_0,84%_100%,0_100%)]"
                 >
 
                     <iframe
