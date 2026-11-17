@@ -10,15 +10,15 @@ export default function LiensFormation() {
                         Envie de découvrir les lieux ?
                     </p>
                     <h2 className="mt-3 text-2xl font-bold">Visitez le bâtiment</h2>
-                    <p className="mt-3 flex-1 leading-7 text-gray-100">
+                    <p className="mt-3 flex-1 text-lg leading-7 text-gray-100">
                         Explorez la visite virtuelle et découvrez les espaces de
                         l’établissement.
                     </p>
                     <Link
                         to="/visite-virtuelle"
-                        className="mt-6 inline-flex items-center gap-2 font-semibold underline decoration-gray-300 underline-offset-4 hover:text-gray-200"
+                        className="group mt-6 inline-flex items-center gap-2 font-semibold underline decoration-gray-300 underline-offset-4 hover:text-gray-200"
                     >
-                        Accéder à la visite virtuelle <FaArrowRight aria-hidden="true" />
+                        Accéder à la visite virtuelle <FaArrowRight aria-hidden="true" className="mt-1 group-hover:translate-x-1 duration-200 transform-all" />
                     </Link>
                 </article>
 
@@ -27,15 +27,15 @@ export default function LiensFormation() {
                         Une question sur la formation ?
                     </p>
                     <h2 className="mt-3 text-2xl font-bold">Parlons-en</h2>
-                    <p className="mt-3 flex-1 leading-7 text-gray-600">
+                    <p className="mt-3 flex-1 text-lg leading-7 text-gray-600">
                         Pour les renseignements pratiques, le lieu et les contacts,
                         consultez la page de contact de l’établissement.
                     </p>
                     <Link
                         to="/contact"
-                        className="mt-6 inline-flex items-center gap-2 font-semibold text-[#2f2a85] underline decoration-[#2f2a85] underline-offset-4 hover:text-[#0097d7] hover:decoration-[#0097d7]"
+                        className="group mt-6 inline-flex items-center gap-2 font-semibold text-[#2f2a85] underline decoration-[#2f2a85] underline-offset-4 hover:text-[#0097d7] hover:decoration-[#0097d7]"
                     >
-                        Accéder aux informations de contact <FaArrowRight aria-hidden="true" />
+                        Nous contacter <FaArrowRight aria-hidden="true" className="mt-1 group-hover:translate-x-1 duration-200 transform-all" />
                     </Link>
                 </article>
             </div>
