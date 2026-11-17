@@ -8,7 +8,7 @@ import BannerHead from "../../composants/bannerHead";
 // Champs du formulaire
 const fieldClassName = "mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none transition focus:border-[#212684] focus:ring-2 focus:ring-[#212684]/20";
 
-function Champ({ label, name, type = "text", autoComplete, minLength }) {
+function Champ({ label, name, type = "text", autoComplete, minLength, required = true }) {
     return (
         <label className="block text-sm font-medium text-gray-800">
             {label}
@@ -18,7 +18,7 @@ function Champ({ label, name, type = "text", autoComplete, minLength }) {
                 type={type}
                 autoComplete={autoComplete}
                 minLength={minLength}
-                required
+                required={required}
             />
         </label>
     );
@@ -187,10 +187,10 @@ export default function Authentification() {
                                                 autoComplete="bday"
                                             />
                                             <label className="block text-sm font-medium text-gray-800">
-                                                Sexe (facultatif)
+                                                Genre (facultatif)
                                                 <select
                                                     className={fieldClassName}
-                                                    name="sexe"
+                                                    name="Genre"
                                                     defaultValue=""
                                                     required={false}
                                                 >
@@ -200,14 +200,31 @@ export default function Authentification() {
                                                     <option value="femme">Femme</option>
                                                     <option value="homme">Homme</option>
                                                     <option value="autre">Autre</option>
-                                                    <option value="non-binaire">Non-binaire</option>
                                                     <option value="non-precise">
                                                         Je préfère ne pas répondre
                                                     </option>
                                                 </select>
                                             </label>
                                         </div>
+                                        <div className="grid gap-5">
+                                            <Champ
+                                                label="Adresse (numéro et voie)*"
+                                                name="adresse"
+                                                autoComplete="address-line1"
+                                            />
+                                            <Champ
+                                                label="Complément d’adresse (facultatif)"
+                                                name="complementAdresse"
+                                                autoComplete="address-line2"
+                                                required={false}
+                                            />
+                                        </div>
                                         <div className="grid gap-5 sm:grid-cols-2">
+                                            <Champ
+                                                label="Code postal*"
+                                                name="codePostal"
+                                                autoComplete="postal-code"
+                                            />
                                             <Champ
                                                 label="Ville*"
                                                 name="ville"
