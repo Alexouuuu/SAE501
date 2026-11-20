@@ -6,12 +6,14 @@ import TitreProps from "../../composants/titreProps";
 import Filarial from "../../composants/filArial";
 import BannerHead from "../../composants/bannerHead";
 import Espacement from "../../composants/espacement"
+import FAQ from "../accueil/pageAccueilComps/FAQ"
+
 
 import { MdAlternateEmail } from "react-icons/md";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { FaMapPin } from "react-icons/fa";
 import { RiMailSendLine } from "react-icons/ri";
-import { FaRegQuestionCircle } from "react-icons/fa";
+
 
 
 export default function Contact() {
@@ -132,6 +134,7 @@ export default function Contact() {
                 </div>
             </div>
             <Espacement/>
+            <FAQ/>
         </section>
     );
 }

@@ -131,9 +131,6 @@ export default function DomainesFormation() {
                     className="grid overflow-hidden rounded-b-2xl border border-t-0 border-gray-200 bg-white shadow-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f2a85] md:grid-cols-2"
                 >
                     <div className="flex flex-col items-start p-6 sm:p-8 lg:p-10">
-                        <p className="text-sm font-bold uppercase tracking-[0.14em] text-[#2f2a85]">
-                            Le parcours
-                        </p>
                         <h3 className="mt-2 text-pretty text-xl font-extrabold leading-snug text-gray-900 sm:text-2xl">
                             {parcoursSelectionne.titre}
                         </h3>
@@ -144,7 +141,7 @@ export default function DomainesFormation() {
                             href={parcoursSelectionne.lien}
                             target="_blank"
                             rel="noreferrer"
-                            className="group mt-7 inline-flex items-center justify-center gap-3 bg-[#2f2a85] px-5 py-3 font-semibold text-white transition hover:bg-[#24206b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f2a85] md:mt-auto"
+                            className="group mx-auto mt-8 inline-flex items-center justify-center gap-3 bg-[#2f2a85] px-5 py-3 font-semibold text-white transition hover:bg-[#24206b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f2a85] md:mx-0 md:mt-auto"
                         >
                             En savoir plus sur le site de l'Onisep
                             <FaLocationArrow

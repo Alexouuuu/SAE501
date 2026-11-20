@@ -43,9 +43,16 @@ export default function Navbar() {
         { id: 2, nom: 'Nous contacter', url: '/contact' },
     ];
 
+    const Accueil = { nom: 'Accueil', url: '/' }
     const Admin = { nom: 'Admin', url: '/admin/dashboard' }
     const Compte = { nom: 'Mon espace', url: '/mon-espace' }
     const JPOinscription = { nom: "S'inscrire à la JPO", url: '/auth' }
+
+    const RoleAdmin = true; // = false : cache admin
+
+    const IsInscrit = false; // true = cache page d'inscription ( S'inscrire a la jpo )
+    const IsConnected = false; // false = cache mon espace
+    // attention c une double verif, faut mettre double true pour afficher l'autre etat
 
     return (
         <nav className="bg-white">
@@ -70,6 +77,15 @@ export default function Navbar() {
                     id="navigation-links"
                     className={`${mobileMenuOpen ? "grid" : "hidden"} w-full grid-cols-1 items-stretch lg:flex lg:w-auto`}
                 >
+
+                    <Link
+                        aria-label={Accueil.nom}
+                        className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm bg-[#3c3792] text-white hover:bg-[#2a266c] lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
+                        to={Accueil.url}
+                    >
+                        <span className="lg:hidden">{Accueil.nom}</span>
+                        <span className="hidden lg:inline">{Accueil.nom}</span>
+                    </Link>
 
                     <ul ref={menusRef} className="contents lg:flex lg:flex-row lg:items-stretch">
                         <li className="relative flex w-full items-center justify-center lg:w-auto">
@@ -148,32 +164,52 @@ export default function Navbar() {
                         </li>
                     </ul>
 
-                    <Link
-                        aria-label={Admin.nom}
-                        className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm bg-[#3c3792] text-white hover:bg-[#2a266c] lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
-                        to={Admin.url}
-                    >
+                    {RoleAdmin === true && (
+                        <Link
+                            aria-label={Admin.nom}
+                            className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm bg-[#3c3792] text-white hover:bg-[#2a266c] lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
+                            to={Admin.url}
+                        >
                         <MdOutlineAdminPanelSettings />
                         <span className="lg:hidden">{Admin.nom}</span>
                         <span className="hidden lg:inline">{Admin.nom}</span>
                     </Link>
-                    <Link
-                        aria-label={Compte.nom}
-                        className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm bg-[#3c3792] text-white hover:bg-[#2a266c] lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
-                        to={Compte.url}
-                    >
-                        <FaUser />
-                        <span className="lg:hidden">{Compte.nom}</span>
-                        <span className="hidden lg:inline">{Compte.nom}</span>
-                    </Link>
-                    <Link
-                        aria-label={JPOinscription.nom}
-                        className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm text-white bg-[#00936e] hover:bg-[#92c56e] lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
-                        to={JPOinscription.url}
-                    >
-                        <IoIosSchool />
-                        {JPOinscription.nom}
-                    </Link>
+                    )}
+
+                    {IsConnected === true && (
+                        <Link
+                            aria-label={Compte.nom}
+                            className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm bg-[#3c3792] text-white hover:bg-[#2a266c] lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
+                            to={Compte.url}
+                        >
+                            <FaUser />
+                            <span className="lg:hidden">{Compte.nom}</span>
+                            <span className="hidden lg:inline">{Compte.nom}</span>
+                        </Link>
+                    )}
+
+                    {IsInscrit === false && IsConnected === false ? (
+                        <Link
+                            aria-label={JPOinscription.nom}
+                            className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm text-white bg-[#00936e] hover:bg-[#92c56e] lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
+                            to={JPOinscription.url}
+                        >
+                            <IoIosSchool />
+                            {JPOinscription.nom}
+                        </Link>
+                    ) : IsInscrit === true && IsConnected === true ? (
+                        <div>
+                            <button
+                                type="button"
+                                disabled
+                                className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm text-white bg-[#00936e] lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
+                            >
+                                <IoIosSchool />
+                                Inscrit à la JPO
+                            </button>
+                        </div>
+                    ) : null}
+
                 </section>
             </div>
             {/* <div className="hidden h-2 w-full bg-[#3c3792] lg:block"></div> */}
