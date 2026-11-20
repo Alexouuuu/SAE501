@@ -5,11 +5,13 @@ import BannerHead from "../../composants/bannerHead";
 
 import JPOGestion from "../CategoriesAdmin/JPOgestion";
 import UsersGestion from "../CategoriesAdmin/UsersGestion";
-import Stats from "../CategoriesAdmin/Stats";
 import CommentsGestion from "../CategoriesAdmin/CommentsGestion";
+import Stats from "../CategoriesAdmin/Stats";
+import Articles from "../CategoriesAdmin/Articles";
 
 import { useState } from "react";
 import { FaCalendarAlt, FaChartBar, FaComments, FaUsers } from "react-icons/fa";
+import { MdArticle } from "react-icons/md";
 
 export default function DashBoardAdmin() {
     const [section, setSection] = useState("jpo");
@@ -18,6 +20,7 @@ export default function DashBoardAdmin() {
         { id: "utilisateurs", label: "Utilisateurs", Icon: FaUsers },
         { id: "commentaires", label: "Commentaires", Icon: FaComments },
         { id: "stats", label: "Statistiques", Icon: FaChartBar },
+        { id: "articles", label: "Articles", Icon: MdArticle },
     ];
 
     return(
@@ -72,6 +75,7 @@ export default function DashBoardAdmin() {
                             {section === "utilisateurs" && <UsersGestion />}
                             {section === "commentaires" && <CommentsGestion />}
                             {section === "stats" && <Stats />}
+                            {section === "articles" && <Articles />}
                         </div>
                     </div>
                 </div>
