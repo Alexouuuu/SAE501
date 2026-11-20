@@ -50,7 +50,7 @@ export default function VideoIUT() {
                 <a
                     href={youtube}
                     target='_blank'
-                    className="group mt-7 cursor-pointer inline-flex items-center gap-3 border-white border px-5 py-3 font-semibold text-[#24206b] transition bg-white hover:bg-white/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f2a85]"
+                    className="group mx-auto mt-7 flex w-fit cursor-pointer items-center gap-3 border border-white bg-white px-5 py-3 font-semibold text-[#24206b] transition hover:bg-white/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f2a85] md:mx-0"
                 >
                     Chaîne youtube
                     <FaLocationArrow color="#24206b" className="mt-1 transform transition-transform duration-300 group-hover:rotate-45" />
