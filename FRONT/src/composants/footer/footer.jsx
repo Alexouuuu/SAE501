@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { FaYoutube } from "react-icons/fa6"; // https://www.youtube.com/@iutmlv6116
 import { AiFillInstagram } from "react-icons/ai"; // https://www.instagram.com/but_mmi_meaux?utm_source=ig_web_button_share_sheet&srtk=ZDNlZDc0MzIxNw==
 import { FaLinkedin } from "react-icons/fa";
+import MapGoogle from "../mapGoogle";
 
 import "./footer.css";
 
@@ -128,13 +129,7 @@ export default function Footer() {
                     className="pl-4 relative z-10 mx-auto h-150 w-[calc(100%-2rem)] p-0 xl:absolute xl:inset-y-4 xl:left-0 xl:m-0 xl:h-auto xl:w-[46%] xl:bg-transparent xl:[clip-path:polygon(0_0,100%_0,84%_100%,0_100%)]"
                 >
 
-                    <iframe
-                        src="https://www.google.com/maps/d/u/0/embed?mid=1CL_CfHqV1qgPkJAHlLORT95OJFVJYCc&ehbc=2E312F&noprof=1"
-                        title="Carte Google Maps de l'IUT de Meaux"
-                        className="block h-full w-full border-0 rounded-lg shadow-lg"
-                        loading="lazy"
-                        referrerPolicy="strict-origin-when-cross-origin"
-                    />
+                    <MapGoogle />
                 </div>
             </section>
 

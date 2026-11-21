@@ -6,6 +6,7 @@ import TitreProps from "../../composants/titreProps";
 import Filarial from "../../composants/filArial";
 import BannerHead from "../../composants/bannerHead";
 import Espacement from "../../composants/espacement"
+import MapGoogle from "../../composants/mapGoogle";
 import FAQ from "../accueil/pageAccueilComps/FAQ"
 
 
@@ -62,13 +63,7 @@ export default function Contact() {
                         </div>
                     </div>
                     <div className="w-full mt-4 flex-1 min-h-62.5">
-                        <iframe
-                            src="https://www.google.com/maps/d/u/0/embed?mid=1CL_CfHqV1qgPkJAHlLORT95OJFVJYCc&ehbc=2E312F&noprof=1"
-                            title="Carte Google Maps de l'IUT de Meaux"
-                            className="block h-full w-full border-0 rounded-lg shadow-lg"
-                            loading="lazy"
-                            referrerPolicy="strict-origin-when-cross-origin"
-                        />
+                        <MapGoogle />
                     </div>
                 </div>
                 <div className="bg-white rounded-md px-8 py-8 border border-gray-300 flex flex-col justify-start">
