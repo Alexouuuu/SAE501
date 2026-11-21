@@ -9,10 +9,10 @@ const projetsListe = [
         liens: "https://mloks77.github.io/SAE302-LeCube/",
     },
     {
-        titre: "PROJET 2",
-        img: "/images/placeholder.webp",
-        alt: "Illustration de la création graphique",
-        liens: "https://iut.univ-gustave-eiffel.fr",
+        titre: "Adam Gosmat : Portfolio",
+        img: "/images/paccueil/petudiants/adamP.webp",
+        alt: "Portfolio d'un étudiant",
+        liens: "https://adamgosmat.com/",
     },
     {
         titre: "PROJET 3",

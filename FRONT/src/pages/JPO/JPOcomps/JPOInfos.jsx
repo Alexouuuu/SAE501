@@ -6,7 +6,7 @@ const jpo = {
     id: "2026",
     titre: "Journée Portes Ouvertes MMI",
     date: "Date à confirmer",
-    inscriptionPossible: false, // false = affiche bouton auth
+    inscriptionPossible: true, // false = affiche bouton auth
 };
 
 const IsInscrit = false; // true
