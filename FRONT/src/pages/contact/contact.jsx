@@ -81,11 +81,11 @@ export default function Contact() {
                         </div>
                         <div className="flex flex-col gap-2 mb-2">
                             <label htmlFor="email" className="text-xs font-semibold text-gray-700">Email*</label>
-                            <input id="email" name="email" type="email" required placeholder="Exemple : JeanDupont@univ-eiffel.fr" className="w-full px-4 py-3 rounded-md border border-gray-300 text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#212684] focus:border-[#212684] transition" />
+                            <input id="email" name="email" type="email" required placeholder="Exemple : JeanDupont@gmail.com" className="w-full px-4 py-3 rounded-md border border-gray-300 text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#212684] focus:border-[#212684] transition" />
                         </div>
                         <div className="flex flex-col gap-2 mb-2">
                             <label htmlFor="sujet" className="text-xs font-semibold text-gray-700">Sujet*</label>
-                            <input id="sujet" name="sujet" type="text" required placeholder="Exemple : Renseignement" className="w-full px-4 py-3 rounded-md border border-gray-300 text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#212684] focus:border-[#212684] transition" />
+                            <input id="sujet" name="sujet" type="text" required placeholder="Exemple : Question sur la JPO" className="w-full px-4 py-3 rounded-md border border-gray-300 text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#212684] focus:border-[#212684] transition" />
                         </div>
                         <div className="flex flex-col gap-2 mb-2">
                             <label htmlFor="message" className="text-xs font-semibold text-gray-700">Message*</label>

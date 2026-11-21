@@ -3,8 +3,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
 
-// const img = "/images/placeholder.webp";
-
 import {
     AmbientLight,
     Box3,
@@ -22,7 +20,7 @@ import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { FaLocationArrow } from "react-icons/fa";
 
 // aide de l'ia :
-function disposerModele(model) {
+function disposerModele(model) { 
     model.traverse((object) => {
         if (!object.isMesh) return;
 
@@ -145,23 +143,18 @@ function ApercuIut3D() {
         <div
             ref={containerRef}
             className="h-full w-full"
-            role="img"
+            role="model3D"
             aria-label="Modèle 3D de l'IUT de Meaux"
         />
     );
 }
 
-export default function visiteVirtuelleTeaser() {
+export default function VisiteVirtuelleTeaser() {
     return (
         <section className="bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
             <div className="mx-auto grid max-w-7xl items-center gap-10 md:grid-cols-2 md:gap-14">
 
                 <div className="relative aspect-4/3 w-full overflow-hidden rounded-2xl">
-                    {/* <img
-                        src={img}
-                        alt="Illustration du parcours Développement web et dispositifs interactifs"
-                        className="h-full w-full rounded-2xl object-cover"
-                    /> */}
                     <ApercuIut3D />
                 </div>
 
@@ -172,7 +165,7 @@ export default function visiteVirtuelleTeaser() {
                         </span>
                     </h3>
                     <h2 className="text-3xl font-extrabold leading-tight tracking-tight text-[#2f2a85] sm:text-4xl lg:text-5xl">
-                        Envie de découvrir l'IUT de Meaux ?
+                        Envie de découvrir l'IUT ?
                     </h2>
                     <p className="mt-5 max-w-3xl leading-7 text-slate-600 sm:text-lg">
                         Explorez nos salles, nos couloirs, nos studios et espaces de création comme si vous y étiez grâce à notre <span className="font-semibold text-[#2f2a85]">visite 3D interactive</span> accessible directement depuis le site.

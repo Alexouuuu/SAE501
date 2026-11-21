@@ -10,19 +10,19 @@ const projetsListe = [
     },
     {
         titre: "PROJET 2",
-        img: "/images/IUT.webp",
+        img: "/images/placeholder.webp",
         alt: "Illustration de la création graphique",
         liens: "https://iut.univ-gustave-eiffel.fr",
     },
     {
         titre: "PROJET 3",
-        img: "/images/IUT.webp",
+        img: "/images/placeholder.webp",
         alt: "Illustration du développement web",
         liens: "https://iut.univ-gustave-eiffel.fr",
     },
     {
         titre: "PROJET 4",
-        img: "/images/IUT.webp",
+        img: "/images/placeholder.webp",
         alt: "Illustration d’un projet de programmation",
         liens: "https://iut.univ-gustave-eiffel.fr",
     },
