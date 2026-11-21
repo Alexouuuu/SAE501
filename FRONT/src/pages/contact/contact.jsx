@@ -6,12 +6,15 @@ import TitreProps from "../../composants/titreProps";
 import Filarial from "../../composants/filArial";
 import BannerHead from "../../composants/bannerHead";
 import Espacement from "../../composants/espacement"
+import MapGoogle from "../../composants/mapGoogle";
+import FAQ from "../accueil/pageAccueilComps/FAQ"
+
 
 import { MdAlternateEmail } from "react-icons/md";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { FaMapPin } from "react-icons/fa";
 import { RiMailSendLine } from "react-icons/ri";
-import { FaRegQuestionCircle } from "react-icons/fa";
+
 
 
 export default function Contact() {
@@ -60,13 +63,7 @@ export default function Contact() {
                         </div>
                     </div>
                     <div className="w-full mt-4 flex-1 min-h-62.5">
-                        <iframe
-                            src="https://www.google.com/maps/d/u/0/embed?mid=1CL_CfHqV1qgPkJAHlLORT95OJFVJYCc&ehbc=2E312F&noprof=1"
-                            title="Carte Google Maps de l'IUT de Meaux"
-                            className="block h-full w-full border-0 rounded-lg shadow-lg"
-                            loading="lazy"
-                            referrerPolicy="strict-origin-when-cross-origin"
-                        />
+                        <MapGoogle />
                     </div>
                 </div>
                 <div className="bg-white rounded-md px-8 py-8 border border-gray-300 flex flex-col justify-start">
@@ -84,11 +81,11 @@ export default function Contact() {
                         </div>
                         <div className="flex flex-col gap-2 mb-2">
                             <label htmlFor="email" className="text-xs font-semibold text-gray-700">Email*</label>
-                            <input id="email" name="email" type="email" required placeholder="Exemple : JeanDupont@univ-eiffel.fr" className="w-full px-4 py-3 rounded-md border border-gray-300 text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#212684] focus:border-[#212684] transition" />
+                            <input id="email" name="email" type="email" required placeholder="Exemple : JeanDupont@gmail.com" className="w-full px-4 py-3 rounded-md border border-gray-300 text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#212684] focus:border-[#212684] transition" />
                         </div>
                         <div className="flex flex-col gap-2 mb-2">
                             <label htmlFor="sujet" className="text-xs font-semibold text-gray-700">Sujet*</label>
-                            <input id="sujet" name="sujet" type="text" required placeholder="Exemple : Renseignement" className="w-full px-4 py-3 rounded-md border border-gray-300 text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#212684] focus:border-[#212684] transition" />
+                            <input id="sujet" name="sujet" type="text" required placeholder="Exemple : Question sur la JPO" className="w-full px-4 py-3 rounded-md border border-gray-300 text-sm placeholder:text-gray-300 focus:outline-none focus:ring-2 focus:ring-[#212684] focus:border-[#212684] transition" />
                         </div>
                         <div className="flex flex-col gap-2 mb-2">
                             <label htmlFor="message" className="text-xs font-semibold text-gray-700">Message*</label>
@@ -132,6 +129,7 @@ export default function Contact() {
                 </div>
             </div>
             <Espacement/>
+            <FAQ/>
         </section>
     );
 }
