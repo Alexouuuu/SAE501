@@ -1,6 +1,7 @@
 package SAE501._PC.controller;
 
 import SAE501._PC.entity.Utilisateur;
+import SAE501._PC.entity.Adresse;
 import SAE501._PC.enums.Role;
 import SAE501._PC.dto.InscriptionRequest;
 import SAE501._PC.dto.ConnexionRequest;
@@ -10,10 +11,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.server.ResponseStatusException;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.Locale;
 
@@ -63,8 +62,10 @@ public class AuthController {
         utilisateur.setPassword(passwordEncoder.encode(donnees.password()));
         
         utilisateur.setRole(Role.VISITEUR);
-        utilisateur.setSexe(donnees.sexe());
-        utilisateur.setVille(donnees.ville());
+        utilisateur.setGenre(donnees.genre());
+        Adresse adresse = new Adresse();
+        adresse.setVille(donnees.ville());
+        utilisateur.setAdresse(adresse);
         utilisateur.setDateNaissance(donnees.dateNaissance());
         utilisateur.setFiliere(donnees.filiere());
         
@@ -85,11 +86,13 @@ public class AuthController {
     
     @PostMapping("/login")
     public Utilisateur login(@RequestBody ConnexionRequest donnees, HttpServletRequest request) {
+        
         if (donnees.email() == null || donnees.email().isBlank() || donnees.password() == null || donnees.password().isBlank()){
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Le mot de passe ou l'email sont obligatoires.");
         }
         String email = donnees.email().trim().toLowerCase(Locale.ROOT);
         Utilisateur utilisateur = utilisateurRepo.findByEmailIgnoreCase(email).orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Email ou mot de passe incorrect"));
+        
         if (!passwordEncoder.matches(donnees.password(),utilisateur.getPassword())) {
             throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Email ou mot de passe incorrect.");
         }
@@ -100,7 +103,7 @@ public class AuthController {
         return utilisateur;
     }
     
-    @GetMapping("/me")
+    @GetMapping("/session")
     public Utilisateur me(HttpServletRequest request) { //recupere l'utilisateur connecté -> si pas de session renvoie null
         return sessionAuth.utilisateurConnecte(
             request.getSession(false)

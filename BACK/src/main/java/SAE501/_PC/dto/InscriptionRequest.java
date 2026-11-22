@@ -4,4 +4,4 @@ package SAE501._PC.dto;
 
 import java.time.LocalDate;
 
-public record InscriptionRequest(String nom, String prenom, String email, String password, String sexe, String ville, LocalDate dateNaissance, String filiere, Boolean interesseFormation) {}
+public record InscriptionRequest(String nom, String prenom, String email, String password, String genre, String ville, LocalDate dateNaissance, String filiere, Boolean interesseFormation) {}
