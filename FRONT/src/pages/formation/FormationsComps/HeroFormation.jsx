@@ -5,7 +5,7 @@ const bg = "../images/IUT.webp";
 
 export default function HeroFormation() {
     return (
-        <header className="relative isolate overflow-hidden bg-[#2f2a85] text-white">
+        <header className="relative isolate overflow-hidden bg-[#2f2a85] text-white min-h-150">
             <img src={bg} alt="" aria-hidden="true" className="absolute inset-0 -z-10 h-full w-full object-cover" />
             <div className="absolute inset-0 -z-10 bg-[#2f2a85]/60" />
             <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 sm:py-20 lg:px-12">
