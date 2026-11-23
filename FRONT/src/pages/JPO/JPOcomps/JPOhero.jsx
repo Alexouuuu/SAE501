@@ -1,4 +1,4 @@
-const bg = "../images/IUT.webp";
+import bg from "../../../images/IUT.webp";
 
 export default function JPOHero() {
     return (

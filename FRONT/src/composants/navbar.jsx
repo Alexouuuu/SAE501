@@ -10,7 +10,7 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import { HiMiniBars3BottomRight } from "react-icons/hi2";
 
-import logo from "/images/logo_univ_eiffel_bleu.webp"
+import logo from "../images/logo_univ_eiffel_bleu.webp"
 
 export default function Navbar() {
     const [openMenu, setOpenMenu] = useState(null);

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaLocationArrow } from "react-icons/fa";
 
-const bg = "../images/IUT.webp";
+import bg from "../../../images/IUT.webp";
 
 export default function HeroFormation() {
     return (

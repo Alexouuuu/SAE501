@@ -2,6 +2,7 @@ import TitreProps from "../../composants/titreProps";
 import Filarial from "../../composants/filArial";
 import BannerHead from "../../composants/bannerHead";
 import { Link } from "react-router-dom";
+import "./JPO.css";
 
 // idEvenement, titre, debut, fin, description, salle, CapaciteMax, nbrInscrits
 
@@ -83,11 +84,7 @@ export default function JPOPlanning() {
                                 >
                                     <div aria-hidden="true" className="relative w-14 shrink-0 overflow-hidden bg-[#212684] transition-colors group-hover:bg-[#3c3792] sm:w-16">
                                         <span
-                                            className="absolute inset-0 opacity-30 transition-opacity group-hover:opacity-60"
-                                            style={{
-                                                backgroundImage: "url('/images/pattern2.webp')",
-                                                backgroundSize: "240px auto",
-                                            }}
+                                            className="jpo-event-pattern absolute inset-0 opacity-30 transition-opacity group-hover:opacity-60"
                                         />
                                     </div>
                                     <div className="min-w-0 flex-1 p-5">

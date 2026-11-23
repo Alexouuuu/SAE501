@@ -3,6 +3,8 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
 
+import cheminModel from "../../../model/iut_site_compress.glb?url"
+
 import {
     AmbientLight,
     Box3,
@@ -97,7 +99,7 @@ function ApercuIut3D() {
         frameId = window.requestAnimationFrame(animate);
 
         loader.load(
-            "/model/iut_site_compress.glb",
+            cheminModel,
             (gltf) => {
                 model = gltf.scene;
                 if (disposed) {

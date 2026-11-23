@@ -1,6 +1,6 @@
 // maxime derènes
 
-import pattern from "/images/pattern2.webp"
+import pattern from "../images/pattern2.webp"
 
 export default function BannerHead({ banner = pattern } = {}) {
     return(
