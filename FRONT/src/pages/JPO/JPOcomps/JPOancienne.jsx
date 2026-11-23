@@ -7,10 +7,10 @@ export default function JPOancienne() {
             <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
                 <div className="gap-4">
                     <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white">
-                        Notre précédente édition
+                        Retour en arrière
                     </p>
                     <h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl">
-                        JPO 2025
+                        LA JPO 2025
                     </h2>
                     <div aria-hidden="true" className="mt-3 h-1 w-16 rounded-full bg-white" />
                     <p className="mt-6 text-lg text-white">

@@ -8,6 +8,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+import img1 from "../../../images/paccueil/devweb.webp"
+import img2 from "../../../images/paccueil/creationgraphique.webp"
+import img3 from "../../../images/paccueil/audiovisuel.webp"
+
 export default function Enseignements() {
     const introRef = useRef(null);
     const introWordsRef = useRef([]);
@@ -30,7 +34,7 @@ export default function Enseignements() {
             matiere: "Développement web",
             soustitre: "et intégration",
             description: "Concevoir et réaliser des sites web et des applications interactives en mobilisant les langages du web et les bonnes pratiques d'intégration.",
-            image: "/images/paccueil/devweb.webp"
+            image: img1
         },
         {
             id: 2,
@@ -38,7 +42,7 @@ export default function Enseignements() {
             matiere: "Création graphique",
             soustitre: "et infographie",
             description: "Maîtriser les fondamentaux du design visuel, élaborer une charte graphique et créer des supports de communication numérique.",
-            image: "/images/paccueil/creationgraphique.webp"
+            image: img2
         },
         {
             id: 3,
@@ -46,7 +50,7 @@ export default function Enseignements() {
             matiere: "Audiovisuel",
             soustitre: "et production numérique",
             description: "Écrire un scénario, réaliser un tournage, monter des vidéos et créer des effets visuels en maîtrisant toute la chaîne de production audiovisuelle.",
-            image: "/images/paccueil/audiovisuel.webp"
+            image: img3
         },
     ];
 
@@ -137,7 +141,7 @@ export default function Enseignements() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="relative h-screen w-full overflow-hidden text-white">
+        <section ref={sectionRef} className="relative h-screen w-full overflow-hidden text-white bg-black/20">
             <div
                 ref={introRef}
                 className="absolute inset-0 z-20 flex items-center justify-center bg-white px-6 text-center text-slate-950 sm:px-10"

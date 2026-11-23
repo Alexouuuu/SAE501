@@ -1,28 +1,34 @@
 import { useNavigate } from "react-router-dom";
 import CircularGallery from "../../../composants/carrousel/CircularGallery";
 
+
+import p1 from "../../../images/paccueil/petudiants/lecube.webp"
+import p2 from "../../../images/paccueil/petudiants/adamP.webp"
+import p3 from "../../../images/placeholder.webp"
+import p4 from "../../../images/placeholder.webp"
+
 const projetsListe = [
     {
         titre: "Le Cube",
-        img: "/images/paccueil/petudiants/lecube.webp",
+        img: p1,
         alt: "Webdocumentaire : Le Cube",
         liens: "https://mloks77.github.io/SAE302-LeCube/",
     },
     {
         titre: "Adam Gosmat : Portfolio",
-        img: "/images/paccueil/petudiants/adamP.webp",
+        img: p2,
         alt: "Portfolio d'un étudiant",
         liens: "https://adamgosmat.com/",
     },
     {
         titre: "PROJET 3",
-        img: "/images/placeholder.webp",
+        img: p3,
         alt: "Illustration du développement web",
         liens: "https://iut.univ-gustave-eiffel.fr",
     },
     {
         titre: "PROJET 4",
-        img: "/images/placeholder.webp",
+        img: p4,
         alt: "Illustration d’un projet de programmation",
         liens: "https://iut.univ-gustave-eiffel.fr",
     },

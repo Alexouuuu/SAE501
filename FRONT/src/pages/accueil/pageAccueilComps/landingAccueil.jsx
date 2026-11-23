@@ -8,11 +8,13 @@ import { FaLocationArrow } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import { CiCircleInfo } from "react-icons/ci";
 
+import bg from "../../../images/IUT.webp"
+
 export default function LandingAccueil({
     ecole = "Université Gustave Eiffel - Meaux",
     titre = "Journée Portes Ouvertes 2026",
     soustitre = "L'université Gustave Eiffel vous ouvre ses portes pour découvrir l'IUT de Meaux et ses formations.",
-    backgroundImage = "/images/IUT.webp",
+    backgroundImage = bg,
 }) {
     return (
         <section>

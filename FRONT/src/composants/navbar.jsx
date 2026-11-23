@@ -10,7 +10,7 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import { HiMiniBars3BottomRight } from "react-icons/hi2";
 
-import logo from "/images/logo_univ_eiffel_bleu.webp"
+import logo from "../images/logo_univ_eiffel_bleu.webp"
 
 export default function Navbar() {
     const [openMenu, setOpenMenu] = useState(null);
@@ -49,8 +49,8 @@ export default function Navbar() {
     const JPOinscription = { nom: "S'inscrire à la JPO", url: '/auth' }
 
     const RoleAdmin = true; // = false : cache admin
-    const IsInscrit = false; // true = cache page d'inscription ( S'inscrire a la jpo )
-    const IsConnected = false; // false = cache mon espace
+    const IsInscrit = true; // true = cache page d'inscription ( S'inscrire a la jpo )
+    const IsConnected = true; // false = cache mon espace
     // attention c une double verif, faut mettre double true pour afficher l'autre etat
 
     return (

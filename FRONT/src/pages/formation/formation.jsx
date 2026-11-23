@@ -55,7 +55,7 @@ export default function Formation() {
 
     return (
         <section className="text-gray-900" ref={FormationRef}>
-            <TitreProps titre="BUT MMI - La formation" />
+            <TitreProps titre="La formation MMI" />
             <HeroFormation />
             <Filarial titrePage="La formation" />
 

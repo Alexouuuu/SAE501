@@ -24,8 +24,10 @@ export default function Footer() {
         { id: 2, name: 'Programme JPO', url: '/planning-jpo' },
     ]
 
+    // a adapter suivant la connexion ou pas
     const liensPersos = [
-        { id: 1, name: 'Mon Compte', url: '/mon-espace' },
+        { id: 1, name: 'Mon Espace', url: '/mon-espace' },
+        { id: 2, name: 'Authentification', url: '/auth' },
     ];
 
     const liensdroits = [
