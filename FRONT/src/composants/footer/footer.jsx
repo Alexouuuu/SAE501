@@ -16,7 +16,8 @@ export default function Footer() {
         { id: 1, name: 'Accueil', url: '/' },
         { id: 2, name: 'La formation', url: '/formation' },
         { id: 3, name: 'Visite Virtuelle', url: '/visite-virtuelle' },
-        { id: 4, name: 'Plan du site', url: '/planDuSite' },
+        { id: 4, name: 'Articles', url: '/actus'},
+        
     ];
 
     const JPO = [
@@ -35,6 +36,7 @@ export default function Footer() {
         { id: 2, name: 'Cookies', url: '/cookies' },
         { id: 3, name: 'Mentions Légales', url: '/mentions-legales' },
         { id: 4, name: 'Politique de Confidentialité', url: '/politique-confidentialite' },
+        { id: 5, name: 'Plan du site', url: '/planDuSite' },
     ];
 
     const liensReseaux = [

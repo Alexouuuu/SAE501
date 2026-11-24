@@ -17,6 +17,7 @@ const planDuSiteData = [
                 { nom: "Accueil", route: "/" },
                 { nom: "La Formation", route: "/formation" },
                 { nom: "Visite Virtuelle", route: "/visite-virtuelle" },
+                { nom: "Actualités", route: "/actus" },
             ]
         }, {
             titre: "Évènements & Contact",
