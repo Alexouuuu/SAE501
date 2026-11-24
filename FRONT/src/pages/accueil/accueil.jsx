@@ -7,6 +7,7 @@ import PrecisionFormation from "./pageAccueilComps/PrecisionFormation";
 import ProjetsEtudiants from "./pageAccueilComps/projetsetudiants";
 import VisiteVirtuelleTeaser from "./pageAccueilComps/visitevirtuelleteaser";
 import VideoIUT from "./pageAccueilComps/videoIUT";
+import Actualites from "./pageAccueilComps/Actualites";
 
 // autres
 import TitreProps from "../../composants/titreProps";
@@ -71,6 +72,12 @@ export default function Accueil() {
 
             <div className="fadeInOnScroll">
                 <VisiteVirtuelleTeaser /> {/* NOUVEAU : Teaser pour inciter à tester la visite virtuelle */}
+            </div>
+
+            <Espacement />
+
+            <div className="fadeInOnScroll">
+                <Actualites /> {/* */}
             </div>
 
             <Espacement />
