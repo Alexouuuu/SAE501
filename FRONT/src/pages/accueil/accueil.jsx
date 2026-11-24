@@ -7,7 +7,7 @@ import PrecisionFormation from "./pageAccueilComps/PrecisionFormation";
 import ProjetsEtudiants from "./pageAccueilComps/projetsetudiants";
 import VisiteVirtuelleTeaser from "./pageAccueilComps/visitevirtuelleteaser";
 import VideoIUT from "./pageAccueilComps/videoIUT";
-import Actualites from "./pageAccueilComps/Actualites";
+import ActualitesSection from "./pageAccueilComps/ActualitesSection";
 
 // autres
 import TitreProps from "../../composants/titreProps";
@@ -55,17 +55,17 @@ export default function Accueil() {
             <LandingAccueil /> {/* banner avec img de l'iut ou de quoi attirer des gens + info dates / btn redirection*/}
 
             <Espacement />
-            
+
             <div className="fadeInOnScroll">
                 <PrecisionFormation /> {/* préciser que le site de meaux enseigne : Développement web et dispositifs interactifs - site de Meaux */}
             </div>
-            
+
             <Espacement />
 
             <div className="fadeInOnScroll">
-                <SeparatorHaut/>
+                <SeparatorHaut />
                 <VideoIUT />
-                <SeparatorBas/>
+                <SeparatorBas />
             </div>
 
             <Espacement />
@@ -77,15 +77,15 @@ export default function Accueil() {
             <Espacement />
 
             <div className="fadeInOnScroll">
-                <Actualites /> {/* */}
+                <SeparatorHaut />
+                <ProjetsEtudiants /> {/* NOUVEAU : Exemples concrets de réalisations d'étudiants */}
+                <SeparatorBas />
             </div>
 
             <Espacement />
 
             <div className="fadeInOnScroll">
-                <SeparatorHaut/>
-                <ProjetsEtudiants /> {/* NOUVEAU : Exemples concrets de réalisations d'étudiants */}
-                <SeparatorBas/>
+                <ActualitesSection /> {/* */}
             </div>
 
             <Espacement />

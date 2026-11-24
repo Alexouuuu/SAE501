@@ -12,6 +12,8 @@ import JPO from './pages/JPO/JPO';
 import PlanningJPO from './pages/JPO/PlanningJPO';
 import EvenementsInfos from './pages/JPO/evenementsInfos';
 import Formation from './pages/formation/formation';
+import Actualites from './pages/actualités/Actualites';
+import ArticleDetails from './pages/actualités/ArticleDetails';
 
 import MonEspace from './pages/MonEspace/MonEspace';
 import Authentification from './pages/auth/auth';
@@ -80,6 +82,9 @@ function App() {
               <Route path="/planning-jpo" element={<PlanningJPO />} />
               <Route path="/planning-jpo/:idEvenement" element={<EvenementsInfos />} />
               <Route path="/formation" element={<Formation />} />
+
+              <Route path="/actus" element={<Actualites />} />
+              <Route path="/actus/:slug" element={<ArticleDetails />} />
 
               <Route path="/mon-espace" element={<MonEspace />} />
               <Route path="/auth" element={<Authentification />} />
