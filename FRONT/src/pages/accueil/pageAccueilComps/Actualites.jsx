@@ -1,0 +1,51 @@
+// témi kergastel
+
+import { Link } from "react-router-dom";
+
+import img from "../../../images/paccueil/code1.webp";
+
+import { FaLocationArrow } from "react-icons/fa";
+
+export default function Actualites() {
+    return (
+        <section className="bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
+            <div className="mx-auto grid max-w-7xl items-center gap-10 md:grid-cols-2 md:gap-14">
+
+                <div className="flex aspect-4/3 items-center justify-center rounded-2xl bg-slate-100 text-center text-slate-500">
+                    <img
+                        src={img}
+                        alt="Illustration du parcours Développement web et dispositifs interactifs"
+                        className="h-full w-full rounded-2xl object-cover"
+                    />
+                </div>
+
+                <div>
+                    <h3>
+                        <span className="text-sm font-semibold uppercase tracking-widest text-[#2f2a85]">
+                            Site de Meaux
+                        </span>
+                    </h3>
+                    <h2 className="text-3xl font-extrabold leading-tight tracking-tight text-[#2f2a85] sm:text-4xl lg:text-5xl">
+                        Les actualités
+                    </h2>
+                    <p className="mt-5 leading-7 text-slate-600 sm:text-lg">
+                        Sur les 3 formations différentes du BUT MMI, l'Université Gustave Eiffel de Meaux <span className="underline decoration-[#2f2a85] font-bold">propose exclusivement la formation BUT MMI : Développement web
+                        et dispositifs interactifs.</span><br></br><br></br>
+                        Vous apprendrez à créer des sites web dynamiques, des applications interactives et à maîtriser les technologies utilisées dans l'industrie numérique.
+                        
+                        
+                        
+                    </p>
+                    <Link
+                        to="/formation"
+                        className="group mx-auto mt-7 flex w-fit items-center gap-3 bg-[#2f2a85] px-5 py-3 font-semibold text-white transition hover:bg-[#24206b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f2a85] md:mx-0"
+                    >
+                        Voir les actualités
+                        <FaLocationArrow color="white" className="mt-1 transform transition-transform duration-300 group-hover:rotate-45" />
+                    </Link>
+                </div>
+
+            </div>
+        </section>
+    );
+}
