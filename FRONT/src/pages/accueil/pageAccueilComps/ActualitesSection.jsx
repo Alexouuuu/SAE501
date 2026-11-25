@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 
-import img from "../../../images/paccueil/code1.webp";
+import img1 from "../../../images/articles/portes_ouvertes.webp";
+import img2 from "../../../images/articles/jeux_video.webp";
+import img3 from "../../../images/articles/nuit_de_linfo.webp";
 
 import { FaLocationArrow } from "react-icons/fa";
 
@@ -11,21 +13,21 @@ const articles = [
         titre: "Journée portes ouvertes",
         contenu: "Venez découvrir le BUT MMI et rencontrer les étudiants et enseignants.",
         datePublication: "2026-12-15",
-        imgUrl: img,
+        imgUrl: img1,
     },
     {
         idArticle: 2,
-        titre: "Projet tutoré en réalité augmentée",
-        contenu: "Les étudiants de 2e année présentent leurs dispositifs interactifs.",
+        titre: "Projet tutoré de jeu vidéo",
+        contenu: "Les étudiants de 3e année présentent leur nouveau projet.",
         datePublication: "2026-12-02",
-        imgUrl: img,
+        imgUrl: img2,
     },
     {
         idArticle: 3,
-        titre: "Hackathon à Meaux",
-        contenu: "24 heures pour concevoir une application web en équipe.",
+        titre: "Nuit de l'Info",
+        contenu: "12 heures pour concevoir une application web en équipe.",
         datePublication: "2026-11-20",
-        imgUrl: img,
+        imgUrl: img3,
     },
 ];
 
