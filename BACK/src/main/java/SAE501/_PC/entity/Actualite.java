@@ -1,15 +1,15 @@
 package SAE501._PC.entity;
 
-import SAE501._PC.enums.StatutArticle;
+import SAE501._PC.enums.StatutActualite;
 import java.time.Instant;
 import jakarta.persistence.*;
 
 @Entity
-public class Article {
+public class Actualite {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idArticle;
+    private Long idActualite;
     @Column(nullable = false)
     private String titre;
     @Lob
@@ -17,42 +17,42 @@ public class Article {
     private Instant datePublication;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private StatutArticle statutArticle = StatutArticle.BROUILLON;
+    private StatutActualite statutActualite = StatutActualite.BROUILLON;
     private String imgURL;
-    // Un article a un seul auteur (1..1) ; un utilisateur peut écrire plusieurs articles (1..*)
+    // Une actualité a un seul auteur (1..1) ; un utilisateur peut écrire plusieurs actualités (1..*)
     @Column(nullable = false)
     private Long idAuteur;
 
-    public Article() {}
+    public Actualite() {}
 
-    public Article(String titre, String contenu, String imgURL, Long idAuteur) {
+    public Actualite(String titre, String contenu, String imgURL, Long idAuteur) {
         this.titre = titre;
         this.contenu = contenu;
         this.imgURL = imgURL;
         this.idAuteur = idAuteur;
     }
 
-    public Long getIdArticle() { return this.idArticle; }
+    public Long getIdActualite() { return this.idActualite; }
     public String getTitre() { return this.titre; }
     public String getContenu() { return this.contenu; }
     public Instant getDatePublication() { return this.datePublication; }
-    public StatutArticle getStatutArticle() { return this.statutArticle; }
+    public StatutActualite getStatutActualite() { return this.statutActualite; }
     public String getImgURL() { return this.imgURL; }
     public Long getIdAuteur() { return this.idAuteur; }
 
-    public void modifierArticle(String titre, String contenu, String imgURL) {
+    public void modifierActualite(String titre, String contenu, String imgURL) {
         this.titre = titre;
         this.contenu = contenu;
         this.imgURL = imgURL;
     }
 
-    // Passe l'article en PUBLIE et enregistre la date de publication
-    public void publierArticle() {
-        this.statutArticle = StatutArticle.PUBLIE;
+    // Passe l'actualité en PUBLIE et enregistre la date de publication
+    public void publierActualite() {
+        this.statutActualite = StatutActualite.PUBLIE;
         this.datePublication = Instant.now();
     }
 
-    public void archiverArticle() {
-        this.statutArticle = StatutArticle.ARCHIVE;
+    public void archiverActualite() {
+        this.statutActualite = StatutActualite.ARCHIVE;
     }
 }

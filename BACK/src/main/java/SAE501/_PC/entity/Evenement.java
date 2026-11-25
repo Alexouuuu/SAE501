@@ -12,6 +12,8 @@ public class Evenement {
     private Long idEvenement;
     @Column(nullable = false)
     private String titre;
+    // Catégorie de l'événement
+    private String type;
     @Column(nullable = false)
     private Instant debut;
     @Column(nullable = false)
@@ -29,8 +31,9 @@ public class Evenement {
 
     public Evenement() {}
 
-    public Evenement(String titre, Instant debut, Instant fin, String description, String salle, Integer capaciteMax, Long idJpo) {
+    public Evenement(String titre, String type, Instant debut, Instant fin, String description, String salle, Integer capaciteMax, Long idJpo) {
         this.titre = titre;
+        this.type = type;
         this.debut = debut;
         this.fin = fin;
         this.description = description;
@@ -41,6 +44,7 @@ public class Evenement {
 
     public Long getIdEvenement() { return this.idEvenement; }
     public String getTitre() { return this.titre; }
+    public String getType() { return this.type; }
     public Instant getDebut() { return this.debut; }
     public Instant getFin() { return this.fin; }
     public String getDescription() { return this.description; }
@@ -49,8 +53,9 @@ public class Evenement {
     public Long getNbrInscripts() { return this.nbrInscripts == null ? 0L : this.nbrInscripts; }
     public Long getIdJpo() { return this.idJpo; }
 
-    public void modifierEvenement(String titre, String description, String salle, Integer capaciteMax) {
+    public void modifierEvenement(String titre, String type, String description, String salle, Integer capaciteMax) {
         this.titre = titre;
+        this.type = type;
         this.description = description;
         this.salle = salle;
         this.capaciteMax = capaciteMax;
