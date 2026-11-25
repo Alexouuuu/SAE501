@@ -20,7 +20,7 @@ public class SessionAuth {
     
     //On mémorise qui est connecté dans la session -> Appelé une fois à la connexion
     public void ouvrir(HttpSession session, Utilisateur utilisateur) {
-        session.setAttribute(USER_ID, utilisateur.getId());
+        session.setAttribute(USER_ID, utilisateur.getIdUtilisateur());
     }
     
     public Utilisateur utilisateurConnecte(HttpSession session) {
@@ -50,7 +50,7 @@ public class SessionAuth {
     
     //Retourner l'ID de l'utilisateur connecté
     public Long utilisateurId(HttpSession session) {
-        return utilisateurConnecte(session).getId();
+        return utilisateurConnecte(session).getIdUtilisateur();
     }
     
     //Retourne le role de l'utilisateur connecté
