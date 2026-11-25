@@ -12,7 +12,6 @@ export default function Actualites() {
             <div>
                 <p>Actualités</p>
 
-                <ArticleDetails></ArticleDetails>
             </div>
         </section>
     )

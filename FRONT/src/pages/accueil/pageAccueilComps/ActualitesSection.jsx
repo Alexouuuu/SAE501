@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-import img1 from "../../../images/articles/portes_ouvertes.webp";
-import img2 from "../../../images/articles/jeux_video.webp";
-import img3 from "../../../images/articles/nuit_de_linfo.webp";
+import img1 from "../../../images/actualités/portes_ouvertes.webp";
+import img2 from "../../../images/actualités/jeux_video.webp";
+import img3 from "../../../images/actualités/nuit_de_linfo.webp";
 
 import { FaLocationArrow } from "react-icons/fa";
 

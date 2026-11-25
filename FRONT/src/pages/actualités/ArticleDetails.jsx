@@ -1,4 +1,4 @@
-import img1 from "../../images/articles/portes_ouvertes.webp";
+import img1 from "../../images/actualités/portes_ouvertes.webp";
 
 // les variables elles vont etre importées plus tard la c pour remplir
 const contenu = (
@@ -25,7 +25,9 @@ export default function ArticleDetails({idArticle, datePublication }){
 
     return(
         <section>
+            <TitreProps titre="Programme de la JPO" />
             <div>
+
                 <p>Article (placeholder)</p>
                 <h1>{titre}</h1>
                 <span>par {auteur}, le {datePublication}</span>
