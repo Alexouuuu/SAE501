@@ -1,9 +1,10 @@
-import { useId, useRef, useState } from "react";
-import { FaLocationArrow } from "react-icons/fa";
+import { useState } from "react";
+import { FaArrowUpRightFromSquare, FaChevronLeft, FaChevronRight } from "react-icons/fa6";
 
 const parcours = [
     {
         titre: "Développement web et dispositifs interactifs",
+        aMeaux: true,
         objectif:
             "Concevoir et développer des sites, des applications et des dispositifs numériques interactifs.",
         competences: [
@@ -15,7 +16,7 @@ const parcours = [
             "Développeur·se web",
             "Développeur·se mobile",
             "Webmaster",
-            "Intégrateur de réalité virtuelle / dispositifs interactifs",
+            "Intégrateur·rice de réalité virtuelle / dispositifs interactifs",
         ],
         lien: "https://www.onisep.fr/ressources/univers-formation/formations/post-bac/but-metiers-du-multimedia-et-de-l-internet-parcours-developpement-web-et-dispositifs-interactifs",
     },
@@ -31,7 +32,7 @@ const parcours = [
         debouches: [
             "Graphiste ou webdesigner",
             "Motion designer",
-            "Monteur vidéo",
+            "Monteur·se vidéo",
             "Technicien·ne audiovisuel ou animateur·rice 2D/3D",
         ],
         lien: "https://www.onisep.fr/ressources/univers-formation/formations/post-bac/but-metiers-du-multimedia-et-de-l-internet-parcours-creation-numerique",
@@ -49,7 +50,7 @@ const parcours = [
             "Chargé·e de communication digitale",
             "Community manager",
             "Chef·fe de projet digital ou UX designer",
-            "Designer/euse d'interaction",
+            "Designer·euse d'interaction",
         ],
         lien: "https://www.onisep.fr/ressources/univers-formation/formations/post-bac/but-metiers-du-multimedia-et-de-l-internet-parcours-strategie-de-communication-numerique-et-design-d-experience",
     },
@@ -58,124 +59,108 @@ const parcours = [
 
 export default function DomainesFormation() {
     const [parcoursActif, setParcoursActif] = useState(0);
-    const id = useId();
-    const ongletsRef = useRef([]);
-    const parcoursSelectionne = parcours[parcoursActif];
 
-    const gererNavigationOnglets = (event, index) => {
-        let nouvelIndex;
-
-        if (event.key === "ArrowRight") {
-            nouvelIndex = (index + 1) % parcours.length;
-        } else if (event.key === "ArrowLeft") {
-            nouvelIndex = (index - 1 + parcours.length) % parcours.length;
-        } else if (event.key === "Home") {
-            nouvelIndex = 0;
-        } else if (event.key === "End") {
-            nouvelIndex = parcours.length - 1;
-        } else {
-            return;
-        }
-
-        event.preventDefault();
-        setParcoursActif(nouvelIndex);
-        ongletsRef.current[nouvelIndex]?.focus();
+    // Le carrousel boucle : après le dernier parcours, on revient au premier.
+    const changerParcours = (pas) => {
+        setParcoursActif((actuel) => (actuel + pas + parcours.length) % parcours.length);
     };
+
+    const classeFleche =
+        "flex h-12 w-12 shrink-0 cursor-pointer items-center justify-center rounded-full bg-[#2f2a85] text-white transition hover:bg-[#24206b] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2f2a85]";
 
     return (
         <section className="scroll-mt-8 bg-white px-5 py-14 sm:px-8 sm:py-16 lg:px-12">
             <div className="mx-auto max-w-7xl">
-                <header className="max-w-7xl">
+                <header className="max-w-3xl">
                     <h2 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
-                        Trois parcours pour façonner vos études.
+                        Le BUT MMI à Meaux
                     </h2>
                     <p className="mt-6 text-lg text-black">
-                        Le BUT MMI propose trois parcours distincts. A l'Université de Meaux, <span className="underline decoration-[#2f2a85] font-bold">le parcours Développement web et dispositifs interactifs est le seul parcours proposé</span>.
+                        Le BUT MMI compte trois parcours différents.
                     </p>
                 </header>
 
-                <div
-                    className="mt-8 grid gap-4 rounded-tl-2xl rounded-tr-2xl bg-gray-100 p-4 sm:grid-cols-3"
-                    role="tablist"
-                    aria-label="Parcours du BUT MMI"
-                >
-                    {parcours.map((item, index) => (
-                        <button
-                            key={item.titre}
-                            ref={(element) => {
-                                ongletsRef.current[index] = element;
-                            }}
-                            id={`${id}-tab-${index}`}
-                            type="button"
-                            role="tab"
-                            aria-selected={parcoursActif === index}
-                            aria-controls={`${id}-panel`}
-                            tabIndex={parcoursActif === index ? 0 : -1}
-                            onClick={() => setParcoursActif(index)}
-                            onKeyDown={(event) => gererNavigationOnglets(event, index)}
-                            className={`text-center min-h-14 rounded-xl px-4 py-3 text-sm font-bold transition focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2f2a85] sm:text-base ${parcoursActif === index
-                                ? "bg-[#2f2a85] text-white shadow-sm"
-                                : "cursor-pointer  text-black bg-gray-200 hover:bg-white hover:text-[#2f2a85]"
-                                }`}
-                        >
-                            {item.titre}
+                <div role="region" aria-roledescription="carrousel" aria-label="Parcours du BUT MMI" className="mt-8">
+                    <div className="flex items-center gap-3 rounded-t-2xl bg-gray-100 p-4 sm:gap-6">
+                        <button type="button" onClick={() => changerParcours(-1)} aria-label="Parcours précédent" className={classeFleche}>
+                            <FaChevronLeft aria-hidden="true" />
                         </button>
-                    ))}
+
+                        {/* Titres superposés : les flèches ne bougent pas d’un parcours à l’autre. */}
+                        <div className="grid min-w-0 flex-1 text-center" aria-live="polite">
+                            {parcours.map((item, index) => (
+                                <div
+                                    key={item.titre}
+                                    className={`col-start-1 row-start-1 self-center ${parcoursActif === index ? "" : "invisible"}`}
+                                >
+                                    <h3 className="text-balance text-lg font-extrabold leading-snug text-gray-900 sm:text-2xl">
+                                        {item.titre}
+                                    </h3>
+                                    <p className="mt-1 text-sm font-semibold text-[#2f2a85]">
+                                        {item.aMeaux ? "Proposé à Meaux" : "Non proposé à Meaux"}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+
+                        <button type="button" onClick={() => changerParcours(1)} aria-label="Parcours suivant" className={classeFleche}>
+                            <FaChevronRight aria-hidden="true" />
+                        </button>
+                    </div>
+
+                    <article className="grid overflow-hidden rounded-b-2xl border border-t-0 border-gray-200 bg-white shadow-sm">
+                        {/* Les panneaux sont superposés : la hauteur reste celle du plus grand. */}
+                        {parcours.map((item, index) => (
+                            <div
+                                key={item.titre}
+                                className={`col-start-1 row-start-1 grid md:grid-cols-2 ${parcoursActif === index ? "" : "invisible"}`}
+                            >
+                                <div className="flex flex-col items-start p-6 sm:p-8 lg:p-10">
+                                    <p className="text-lg leading-7 text-gray-600">
+                                        {item.objectif}
+                                    </p>
+                                    <a
+                                        href={item.lien}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        className="group mx-auto mt-8 inline-flex items-center justify-center gap-3 bg-[#2f2a85] px-5 py-3 font-semibold text-white transition hover:bg-[#24206b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f2a85] md:mx-0 md:mt-auto"
+                                    >
+                                        En savoir plus sur le site de l'Onisep
+                                        <FaArrowUpRightFromSquare
+                                            aria-hidden="true"
+                                            className="mt-1 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                                        />
+                                    </a>
+                                </div>
+
+                                <div className="grid content-center gap-7 bg-gray-50 p-6 sm:p-8 lg:p-10">
+                                    <div>
+                                        <h4 className="font-bold text-gray-900">Compétences clés</h4>
+                                        <ul className="mt-3 space-y-2 text-base leading-6 text-gray-600">
+                                            {item.competences.map((competence) => (
+                                                <li key={competence} className="flex gap-2">
+                                                    <span aria-hidden="true" className="font-bold text-lg text-[#2f2a85]">•</span>
+                                                    {competence}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h4 className="font-bold text-gray-900">Exemples de débouchés</h4>
+                                        <ul className="mt-3 space-y-2 text-base leading-6 text-gray-600">
+                                            {item.debouches.map((debouche) => (
+                                                <li key={debouche} className="flex gap-2">
+                                                    <span aria-hidden="true" className="font-bold text-lg text-[#2f2a85]">•</span>
+                                                    {debouche}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </article>
                 </div>
-
-                <article
-                    id={`${id}-panel`}
-                    role="tabpanel"
-                    aria-labelledby={`${id}-tab-${parcoursActif}`}
-                    tabIndex={0}
-                    className="grid overflow-hidden rounded-b-2xl border border-t-0 border-gray-200 bg-white shadow-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f2a85] md:grid-cols-2"
-                >
-                    <div className="flex flex-col items-start p-6 sm:p-8 lg:p-10">
-                        <h3 className="mt-2 text-pretty text-xl font-extrabold leading-snug text-gray-900 sm:text-2xl">
-                            {parcoursSelectionne.titre}
-                        </h3>
-                        <p className="mt-4 text-lg leading-7 text-gray-600">
-                            {parcoursSelectionne.objectif}
-                        </p>
-                        <a
-                            href={parcoursSelectionne.lien}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="group mx-auto mt-8 inline-flex items-center justify-center gap-3 bg-[#2f2a85] px-5 py-3 font-semibold text-white transition hover:bg-[#24206b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f2a85] md:mx-0 md:mt-auto"
-                        >
-                            En savoir plus sur le site de l'Onisep
-                            <FaLocationArrow
-                                aria-hidden="true"
-                                className="transform mt-1 transition-transform duration-300 group-hover:rotate-45"
-                            />
-                        </a>
-                    </div>
-
-                    <div className="grid content-center gap-7 bg-gray-50 p-6 sm:p-8 lg:p-10">
-                        <div>
-                            <h4 className="font-bold text-gray-900">Compétences clés</h4>
-                            <ul className="mt-3 space-y-2 text-sm leading-6 text-gray-600">
-                                {parcoursSelectionne.competences.map((competence) => (
-                                    <li key={competence} className="flex gap-2">
-                                        <span aria-hidden="true" className="font-bold text-lg text-[#2f2a85]">•</span>
-                                        {competence}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 className="font-bold text-gray-900">Exemples de débouchés</h4>
-                            <ul className="mt-3 space-y-2 text-sm leading-6 text-gray-600">
-                                {parcoursSelectionne.debouches.map((debouche) => (
-                                    <li key={debouche} className="flex gap-2">
-                                        <span aria-hidden="true" className="font-bold text-lg text-[#2f2a85]">•</span>
-                                        {debouche}
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </div>
-                </article>
             </div>
         </section>
     );
