@@ -1,4 +1,5 @@
 import { FaBuilding, FaUsers, FaLaptopCode, FaComments } from "react-icons/fa";
+import illustration from "../../../images/svg/jpo.svg";
 
 const raisons = [
     {
@@ -35,12 +36,9 @@ export default function JPOexplications() {
                         Pourquoi participer ?
                     </h2>
                     <div aria-hidden="true" className="mt-3 h-1 w-16 rounded-full bg-white" />
-                    <p className="mt-5 max-w-md text-base leading-7 text-white/90 sm:text-lg">
-                        Une demi-journée pour vivre la formation de l'intérieur et faire le bon choix.
-                    </p>
+                    <img src={illustration} alt="question" className="mt-8 w-full max-w-md" />
                 </div>
 
-                {/* Liste simple : un trait sépare chaque raison, sans cartes ni numéros (ce n'est pas une suite d'étapes) */}
                 <ul>
                     {raisons.map(({ icon: Icon, titre, texte }) => (
                         <li

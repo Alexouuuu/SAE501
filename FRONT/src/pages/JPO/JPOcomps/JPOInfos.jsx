@@ -14,8 +14,8 @@ const IsConnected = false; // true = cache btn inscription
 
 export default function JPOInfos() {
     return (
-        <section className="pb-35 jpo-infos-section overflow-hidden py-12 text-[#2f2a85]">
-            <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
+        <section className="pb-35 jpo-infos-section overflow-hidden px-5 py-12 text-[#2f2a85] sm:px-8 lg:px-12">
+            <div className="mx-auto max-w-7xl">
                 <div className="py-4">
                     <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#2f2a85]/75">
                         Informations pratiques
@@ -24,20 +24,20 @@ export default function JPOInfos() {
                         {jpo.titre}
                     </h2>
 
-                    <dl className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                        <div className="rounded-xl border border-white/25 bg-white/10 p-4">
+                    <dl className="mt-8 grid gap-x-10 gap-y-6 sm:grid-cols-2 lg:flex lg:justify-between">
+                        <div>
                             <dt className="text-md font-bold uppercase tracking-wider text-[#2f2a85]/70">
                                 Année
                             </dt>
                             <dd className="mt-2 font-semibold text-[#2f2a85]">{jpo.id}</dd>
                         </div>
-                        <div className="rounded-xl border border-white/25 bg-white/10 p-4">
+                        <div>
                             <dt className="text-md font-bold uppercase tracking-wider text-[#2f2a85]/70">
                                 Date
                             </dt>
                             <dd className="mt-2 font-semibold text-[#2f2a85]">{jpo.date}</dd>
                         </div>
-                        <div className="rounded-xl border border-white/25 bg-white/10 p-4">
+                        <div>
                             <dt className="text-md font-bold uppercase tracking-wider text-[#2f2a85]/70">
                                 Adresse
                             </dt>
@@ -47,7 +47,7 @@ export default function JPOInfos() {
                                 17 rue Jablinot, 77100 Meaux
                             </dd>
                         </div>
-                        <div className="rounded-xl border border-white/25 bg-white/10 p-4">
+                        <div>
                             <dt className="text-md font-bold uppercase tracking-wider text-[#2f2a85]/70">
                                 Inscription
                             </dt>
