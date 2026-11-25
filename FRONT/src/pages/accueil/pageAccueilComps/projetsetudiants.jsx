@@ -1,4 +1,5 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FaLocationArrow } from "react-icons/fa";
 import CircularGallery from "../../../composants/carrousel/CircularGallery";
 
 
@@ -34,7 +35,7 @@ const projetsListe = [
     },
 ];
 
-export default function projetsEtudiants() {
+export default function ProjetsEtudiants() {
     const navigate = useNavigate();
 
     const ouvrirProjet = (projet) => {
@@ -53,13 +54,22 @@ export default function projetsEtudiants() {
             className="bg-[#2f2a85] px-5 py-14 text-white sm:px-8 sm:py-16 lg:px-12"
         >
             <div className="mx-auto max-w-7xl">
-                <header className="mb-8 flex flex-col items-start text-right sm:mb-10">
-                    <h2
-                        className="text-3xl font-bold tracking-tight sm:text-4xl"
+                <header className="mb-8 flex flex-wrap items-end justify-between gap-6 sm:mb-10">
+                    <div>
+                        <h2
+                            className="text-3xl font-bold tracking-tight sm:text-4xl"
+                        >
+                            Des projets étudiants
+                        </h2>
+                        <div aria-hidden="true" className="mt-3 h-1 w-16 rounded-full bg-white" />
+                    </div>
+                    <Link
+                        to="/projets"
+                        className="group flex w-fit items-center gap-3 bg-white px-5 py-3 font-semibold text-[#2f2a85] transition hover:bg-white/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                     >
-                        Des projets étudiants
-                    </h2>
-                    <div aria-hidden="true" className="mt-3 h-1 w-16 rounded-full bg-white" />
+                        Voir tous les projets
+                        <FaLocationArrow aria-hidden="true" className="mt-1 transform transition-transform duration-300 group-hover:rotate-45" />
+                    </Link>
                 </header>
 
                 <div style={{ height: '600px', position: 'relative' }}>

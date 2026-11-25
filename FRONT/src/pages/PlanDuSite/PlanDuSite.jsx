@@ -18,6 +18,7 @@ const planDuSiteData = [
                 { nom: "La Formation", route: "/formation" },
                 { nom: "Visite Virtuelle", route: "/visite-virtuelle" },
                 { nom: "Actualités", route: "/actus" },
+                { nom: "Projets MMI", route: "/projets" },
             ]
         }, {
             titre: "Évènements & Contact",

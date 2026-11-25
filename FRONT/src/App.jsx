@@ -12,6 +12,7 @@ import JPO from './pages/JPO/JPO';
 import PlanningJPO from './pages/JPO/PlanningJPO';
 import EvenementsInfos from './pages/JPO/evenementsInfos';
 import Formation from './pages/formation/formation';
+import Projets from './pages/projets/Projets';
 import Actualites from './pages/actualités/Actualites';
 import ArticleDetails from './pages/actualités/ArticleDetails';
 
@@ -82,6 +83,7 @@ function App() {
               <Route path="/planning-jpo" element={<PlanningJPO />} />
               <Route path="/planning-jpo/:idEvenement" element={<EvenementsInfos />} />
               <Route path="/formation" element={<Formation />} />
+              <Route path="/projets" element={<Projets />} />
 
               <Route path="/actus" element={<Actualites />} />
               <Route path="/actus/:slug" element={<ArticleDetails />} />
