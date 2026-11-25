@@ -1,6 +1,5 @@
 package SAE501._PC.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -15,11 +14,14 @@ public class Adresse {
     private String codePostal;
     private String ville;
 
-    @OneToOne
-    @JoinColumn(name = "idUtilisateur", unique = true)
-    private Utilisateur utilisateur;
-
     public Adresse() {}
+
+    public Adresse(String adresse, String complementAdresse, String codePostal, String ville) {
+        this.adresse = adresse;
+        this.complementAdresse = complementAdresse;
+        this.codePostal = codePostal;
+        this.ville = ville;
+    }
 
     public Long getIdAdresse() { return this.idAdresse; }
     public String getAdresse() { return this.adresse; }
@@ -27,13 +29,10 @@ public class Adresse {
     public String getCodePostal() { return this.codePostal; }
     public String getVille() { return this.ville; }
 
-    @JsonIgnore
-    public Utilisateur getUtilisateur() { return this.utilisateur; }
-
-    public void setAdresse(String adresse) { this.adresse = adresse; }
-    public void setComplementAdresse(String complementAdresse) { this.complementAdresse = complementAdresse; }
-    public void setCodePostal(String codePostal) { this.codePostal = codePostal; }
-    public void setVille(String ville) { this.ville = ville; }
-
-    void setUtilisateur(Utilisateur utilisateur) { this.utilisateur = utilisateur; }
+    public void modifierAdresse(String adresse, String complementAdresse, String codePostal, String ville) {
+        this.adresse = adresse;
+        this.complementAdresse = complementAdresse;
+        this.codePostal = codePostal;
+        this.ville = ville;
+    }
 }

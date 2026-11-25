@@ -5,7 +5,6 @@ import SAE501._PC.enums.Role;
 import SAE501._PC.repository.UtilisateurRepo;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.nio.charset.StandardCharsets;
@@ -15,13 +14,11 @@ import java.util.Optional;
 @Component
 public class PremierAdmin implements CommandLineRunner {
     private final UtilisateurRepo utilisateurRepo;
-    private final PasswordEncoder passwordEncoder;
     private final String adminEmail;
     private final String adminPassword;
     
-    public PremierAdmin(UtilisateurRepo utilisateurRepo, PasswordEncoder passwordEncoder, @Value("${app.admin.email:}") String adminEmail, @Value("${app.admin.password:}") String adminPassword) {
+    public PremierAdmin(UtilisateurRepo utilisateurRepo, @Value("${app.admin.email:}") String adminEmail, @Value("${app.admin.password:}") String adminPassword) {
         this.utilisateurRepo = utilisateurRepo;
-        this.passwordEncoder = passwordEncoder;
         this.adminEmail = adminEmail;
         this.adminPassword = adminPassword;
     }
@@ -45,15 +42,7 @@ public class PremierAdmin implements CommandLineRunner {
             throw new IllegalStateException("Le mot de passe doit contenir au moins 8 caracteres");
         }
         
-        Utilisateur admin = new Utilisateur();
-        
-        admin.setNom("Administrateur");
-        admin.setPrenom("SAE501");
-        admin.setEmail(email);
-        admin.setPassword(passwordEncoder.encode(adminPassword));
-        admin.setRole(Role.ADMIN);
-        admin.setInteresseFormation(false);
-        admin.setPresentJpo(false);
+        Utilisateur admin = new Utilisateur("SAE501", "Administrateur", null, null, email, adminPassword, Role.ADMIN, null);
         
         utilisateurRepo.save(admin);
     }
