@@ -4,7 +4,7 @@ import CircularGallery from "../../../composants/carrousel/CircularGallery";
 
 import p1 from "../../../images/paccueil/petudiants/lecube.webp"
 import p2 from "../../../images/paccueil/petudiants/adamP.webp"
-import p3 from "../../../images/placeholder.webp"
+import p3 from "../../../images/paccueil/petudiants/globe.png"
 import p4 from "../../../images/placeholder.webp"
 
 const projetsListe = [
@@ -21,10 +21,10 @@ const projetsListe = [
         liens: "https://adamgosmat.com/",
     },
     {
-        titre: "PROJET 3",
+        titre: "Globe collaboratif 3D",
         img: p3,
-        alt: "Illustration du développement web",
-        liens: "https://iut.univ-gustave-eiffel.fr",
+        alt: "Site web collaboratif : Objets 3D de pays du monde",
+        liens: "https://globemmi2.netlify.app/",
     },
     {
         titre: "PROJET 4",
