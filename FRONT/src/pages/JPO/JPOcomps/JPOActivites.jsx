@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FaLocationArrow } from "react-icons/fa";
+import { FaLocationArrow, FaRegCalendarAlt } from "react-icons/fa";
 import { Evenement } from "../evenements";
 
 // Nombre d'activités mises en avant sur la page JPO
@@ -9,6 +9,7 @@ export default function JPOActivites() {
     const apercu = [...Evenement]
         .sort((a, b) => a.debut - b.debut || a.fin - b.fin)
         .slice(0, NB_APERCU);
+    const estVide = Evenement.length === 0;
 
     return (
         <section className="bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
@@ -20,20 +21,42 @@ export default function JPOActivites() {
                     </h2>
                     <div aria-hidden="true" className="mt-3 h-1 w-16 rounded-full bg-[#2f2a85]" />
                     <p className="mt-5 max-w-md text-base leading-7 text-slate-600 sm:text-lg">
-                        {Evenement.length} {Evenement.length === 1 ? "activité est prévue" : "activités sont prévues"} pendant la journée.
-                        Consultez les horaires et les salles, puis inscrivez-vous à celles qui vous intéressent.
+                        {estVide ? (
+                            <>
+                                Le programme de la journée n’est pas encore publié.
+                                Les ateliers, démonstrations et visites seront annoncés ici très bientôt.
+                            </>
+                        ) : (
+                            <>
+                                {Evenement.length} {Evenement.length === 1 ? "activité est prévue" : "activités sont prévues"} pendant la journée.
+                                Consultez les horaires et les salles, puis inscrivez-vous à celles qui vous intéressent.
+                            </>
+                        )}
                     </p>
+                    {/* Inutile d'envoyer vers un programme vide : on propose la visite 3D à la place */}
                     <Link
-                        to="/planning-jpo"
+                        to={estVide ? "/visite-virtuelle" : "/planning-jpo"}
                         className="group mt-7 flex w-fit items-center gap-3 bg-[#2f2a85] px-5 py-3 font-semibold text-white transition hover:bg-[#24206b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f2a85]"
                     >
-                        Voir le programme complet
+                        {estVide ? "Visiter l’IUT en 3D en attendant" : "Voir le programme complet"}
                         <FaLocationArrow aria-hidden="true" className="mt-1 transform transition-transform duration-300 group-hover:rotate-45" />
                     </Link>
                 </div>
 
+                {estVide && (
+                    <div className="flex flex-col items-center rounded-xl border-2 border-dashed border-[#2f2a85]/30 bg-[#2f2a85]/5 px-6 py-12 text-center md:order-1">
+                        <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[#2f2a85] text-white">
+                            <FaRegCalendarAlt aria-hidden="true" className="h-7 w-7" />
+                        </span>
+                        <p className="mt-5 text-xl font-bold text-[#2f2a85] sm:text-2xl">
+                            Programme bientôt disponible
+                        </p>
+                        <p className="mt-2 text-slate-600">Horaires et salles à venir</p>
+                    </div>
+                )}
+
                 {/* Aperçu : l'horaire en tête de ligne, puis l'activité et sa salle */}
-                <ul className="md:order-1">
+                <ul className={estVide ? "hidden" : "md:order-1"}>
                     {apercu.map((evenement) => (
                         <li key={evenement.idEvenement} className="border-t border-[#2f2a85]/20 first:border-t-0">
                             <Link

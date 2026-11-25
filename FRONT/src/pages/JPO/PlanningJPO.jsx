@@ -2,6 +2,7 @@ import TitreProps from "../../composants/titreProps";
 import Filarial from "../../composants/filArial";
 import BannerHead from "../../composants/bannerHead";
 import { Link } from "react-router-dom";
+import { FaRegCalendarAlt } from "react-icons/fa";
 import "./JPO.css";
 import { Evenement } from "./evenements";
 
@@ -74,6 +75,37 @@ function Activite({ evenement }) {
     );
 }
 
+// Affiché quand aucune activité n'est encore publiée
+function ProgrammeVide() {
+    return (
+        <div className="mx-auto flex max-w-2xl flex-col items-center rounded-xl border-2 border-dashed border-[#212684]/30 bg-[#212684]/5 px-6 py-12 text-center sm:px-12 sm:py-16">
+            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[#212684] text-white">
+                <FaRegCalendarAlt aria-hidden="true" className="h-7 w-7" />
+            </span>
+            <h2 className="mt-6 text-2xl font-extrabold tracking-tight text-[#212684] sm:text-3xl">
+                Le programme arrive bientôt
+            </h2>
+            <p className="mt-3 max-w-md leading-7 text-gray-600">
+                Les activités de la JPO ne sont pas encore publiées. Revenez dans quelques temps pour découvrir les ateliers, démonstrations et visites proposés.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <Link
+                    to="/formation"
+                    className="inline-flex min-h-11 items-center justify-center rounded-md bg-[#212684] px-5 font-semibold text-white transition-colors hover:bg-[#3c3792] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#3c3792]"
+                >
+                    Découvrir la formation
+                </Link>
+                <Link
+                    to="/visite-virtuelle"
+                    className="inline-flex min-h-11 items-center justify-center rounded-md border border-[#212684] px-5 font-semibold text-[#212684] transition-colors hover:bg-[#212684]/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#3c3792]"
+                >
+                    Visiter l’IUT en ligne
+                </Link>
+            </div>
+        </div>
+    );
+}
+
 export default function JPOPlanning() {
     // Présentation statique du programme JPO
     const creneaux = grouperParCreneau(Evenement);
@@ -100,9 +132,7 @@ export default function JPOPlanning() {
             </header>
 
             <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 sm:py-16">
-                {creneaux.length === 0 && (
-                    <p className="text-gray-600">Le programme sera bientôt publié.</p>
-                )}
+                {creneaux.length === 0 && <ProgrammeVide />}
 
                 {creneaux.map((creneau) => (
                     <section
