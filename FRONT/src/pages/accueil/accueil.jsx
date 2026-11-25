@@ -17,37 +17,13 @@ import SeparatorHaut from "../../composants/separatorhaut";
 import SeparatorBas from "../../composants/separatorbas";
 // gsap
 
-import { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef } from "react";
+import useFadeInOnScroll from "../../composants/useFadeInOnScroll";
 
 export default function Accueil() {
     const accueilRef = useRef(null);
 
-    useLayoutEffect(() => {
-        const context = gsap.context(() => {
-            gsap.utils.toArray(".fadeInOnScroll").forEach((element) => {
-                gsap.fromTo(
-                    element,
-                    { autoAlpha: 0 },
-                    {
-                        autoAlpha: 1,
-                        duration: 0.8,
-                        ease: "power1.out",
-                        scrollTrigger: {
-                            trigger: element,
-                            start: "top 85%",
-                            toggleActions: "play none none none",
-                        },
-                    }
-                );
-            });
-        }, accueilRef);
-
-        return () => context.revert();
-    }, []);
+    useFadeInOnScroll(accueilRef);
 
     return (
         <section ref={accueilRef}>

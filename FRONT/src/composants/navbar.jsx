@@ -31,8 +31,9 @@ export default function Navbar() {
     const BUTMMI = [
         { id: 1, nom: 'La formation', url: '/formation' },
         { id: 2, nom: 'Visite Virtuelle', url: '/visite-virtuelle' },
-        { id: 3, nom: 'Actualités', url: '/actus'},
-        { id: 4, nom: 'Projets MMI', url: '/projets' },
+        { id: 3, nom: 'Projets MMI', url: '/projets' },
+        { id: 4, nom: 'Actualités', url: '/actus'},
+
     ]
 
     const JPO = [

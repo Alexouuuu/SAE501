@@ -18,38 +18,14 @@ import SeparatorBas from "../../composants/separatorbas";
 // date
 // inscription possible
 
-import { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef } from "react";
+import useFadeInOnScroll from "../../composants/useFadeInOnScroll";
 
 export default function JPO() {
 
     const JPORef = useRef(null);
 
-    useLayoutEffect(() => {
-        const context = gsap.context(() => {
-            gsap.utils.toArray(".fadeInOnScroll").forEach((element) => {
-                gsap.fromTo(
-                    element,
-                    { autoAlpha: 0 },
-                    {
-                        autoAlpha: 1,
-                        duration: 0.8,
-                        ease: "power1.out",
-                        scrollTrigger: {
-                            trigger: element,
-                            start: "top 85%",
-                            toggleActions: "play none none none",
-                        },
-                    }
-                );
-            });
-        }, JPORef);
-
-        return () => context.revert();
-    }, []);
+    useFadeInOnScroll(JPORef);
 
     // Présentation de la page événements
     return (

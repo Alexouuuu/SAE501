@@ -20,38 +20,14 @@ import Filarial from "../../composants/filArial";
 import Espacement from "../../composants/espacement";
 // gsap
 
-import { useLayoutEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useRef } from "react";
+import useFadeInOnScroll from "../../composants/useFadeInOnScroll";
 
 export default function Formation() {
 
     const FormationRef = useRef(null);
 
-    useLayoutEffect(() => {
-        const context = gsap.context(() => {
-            gsap.utils.toArray(".fadeInOnScroll").forEach((element) => {
-                gsap.fromTo(
-                    element,
-                    { autoAlpha: 0 },
-                    {
-                        autoAlpha: 1,
-                        duration: 0.8,
-                        ease: "power1.out",
-                        scrollTrigger: {
-                            trigger: element,
-                            start: "top 85%",
-                            toggleActions: "play none none none",
-                        },
-                    }
-                );
-            });
-        }, FormationRef);
-
-        return () => context.revert();
-    }, []);
+    useFadeInOnScroll(FormationRef);
 
     return (
         <section className="text-gray-900" ref={FormationRef}>

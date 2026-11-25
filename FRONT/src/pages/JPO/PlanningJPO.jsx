@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "./JPO.css";
 import { Evenement } from "./evenements";
 
-// Valeurs provisoires, en attendant l'authentification
+// Valeurs provisoires
 const estConnecte = false;
 const nbrInscrits = 0;
 

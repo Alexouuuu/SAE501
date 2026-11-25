@@ -16,8 +16,9 @@ export default function Footer() {
         { id: 1, name: 'Accueil', url: '/' },
         { id: 2, name: 'La formation', url: '/formation' },
         { id: 3, name: 'Visite Virtuelle', url: '/visite-virtuelle' },
-        { id: 4, name: 'Actualités', url: '/actus'},
-        { id: 5, name: 'Projets MMI', url: '/projets' },
+        { id: 4, name: 'Projets MMI', url: '/projets' },
+        { id: 5, name: 'Actualités', url: '/actus'},
+        
     ];
 
     const JPO = [
