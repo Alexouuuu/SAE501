@@ -1,10 +1,21 @@
 // maxime derènes
 
+import { useSyncExternalStore } from "react";
 import { gsap } from "gsap";
 import { FaArrowUp } from "react-icons/fa";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 
+// Le bouton n'apparaît qu'après un certain défilement, pour ne rien masquer en haut de page
+const SEUIL = 400;
+
+function suivreDefilement(callback) {
+    window.addEventListener("scroll", callback, { passive: true });
+    return () => window.removeEventListener("scroll", callback);
+}
+
 export default function GoUpArrow() {
+    const visible = useSyncExternalStore(suivreDefilement, () => window.scrollY > SEUIL);
+
     const scrollToTop = () => {
         const smoother = ScrollSmoother.get();
 
@@ -21,6 +32,8 @@ export default function GoUpArrow() {
             });
         }
     };
+
+    if (!visible) return null;
 
     return (
         <div className="fixed bottom-6 md:bottom-20 right-6 z-50 rounded-full border border-black/50 bg-white p-1">
