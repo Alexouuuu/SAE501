@@ -16,7 +16,7 @@ export default function Footer() {
         { id: 1, name: 'Accueil', url: '/' },
         { id: 2, name: 'La formation', url: '/formation' },
         { id: 3, name: 'Visite Virtuelle', url: '/visite-virtuelle' },
-        { id: 4, name: 'Articles', url: '/actus'},
+        { id: 4, name: 'Actualités', url: '/actus'},
         
     ];
 
