@@ -13,12 +13,19 @@
 | | @react-three/fiber | ^9.8.2 | Three.js pour React |
 | | Chart.js | ^4.6.1 | Graphiques |
 | | React Icons | ^5.7.0 | Icônes |
-| | ESLint | ^10.10.0 | Linting (dev) |
 | **Backend** | Java | 25 | Langage |
 | | Spring Boot | 4.1.1 | Framework backend (Maven) |
-| | Spring Web MVC | — | API REST |
-| | Spring Data JPA | — | Accès aux données / ORM |
-| | Spring Security Crypto | — | Hachage des mots de passe |
-| | Spring Boot DevTools | — | Rechargement à chaud (dev) |
-| **Base de données** | MySQL (`mysql-connector-j`) | — | BDD principale |
-| | H2 | — | BDD en mémoire (tests / dev) |
+
+## Sites utilisés :
+
+Icons SVG
+
+https://undraw.co/illustrations
+
+Carte interactives
+
+https://www.google.com/intl/fr_fr/maps/about/mymaps/
+
+Vu 3D google map :
+
+https://maps.app.goo.gl/Jk6ixoiaZsyGcu7u7
