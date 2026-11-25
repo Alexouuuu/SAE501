@@ -42,11 +42,11 @@ export default function Actualites() {
     return (
         <section className="bg-white px-5 py-16 sm:px-8 sm:py-20 lg:px-12">
             <div className="mx-auto max-w-7xl">
-                <h3>
+                <p>
                     <span className="text-sm font-semibold uppercase tracking-widest text-[#2f2a85]">
                         Site de Meaux
                     </span>
-                </h3>
+                </p>
                 <h2 className="text-3xl font-extrabold leading-tight tracking-tight text-[#2f2a85] sm:text-4xl lg:text-5xl">
                     Les actualités
                 </h2>
@@ -65,7 +65,7 @@ export default function Actualites() {
                             <div className="aspect-4/3 overflow-hidden">
                                 <img
                                     src={article.imgUrl}
-                                    alt={article.titre}
+                                    alt=""
                                     className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                                 />
                             </div>
@@ -73,9 +73,9 @@ export default function Actualites() {
                                 <span className="text-sm font-semibold text-[#2f2a85]">
                                     {formaterDate(article.datePublication)}
                                 </span>
-                                <h4 className="mt-2 text-xl font-bold text-slate-900">
+                                <h3 className="mt-2 text-xl font-bold text-slate-900">
                                     {article.titre}
-                                </h4>
+                                </h3>
                                 <p className="mt-2 line-clamp-3 leading-6 text-slate-600">
                                     {article.contenu}
                                 </p>
