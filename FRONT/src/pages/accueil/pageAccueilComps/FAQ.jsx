@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { Link } from 'react-router-dom';
 import gsap from "gsap";
+import illustrationQuestion from "../../../images/svg/question.svg";
 
 const faqItems = [
     {
@@ -86,7 +87,7 @@ export default function FAQ({ items = faqItems }) {
     return (
         <section
             aria-labelledby="faq-title"
-            className="mx-auto mt-16 grid min-h-152 w-full max-w-7xl content-start grid-cols-1 gap-8 px-4 sm:px-6 md:min-h-120 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-16"
+            className="mx-auto mt-16 grid min-h-216 w-full max-w-7xl content-start grid-cols-1 gap-8 px-4 pb-16 sm:px-6 md:min-h-120 md:pb-0 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:gap-16"
         >
             <div>
                 <h2
@@ -99,9 +100,13 @@ export default function FAQ({ items = faqItems }) {
                     aria-hidden="true"
                     className="mt-3 h-1 w-16 rounded-full bg-[#2f2a85]"
                 />
-                <p className="mt-3 max-w-sm text-sm leading-relaxed text-gray-600">
-                    Retrouvez ici les réponses aux questions les plus fréquentes.
-                </p>
+                <img
+                    src={illustrationQuestion}
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    className="mx-auto mt-8 w-full max-w-56 md:mx-0 md:mt-10 md:max-w-sm"
+                />
             </div>
 
             <div className="space-y-3">

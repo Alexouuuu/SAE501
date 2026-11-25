@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa6";
-
 export default function LiensFormation() {
     return (
         <section className="px-5 py-14 sm:px-8 sm:py-16 lg:px-12">

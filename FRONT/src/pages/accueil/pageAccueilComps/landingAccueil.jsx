@@ -45,7 +45,7 @@ export default function LandingAccueil({
                     <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
                         <Link
                             to="/auth"
-                            className="group inline-flex min-h-13 items-center justify-center gap-3 rounded-md bg-[#00936e] px-7 text-xl font-bold transition-colors hover:bg-[#007a5b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+                            className="group inline-flex min-h-13 items-center justify-center gap-3 rounded-md bg-[#00936e] px-7 text-xl font-bold transition-colors hover:bg-[#92c56e] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                         >
                             S’inscrire à la JPO
                             <FaLocationArrow

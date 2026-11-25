@@ -57,6 +57,8 @@ export default function Footer() {
         <footer>
             <hr className="mx-auto w-24 h-1 bg-[#2f2a85] rounded-full mb-1 border-0" />
             <section className="relative overflow-hidden bg-[#3c3796] border-t border-gray-200 pt-16 pb-8 text-gray-600">
+                {/* Motif de fond derrière les liens */}
+                <div className="footer-pattern pointer-events-none absolute inset-0" aria-hidden="true" />
                 {/* Fond de la zone carte et séparation diagonale */}
                 <div
                     className="absolute inset-y-0 left-0 hidden w-[48%] bg-[#2f2a85] [clip-path:polygon(0_0,100%_0,84%_100%,0_100%)] xl:block"

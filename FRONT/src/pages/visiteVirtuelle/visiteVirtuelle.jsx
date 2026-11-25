@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { FaInfoCircle } from "react-icons/fa";
 import TitreProps from "../../composants/titreProps";
 import Filarial from "../../composants/filArial";
 import BannerHead from "../../composants/bannerHead";
@@ -122,6 +123,7 @@ function Visite360() {
 
     return (
         <div>
+
             {/* Le choix de la vue n'apparaît que s'il y en a plusieurs */}
             {PANORAMAS.length > 1 && (
                 <div role="group" aria-label="Choisir un lieu" className="mb-4 flex flex-wrap gap-x-2 gap-y-1">
@@ -132,8 +134,8 @@ function Visite360() {
                             aria-pressed={index === indexActif}
                             onClick={() => setIndexActif(index)}
                             className={`min-h-11 cursor-pointer border-b-4 px-3 font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#3c3792] ${index === indexActif
-                                    ? "border-[#212684] text-[#212684]"
-                                    : "border-transparent text-gray-600 hover:text-[#212684]"
+                                ? "border-[#212684] text-[#212684]"
+                                : "border-transparent text-gray-600 hover:text-[#212684]"
                                 }`}
                         >
                             {vue.nom}
@@ -141,6 +143,11 @@ function Visite360() {
                     ))}
                 </div>
             )}
+
+            <p className="my-4 flex items-start gap-2 rounded-md bg-[#212684]/5 px-4 py-3 text-sm text-gray-600">
+                <FaInfoCircle aria-hidden="true" className="mt-0.5 shrink-0 text-[#212684]" />
+                Les vues 360° proviennent de Google Maps : certaines photos datent un peu et les lieux ont pu évoluer depuis.
+            </p>
 
             <iframe
                 key={panorama.id}
