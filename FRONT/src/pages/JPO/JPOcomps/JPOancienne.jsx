@@ -3,7 +3,7 @@ const youtube = "https://www.youtube.com/@iutmlv6116"
 
 export default function JPOancienne() {
     return (
-        <section className="bg-[#2f2a85] px-5 py-14 sm:px-8 sm:py-16 lg:px-12">
+        <section className="bg-[#2f2a85] px-5 pt-14 pb-20 sm:px-8 sm:pt-16 sm:pb-24 lg:px-12">
             <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
                 <div className="gap-4">
                     <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white">
@@ -25,13 +25,17 @@ export default function JPOancienne() {
                         <FaLocationArrow color="#24206b" className="mt-1 transform transition-transform duration-300 group-hover:rotate-45" />
                     </a>
                 </div>
-                <iframe
-                    className="aspect-video w-full rounded-xl"
-                    src="https://www.youtube.com/embed/OU2niH-FJI4"
-                    title="Vidéo de présentation de la formation MMI"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                />
+                <div className="relative"> {/*coins blancs*/}
+                    <span aria-hidden="true" className="pointer-events-none absolute z-10 -top-4 -right-4 h-12 w-12 rounded-tr-2xl border-t-4 border-r-4 border-white sm:h-16 sm:w-16" />
+                    <span aria-hidden="true" className="pointer-events-none absolute z-10 -bottom-4 -left-4 h-12 w-12 rounded-bl-2xl border-b-4 border-l-4 border-white sm:h-16 sm:w-16" />
+                    <iframe
+                        className="block aspect-video w-full rounded-xl"
+                        src="https://www.youtube.com/embed/OU2niH-FJI4"
+                        title="Vidéo de présentation de la formation MMI"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                    />
+                </div>
             </div>
         </section>
     )

@@ -29,14 +29,17 @@ export default function VideoIUT() {
                     <div aria-hidden="true" className="mt-3 h-1 w-16 rounded-full bg-white" />
                 </header>
 
-                <div className="grid gap-6 md:grid-cols-2 md:gap-8">
+                <div className="relative grid gap-6 md:grid-cols-2 md:gap-8">
+                    {/* Coins décoratifs autour de l'ensemble des 2 vidéos */}
+                    <span aria-hidden="true" className="pointer-events-none absolute z-10 -top-4 -right-4 h-12 w-12 rounded-tr-2xl border-t-4 border-r-4 border-white sm:h-16 sm:w-16" />
+                    <span aria-hidden="true" className="pointer-events-none absolute z-10 -bottom-4 -left-4 h-12 w-12 rounded-bl-2xl border-b-4 border-l-4 border-white sm:h-16 sm:w-16" />
                     {videos.map((video) => (
                         <div
                             key={video.id}
                             className="overflow-hidden rounded-xl bg-black shadow-lg"
                         >
                             <iframe
-                                className="aspect-video w-full"
+                                className="block aspect-video w-full"
                                 src={`https://www.youtube-nocookie.com/embed/${video.id}`}
                                 title={video.title}
                                 loading="lazy"
@@ -50,7 +53,7 @@ export default function VideoIUT() {
                 <a
                     href={youtube}
                     target='_blank'
-                    className="group mx-auto mt-7 flex w-fit cursor-pointer items-center gap-3 border border-white bg-white px-5 py-3 font-semibold text-[#24206b] transition hover:bg-white/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f2a85] md:mx-0"
+                    className="group mx-auto mt-10 flex w-fit cursor-pointer items-center gap-3 border border-white bg-white px-5 py-3 font-semibold text-[#24206b] transition hover:bg-white/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f2a85] md:mx-0"
                 >
                     Chaîne youtube
                     <FaLocationArrow color="#24206b" className="mt-1 transform transition-transform duration-300 group-hover:rotate-45" />
