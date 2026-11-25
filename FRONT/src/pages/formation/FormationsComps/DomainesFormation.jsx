@@ -73,10 +73,11 @@ export default function DomainesFormation() {
             <div className="mx-auto max-w-7xl">
                 <header className="max-w-3xl">
                     <h2 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl">
-                        Le BUT MMI à Meaux
+                        Trois parcours, un seul à Meaux
                     </h2>
                     <p className="mt-6 text-lg text-black">
-                        Le BUT MMI compte trois parcours différents.
+                        À Meaux, l’IUT propose le parcours{" "}
+                        <strong>{parcours.find((item) => item.aMeaux)?.titre}</strong>.
                     </p>
                 </header>
 
@@ -96,7 +97,14 @@ export default function DomainesFormation() {
                                     <h3 className="text-balance text-lg font-extrabold leading-snug text-gray-900 sm:text-2xl">
                                         {item.titre}
                                     </h3>
-                                    <p className="mt-1 text-sm font-semibold text-[#2f2a85]">
+                                    {/* Pill pleine si le parcours est proposé à Meaux, discrète sinon */}
+                                    <p
+                                        className={`mt-2 inline-flex rounded-full px-4 py-1 text-sm font-bold ${
+                                            item.aMeaux
+                                                ? "bg-[#2f2a85] text-white"
+                                                : "border-2 border-gray-300 text-gray-600"
+                                        }`}
+                                    >
                                         {item.aMeaux ? "Proposé à Meaux" : "Non proposé à Meaux"}
                                     </p>
                                 </div>
@@ -160,6 +168,11 @@ export default function DomainesFormation() {
                             </div>
                         ))}
                     </article>
+
+                    {/* Position du parcours affiché sur le total */}
+                    <p className="mt-3 text-right text-sm font-semibold text-gray-600">
+                        <span className="text-[#2f2a85]">{parcoursActif + 1}</span> / {parcours.length}
+                    </p>
                 </div>
             </div>
         </section>

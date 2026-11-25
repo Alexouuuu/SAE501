@@ -66,9 +66,7 @@ export default function JPO() {
             <Espacement />
 
             <section className="fadeInOnScroll">
-                <Espacement />
                 <JPOActivites />
-                <Espacement />
             </section>
 
             <section className="fadeInOnScroll">

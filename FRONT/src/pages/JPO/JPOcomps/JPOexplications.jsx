@@ -40,24 +40,17 @@ export default function JPOexplications() {
                     </p>
                 </div>
 
-                <ul className="grid gap-4 sm:grid-cols-2">
-                    {raisons.map(({ icon: Icon, titre, texte }, index) => (
+                {/* Liste simple : un trait sépare chaque raison, sans cartes ni numéros (ce n'est pas une suite d'étapes) */}
+                <ul>
+                    {raisons.map(({ icon: Icon, titre, texte }) => (
                         <li
                             key={titre}
-                            className="group relative flex flex-col gap-4 rounded-2xl border border-white/15 bg-white/10 p-6 transition duration-300 hover:-translate-y-1 hover:bg-white/15"
+                            className="flex items-start gap-5 border-t border-white/30 py-6 first:border-t-0 first:pt-0 last:pb-0"
                         >
-                            <span
-                                aria-hidden="true"
-                                className="absolute right-5 top-4 text-3xl font-extrabold text-white/15"
-                            >
-                                {String(index + 1).padStart(2, "0")}
-                            </span>
-                            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-white text-[#2f2a85] transition duration-300 group-hover:scale-110">
-                                <Icon aria-hidden="true" className="h-6 w-6" />
-                            </span>
+                            <Icon aria-hidden="true" className="mt-1.5 h-6 w-6 shrink-0" />
                             <div>
-                                <h3 className="text-lg font-bold leading-snug">{titre}</h3>
-                                <p className="mt-1 text-sm leading-6 text-white/80">{texte}</p>
+                                <h3 className="text-2xl font-bold leading-tight sm:text-3xl">{titre}</h3>
+                                <p className="mt-2 text-base leading-7 text-white/85 sm:text-lg">{texte}</p>
                             </div>
                         </li>
                     ))}

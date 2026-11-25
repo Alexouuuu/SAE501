@@ -3,39 +3,11 @@ import Filarial from "../../composants/filArial";
 import BannerHead from "../../composants/bannerHead";
 import { Link } from "react-router-dom";
 import "./JPO.css";
-
-// idEvenement, titre, debut, fin, description, salle, CapaciteMax, nbrInscrits
+import { Evenement } from "./evenements";
 
 // Valeurs provisoires, en attendant l'authentification
 const estConnecte = false;
 const nbrInscrits = 0;
-
-const Evenement = [
-    {
-        idEvenement: 1,
-        titre: "Ouverture de la JPO",
-        debut: 13,
-        fin: 15,
-        salle: "312",
-        CapaciteMax: 30
-    },
-    {
-        idEvenement: 2,
-        titre: "Démonstration des projets",
-        debut: 16,
-        fin: 20,
-        salle: "B2",
-        CapaciteMax: 30
-    },
-    {
-        idEvenement: 3,
-        titre: "Ateliers MMI",
-        debut: 16,
-        fin: 20,
-        salle: "B3",
-        CapaciteMax: 30
-    },
-]
 
 // Regroupe les activités par créneau horaire, du plus tôt au plus tard
 function grouperParCreneau(evenements) {
