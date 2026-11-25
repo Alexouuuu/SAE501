@@ -70,7 +70,7 @@ export default function Inscription() {
                         Genre (facultatif)
                         <select
                             className="mt-2 w-full rounded-md border border-gray-300 bg-white px-4 py-3 text-gray-900 outline-none transition focus:border-[#212684] focus:ring-2 focus:ring-[#212684]/20"
-                            name="Genre"
+                            name="genre"
                             defaultValue=""
                         >
                             <option className="cursor-pointer" value="" disabled>

@@ -16,14 +16,23 @@ public class Adresse {
 
     public Adresse() {}
 
+    public Adresse(String adresse, String complementAdresse, String codePostal, String ville) {
+        this.adresse = adresse;
+        this.complementAdresse = complementAdresse;
+        this.codePostal = codePostal;
+        this.ville = ville;
+    }
+
     public Long getIdAdresse() { return this.idAdresse; }
     public String getAdresse() { return this.adresse; }
     public String getComplementAdresse() { return this.complementAdresse; }
     public String getCodePostal() { return this.codePostal; }
     public String getVille() { return this.ville; }
 
-    public void setAdresse(String adresse) { this.adresse = adresse; }
-    public void setComplementAdresse(String complementAdresse) { this.complementAdresse = complementAdresse; }
-    public void setCodePostal(String codePostal) { this.codePostal = codePostal; }
-    public void setVille(String ville) { this.ville = ville; }
+    public void modifierAdresse(String adresse, String complementAdresse, String codePostal, String ville) {
+        this.adresse = adresse;
+        this.complementAdresse = complementAdresse;
+        this.codePostal = codePostal;
+        this.ville = ville;
+    }
 }

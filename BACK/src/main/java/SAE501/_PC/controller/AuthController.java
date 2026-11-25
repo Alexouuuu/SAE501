@@ -57,9 +57,12 @@ public class AuthController {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "L'adresse email est déjà utilisée.");
         }
         //créer le compte 
-        Adresse adresse = new Adresse();
-        adresse.setVille(donnees.ville());
-        adresse = adresseRepo.save(adresse);
+        Adresse adresse = adresseRepo.save(new Adresse(
+            nettoyer(donnees.adresse()),
+            nettoyer(donnees.complementAdresse()),
+            nettoyer(donnees.codePostal()),
+            nettoyer(donnees.ville())
+        ));
 
         Utilisateur utilisateur = new Utilisateur(
             donnees.prenom().trim(),
@@ -116,6 +119,11 @@ public class AuthController {
     @ResponseStatus(HttpStatus.NO_CONTENT) //appelle la méthode fermer pour detruire la session
     public void logout(HttpServletRequest request) {
         sessionAuth.fermer(request.getSession(false));
+    }
+
+    // Retire les espaces autour ; chaîne vide -> null
+    private String nettoyer(String valeur) {
+        return (valeur == null || valeur.isBlank()) ? null : valeur.trim();
     }
 
     // "non-precise" (front) -> NON_PRECISE ; valeur vide ou absente -> null
