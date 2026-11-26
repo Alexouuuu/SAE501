@@ -6,7 +6,7 @@ export default function Espacement({ espace }) {
     return (
         <span
             aria-hidden="true"
-            className={`block w-full h-36`}
+            className={`block w-full h-32`}
         />
     );
 }

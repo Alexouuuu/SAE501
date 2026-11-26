@@ -4,10 +4,9 @@
 import LandingAccueil from "./pageAccueilComps/landingAccueil"
 import FAQ from "./pageAccueilComps/FAQ";
 import PrecisionFormation from "./pageAccueilComps/PrecisionFormation";
-import ProjetsEtudiants from "./pageAccueilComps/projetsetudiants";
+import ProjetsActualites from "./pageAccueilComps/ProjetsActualites";
 import VisiteVirtuelleTeaser from "./pageAccueilComps/visitevirtuelleteaser";
 import VideoIUT from "./pageAccueilComps/videoIUT";
-import ActualitesSection from "./pageAccueilComps/ActualitesSection";
 
 // autres
 import TitreProps from "../../composants/titreProps";
@@ -54,14 +53,8 @@ export default function Accueil() {
 
             <div className="fadeInOnScroll">
                 <SeparatorHaut />
-                <ProjetsEtudiants /> {/* NOUVEAU : Exemples concrets de réalisations d'étudiants */}
+                <ProjetsActualites /> {/* projets étudiants + actualités du BUT MMI */}
                 <SeparatorBas />
-            </div>
-
-            <Espacement />
-
-            <div className="fadeInOnScroll">
-                <ActualitesSection /> {/* */}
             </div>
 
             <Espacement />
