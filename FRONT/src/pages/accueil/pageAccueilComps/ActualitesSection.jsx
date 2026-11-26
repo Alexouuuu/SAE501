@@ -59,7 +59,7 @@ export default function Actualites() {
                     {articles.map((article) => (
                         <Link
                             key={article.idArticle}
-                            to={`/actus/${article.idArticle}`}
+                            to={`/MMI/actus/${article.idArticle}`}
                             className="group flex flex-col overflow-hidden rounded-2xl bg-slate-100 transition hover:-translate-y-1 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f2a85]"
                         >
                             <div className="aspect-4/3 overflow-hidden">
@@ -85,7 +85,7 @@ export default function Actualites() {
                 </div>
 
                 <Link
-                    to="/actus"
+                    to="/MMI/actus"
                     className="group mx-auto mt-10 flex w-fit items-center gap-3 bg-[#2f2a85] px-5 py-3 font-semibold text-white transition hover:bg-[#24206b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f2a85] md:mx-0"
                 >
                     Voir toutes les actualités

@@ -78,15 +78,15 @@ function App() {
           <main className="min-h-screen">
             <Routes>
               <Route path="/" element={<Accueil />} />
-              <Route path="/visite-virtuelle" element={<VisiteVirtuelle />} />
-              <Route path="/jpo" element={<JPO />} />
-              <Route path="/planning-jpo" element={<PlanningJPO />} />
-              <Route path="/planning-jpo/:idEvenement" element={<EvenementsInfos />} />
-              <Route path="/formation" element={<Formation />} />
-              <Route path="/projets" element={<Projets />} />
+              <Route path="/MMI/visite-virtuelle" element={<VisiteVirtuelle />} />
+              <Route path="/JPO/jpo-details" element={<JPO />} />
+              <Route path="/JPO/planning-jpo" element={<PlanningJPO />} />
+              <Route path="/JPO/planning-jpo/:idEvenement" element={<EvenementsInfos />} />
+              <Route path="/MMI/formation" element={<Formation />} />
+              <Route path="/MMI/projets" element={<Projets />} />
 
-              <Route path="/actus" element={<Actualites />} />
-              <Route path="/actus/:slug" element={<ArticleDetails />} />
+              <Route path="/MMI/actus" element={<Actualites />} />
+              <Route path="/MMI/actus/:slug" element={<ArticleDetails />} />
 
               <Route path="/mon-espace" element={<MonEspace />} />
               <Route path="/auth" element={<Authentification />} />

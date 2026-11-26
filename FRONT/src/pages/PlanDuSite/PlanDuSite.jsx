@@ -15,16 +15,16 @@ const planDuSiteData = [
             titre: "Découverte",
             liens: [
                 { nom: "Accueil", route: "/" },
-                { nom: "La Formation", route: "/formation" },
-                { nom: "Visite Virtuelle", route: "/visite-virtuelle" },
-                { nom: "Actualités", route: "/actus" },
-                { nom: "Projets MMI", route: "/projets" },
+                { nom: "La Formation", route: "/MMI/formation" },
+                { nom: "Visite Virtuelle", route: "/MMI/visite-virtuelle" },
+                { nom: "Actualités", route: "/MMI/actus" },
+                { nom: "Projets MMI", route: "/MMI/projets" },
             ]
         }, {
             titre: "Évènements & Contact",
             liens: [
-                { nom: "Journée Porte Ouverte", route: "/jpo" },
-                { nom: "Programme de la JPO", route: "/planning-jpo" },
+                { nom: "Journée Porte Ouverte", route: "/JPO/jpo-details" },
+                { nom: "Programme de la JPO", route: "/JPO/planning-jpo" },
                 { nom: "Nous contacter", route: "/contact" },
             ]
         }]

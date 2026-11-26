@@ -14,7 +14,7 @@ export default function LiensFormation() {
                         l’établissement.
                     </p>
                     <Link
-                        to="/visite-virtuelle"
+                        to="/MMI/visite-virtuelle"
                         className="group mt-6 inline-flex items-center gap-2 font-semibold underline decoration-gray-300 underline-offset-4 hover:text-gray-200"
                     >
                         Accéder à la visite virtuelle <FaArrowRight aria-hidden="true" className="mt-1 group-hover:translate-x-1 duration-200 transform-all" />

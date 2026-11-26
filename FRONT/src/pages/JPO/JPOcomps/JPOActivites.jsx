@@ -35,7 +35,7 @@ export default function JPOActivites() {
                     </p>
                     {/* Inutile d'envoyer vers un programme vide : on propose la visite 3D à la place */}
                     <Link
-                        to={estVide ? "/visite-virtuelle" : "/planning-jpo"}
+                        to={estVide ? "/MMI/visite-virtuelle" : "/JPO/planning-jpo"}
                         className="group mt-7 flex w-fit items-center gap-3 bg-[#2f2a85] px-5 py-3 font-semibold text-white transition hover:bg-[#24206b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f2a85]"
                     >
                         {estVide ? "Visiter l’IUT en 3D en attendant" : "Voir le programme complet"}
@@ -60,7 +60,7 @@ export default function JPOActivites() {
                     {apercu.map((evenement) => (
                         <li key={evenement.idEvenement} className="border-t border-[#2f2a85]/20 first:border-t-0">
                             <Link
-                                to={`/planning-jpo/${evenement.idEvenement}`}
+                                to={`/JPO/planning-jpo/${evenement.idEvenement}`}
                                 className="group grid grid-cols-[6.5rem_1fr] items-baseline gap-4 py-5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2f2a85] sm:grid-cols-[8rem_1fr]"
                             >
                                 <span className="text-lg font-extrabold text-[#2f2a85] sm:text-xl">

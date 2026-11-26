@@ -64,7 +64,7 @@ export default function ProjetsEtudiants() {
                         <div aria-hidden="true" className="mt-3 h-1 w-16 rounded-full bg-white" />
                     </div>
                     <Link
-                        to="/projets"
+                        to="/MMI/projets"
                         className="group flex w-fit items-center gap-3 bg-white px-5 py-3 font-semibold text-[#2f2a85] transition hover:bg-white/90 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
                     >
                         Voir tous les projets

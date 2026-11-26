@@ -27,18 +27,18 @@ const MENUS = [
         id: 'butmmi',
         nom: 'BUT MMI',
         pages: [
-            { id: 1, nom: 'La formation', url: '/formation' },
-            { id: 2, nom: 'Visite Virtuelle', url: '/visite-virtuelle' },
-            { id: 3, nom: 'Projets MMI', url: '/projets' },
-            { id: 4, nom: 'Actualités', url: '/actus' },
+            { id: 1, nom: 'La formation', url: '/MMI/formation' },
+            { id: 2, nom: 'Visite Virtuelle', url: '/MMI/visite-virtuelle' },
+            { id: 3, nom: 'Projets MMI', url: '/MMI/projets' },
+            { id: 4, nom: 'Actualités', url: '/MMI/actus' },
         ],
     },
     {
         id: 'jpo',
         nom: 'JPO',
         pages: [
-            { id: 1, nom: 'Présentation de la JPO', url: '/jpo' },
-            { id: 2, nom: 'Programme de la JPO', url: '/planning-jpo' },
+            { id: 1, nom: 'Présentation de la JPO', url: '/JPO/jpo-details' },
+            { id: 2, nom: 'Programme de la JPO', url: '/JPO/planning-jpo' },
         ],
     },
 ];

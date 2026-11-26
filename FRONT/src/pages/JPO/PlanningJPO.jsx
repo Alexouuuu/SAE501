@@ -53,7 +53,7 @@ function Activite({ evenement }) {
     return (
         <li>
             <Link
-                to={`/planning-jpo/${evenement.idEvenement}`}
+                to={`/JPO/planning-jpo/${evenement.idEvenement}`}
                 className="group flex overflow-hidden rounded-md border border-[#212684]/20 bg-white transition-colors hover:border-[#212684] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#3c3792]"
             >
                 <div className="relative isolate flex w-24 shrink-0 flex-col items-center justify-center bg-[#212684] py-5 text-white transition-colors group-hover:bg-[#3c3792] sm:w-36">
@@ -90,13 +90,13 @@ function ProgrammeVide() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link
-                    to="/formation"
+                    to="/MMI/formation"
                     className="inline-flex min-h-11 items-center justify-center rounded-md bg-[#212684] px-5 font-semibold text-white transition-colors hover:bg-[#3c3792] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#3c3792]"
                 >
                     Découvrir la formation
                 </Link>
                 <Link
-                    to="/visite-virtuelle"
+                    to="/MMI/visite-virtuelle"
                     className="inline-flex min-h-11 items-center justify-center rounded-md border border-[#212684] px-5 font-semibold text-[#212684] transition-colors hover:bg-[#212684]/10 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#3c3792]"
                 >
                     Visiter l’IUT en ligne

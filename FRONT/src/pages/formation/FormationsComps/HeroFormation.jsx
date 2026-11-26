@@ -26,7 +26,7 @@ export default function HeroFormation() {
                     </p>
                     <div className="mt-10 flex flex-wrap gap-4">
                         <Link
-                            to="/visite-virtuelle"
+                            to="/MMI/visite-virtuelle"
                             className="gap-3 group inline-flex min-h-12 items-center rounded-md border px-5 py-3 font-semibold text-white transition hover:bg-white/20"
                         >
                             Visiter le bâtiment

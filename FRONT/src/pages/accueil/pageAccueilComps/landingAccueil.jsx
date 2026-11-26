@@ -53,7 +53,7 @@ export default function LandingAccueil({
                                 className="mt-1 transform transition-transform duration-300 group-hover:rotate-45"
                             />
                         </Link>
-                        <Link to="/jpo" className={boutonSecondaire}>
+                        <Link to="/JPO/jpo-details" className={boutonSecondaire}>
                             Infos sur la JPO
                             <CiCircleInfo
                                 aria-hidden="true"

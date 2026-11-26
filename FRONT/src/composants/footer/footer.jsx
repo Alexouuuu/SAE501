@@ -14,22 +14,21 @@ import "./footer.css";
 export default function Footer() {
     const liens = [
         { id: 1, name: 'Accueil', url: '/' },
-        { id: 2, name: 'La formation', url: '/formation' },
-        { id: 3, name: 'Visite Virtuelle', url: '/visite-virtuelle' },
-        { id: 4, name: 'Projets MMI', url: '/projets' },
-        { id: 5, name: 'Actualités', url: '/actus'},
+        { id: 2, name: 'La formation', url: '/MMI/formation' },
+        { id: 3, name: 'Visite Virtuelle', url: '/MMI/visite-virtuelle' },
+        { id: 4, name: 'Projets MMI', url: '/MMI/projets' },
+        { id: 5, name: 'Actualités', url: '/MMI/actus'},
         
     ];
 
     const JPO = [
-        { id: 1, name: 'JPO', url: '/jpo' },
-        { id: 2, name: 'Programme JPO', url: '/planning-jpo' },
+        { id: 1, name: 'Présentation de la JPO', url: '/JPO/jpo-details' },
+        { id: 2, name: 'Programme de la JPO', url: '/JPO/planning-jpo' },
     ]
 
     // a adapter suivant la connexion ou pas
     const liensPersos = [
         { id: 1, name: 'Mon Espace', url: '/mon-espace' },
-        { id: 2, name: 'Authentification', url: '/auth' },
     ];
 
     const liensdroits = [

@@ -10,7 +10,7 @@ const faqItems = [
         question: "Peut on visiter l'université sans inscription préalable ?",
         answer: "Non, une inscription préalable est requise pour visiter l'université. Vous pouvez vous inscrire en vous rendant sur la page d'inscription à la journée portes ouvertes :",
         urltitle: "Inscription à la journée porte ouverte",
-        url: "/jpo"
+        url: "/JPO/jpo-details"
     },
     {
         question: "La journée porte ouverte est elle gratuite ?",

@@ -37,7 +37,7 @@ export default function PrecisionFormation() {
                         
                     </p>
                     <Link
-                        to="/formation"
+                        to="/MMI/formation"
                         className="group mx-auto mt-7 flex w-fit items-center gap-3 bg-[#2f2a85] px-5 py-3 font-semibold text-white transition hover:bg-[#24206b] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#2f2a85] md:mx-0"
                     >
                         Découvrir la formation
