@@ -1,9 +1,9 @@
 // maxime derènes
 
-import { Link } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 // icons
-import { FaTimes, FaUser } from "react-icons/fa";
+import { FaTimes, FaUser, FaCheck } from "react-icons/fa";
 import { useEffect, useRef, useState } from 'react';
 import { IoIosSchool } from "react-icons/io";
 import { RiArrowDropDownLine } from "react-icons/ri";
@@ -13,11 +13,62 @@ import { IoHome } from "react-icons/io5";
 
 // import logo from "../images/logo_univ_eiffel_bleu.webp"
 
+// Classes partagées
+const focusClassName = "focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-white";
+const itemClassName = `inline-flex h-full w-full min-w-0 cursor-pointer items-center justify-center gap-2 px-4 py-4 text-center text-base text-white transition-[background-color,color,box-shadow] duration-300 lg:w-auto lg:text-lg ${focusClassName}`;
+// Trait bas : vert clair au survol, vert foncé pour la page actuelle
+const itemBleuClassName = `${itemClassName} bg-mmi-bleu hover:bg-mmi-bleu-fonce hover:shadow-[inset_0_-4px_0_var(--color-mmi-vert-clair)]`;
+const itemActifClassName = "bg-mmi-bleu-fonce shadow-[inset_0_-4px_0_var(--color-mmi-vert)]";
+const sousItemClassName = "block whitespace-normal border-l-3 border-transparent px-4 py-3 text-center text-lg text-black transition-colors duration-100 hover:border-mmi-bleu hover:bg-gray-100 focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-mmi-bleu lg:whitespace-nowrap lg:text-left";
+const sousItemActifClassName = "border-mmi-bleu bg-gray-100 font-semibold";
+
+const MENUS = [
+    {
+        id: 'butmmi',
+        nom: 'BUT MMI',
+        pages: [
+            { id: 1, nom: 'La formation', url: '/formation' },
+            { id: 2, nom: 'Visite Virtuelle', url: '/visite-virtuelle' },
+            { id: 3, nom: 'Projets MMI', url: '/projets' },
+            { id: 4, nom: 'Actualités', url: '/actus' },
+        ],
+    },
+    {
+        id: 'jpo',
+        nom: 'JPO',
+        pages: [
+            { id: 1, nom: 'Présentation de la JPO', url: '/jpo' },
+            { id: 2, nom: 'Programme de la JPO', url: '/planning-jpo' },
+        ],
+    },
+];
+
+const Accueil = { nom: 'Accueil', url: '/' }
+const Contact = { nom: 'Contact', url: '/contact' }
+const Admin = { nom: 'Admin', url: '/admin/dashboard' }
+const Compte = { nom: 'Mon espace', url: '/mon-espace' }
+const JPOinscription = { nom: "S'inscrire à la JPO", url: '/auth?mode=inscription' }
+
 export default function Navbar() {
     const [openMenu, setOpenMenu] = useState(null);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const menusRef = useRef(null);
+    const { pathname } = useLocation();
 
+    const RoleAdmin = true; // = false : cache admin
+    const IsInscrit = true; // true = cache page d'inscription ( S'inscrire a la jpo )
+    const IsConnected = true; // false = cache mon espace
+    // attention c une double verif, faut mettre double true pour afficher l'autre etat
+
+    // Ferme les menus à chaque changement de page (y compris bouton retour du navigateur)
+    const [cheminPrecedent, setCheminPrecedent] = useState(pathname);
+    if (pathname !== cheminPrecedent) {
+        setCheminPrecedent(pathname);
+        setOpenMenu(null);
+        setMobileMenuOpen(false);
+    }
+
+    // Ferme les menus au clic extérieur
     useEffect(() => {
         const handleOutsideClick = (event) => {
             if (menusRef.current && !menusRef.current.contains(event.target)) {
@@ -29,195 +80,146 @@ export default function Navbar() {
         return () => document.removeEventListener('pointerdown', handleOutsideClick);
     }, []);
 
-    const BUTMMI = [
-        { id: 1, nom: 'La formation', url: '/formation' },
-        { id: 2, nom: 'Visite Virtuelle', url: '/visite-virtuelle' },
-        { id: 3, nom: 'Projets MMI', url: '/projets' },
-        { id: 4, nom: 'Actualités', url: '/actus'},
+    // Échap ferme le sous-menu ouvert et rend le focus à son bouton
+    useEffect(() => {
+        if (!openMenu) return;
+        const handleEscape = (event) => {
+            if (event.key !== 'Escape') return;
+            setOpenMenu(null);
+            document.getElementById(`${openMenu}-bouton`)?.focus();
+        };
 
-    ]
+        document.addEventListener('keydown', handleEscape);
+        return () => document.removeEventListener('keydown', handleEscape);
+    }, [openMenu]);
 
-    const JPO = [
-        { id: 1, nom: 'JPO', url: '/jpo' },
-        { id: 2, nom: 'Programme de la JPO', url: '/planning-jpo' },
-    ];
+    const fermerMenus = () => {
+        setOpenMenu(null);
+        setMobileMenuOpen(false);
+    };
 
-    const Services = [
-        { id: 1, nom: 'Plan du Site', url: '/planDuSite' },
-        { id: 2, nom: 'Nous contacter', url: '/contact' },
-    ];
-
-    const Accueil = { nom: 'Accueil', url: '/' }
-    const Admin = { nom: 'Admin', url: '/admin/dashboard' }
-    const Compte = { nom: 'Mon espace', url: '/mon-espace' }
-    const JPOinscription = { nom: "S'inscrire à la JPO", url: '/auth?mode=inscription' }
-
-    const RoleAdmin = true; // = false : cache admin
-    const IsInscrit = false; // true = cache page d'inscription ( S'inscrire a la jpo )
-    const IsConnected = false; // false = cache mon espace
-    // attention c une double verif, faut mettre double true pour afficher l'autre etat
+    const classeLien = ({ isActive }) => `${itemBleuClassName} ${isActive ? itemActifClassName : ''}`;
 
     return (
-        <nav className="bg-white">
+        <nav className="bg-white" aria-label="Navigation principale">
             <div className="flex flex-wrap items-center justify-between shadow-md lg:flex-nowrap lg:items-stretch lg:pl-8 xl:pl-20">
                 <div className="flex w-full items-center justify-between lg:w-auto">
-                    <Link to="/">
+                    <Link to="/" className="focus-visible:outline-2 focus-visible:outline-mmi-bleu">
                         {/* <img src={logo} alt="Logo" className="h-12 p-2 w-auto" /> */}
                         faire un logo departement MMI
                     </Link>
                     <button
                         type="button"
-                        className="cursor-pointer p-2 text-2xl text-black lg:hidden"
+                        className="cursor-pointer p-3 text-2xl text-black focus-visible:outline-2 focus-visible:outline-mmi-bleu lg:hidden"
                         aria-label={mobileMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
                         aria-expanded={mobileMenuOpen}
                         aria-controls="navigation-links"
                         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                     >
-                        {mobileMenuOpen ? <FaTimes /> : <HiMiniBars3BottomRight color='black' />}
+                        {mobileMenuOpen ? <FaTimes /> : <HiMiniBars3BottomRight />}
                     </button>
                 </div>
 
-                <section
+                <ul
                     id="navigation-links"
-                    className={`${mobileMenuOpen ? "grid" : "hidden"} w-full grid-cols-1 items-stretch lg:flex lg:w-auto`}
+                    ref={menusRef}
+                    className={`${mobileMenuOpen ? "flex" : "hidden"} w-full flex-col lg:flex lg:w-auto lg:flex-row lg:items-stretch`}
                 >
+                    <li className="flex">
+                        <NavLink to={Accueil.url} end className={classeLien} onClick={fermerMenus}>
+                            <IoHome aria-hidden="true" />
+                            {Accueil.nom}
+                        </NavLink>
+                    </li>
 
-                    <Link
-                        aria-label={Accueil.nom}
-                        className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm bg-[#3c3792] text-white hover:bg-[#2a266c] lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
-                        to={Accueil.url}
-                    >
-                        <IoHome />
-                        <span className="lg:hidden">{Accueil.nom}</span>
-                        <span className="hidden lg:inline">{Accueil.nom}</span>
-                    </Link>
+                    {MENUS.map((menu) => {
+                        const ouvert = openMenu === menu.id;
+                        const contientPageActive = menu.pages.some((page) => pathname.startsWith(page.url));
 
-                    <ul ref={menusRef} className="contents lg:flex lg:flex-row lg:items-stretch">
-                        <li className="relative flex w-full items-center justify-center lg:w-auto">
-                            <button
-                                type="button"
-                                className="bg-[#3c3792] text-white hover:bg-[#2a266c] relative flex h-full w-full cursor-pointer items-center justify-center px-2 py-3 text-base lg:static lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg"
-                                aria-expanded={openMenu === 'BUTMMI'}
-                                aria-controls="BUTMMI-menu"
-                                onClick={() => setOpenMenu(openMenu === 'BUTMMI' ? null : 'BUTMMI')}
-                            >
-                                <span className="w-full text-center lg:w-auto">BUT MMI</span>
-                                <RiArrowDropDownLine className="absolute right-3 mt-1 lg:static" />
-                            </button>
-                            <ul
-                                id="BUTMMI-menu"
-                                className={`${openMenu === 'BUTMMI' ? 'visible opacity-100' : 'invisible opacity-0'} absolute left-0 top-full z-20 w-full min-w-0 bg-white py-0 text-center text-lg shadow-lg transition-opacity lg:w-auto lg:min-w-48 lg:text-left`}
-                            >
-                                {BUTMMI.map((page) => (
-                                    <li key={page.id}>
-                                        <Link className="hover:border-l-3 hover:border-[#3c3792] block whitespace-normal px-4 py-3 text-center text-lg text-black hover:bg-gray-100 transform transition-all duration-100 lg:whitespace-nowrap lg:text-left" to={page.url}>
-                                            {page.nom}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </li>
+                        return (
+                            <li key={menu.id} className="relative flex flex-col lg:flex-row">
+                                <button
+                                    id={`${menu.id}-bouton`}
+                                    type="button"
+                                    className={`${itemBleuClassName} relative lg:static ${contientPageActive ? itemActifClassName : ''}`}
+                                    aria-expanded={ouvert}
+                                    aria-controls={`${menu.id}-menu`}
+                                    onClick={() => setOpenMenu(ouvert ? null : menu.id)}
+                                >
+                                    {menu.nom}
+                                    <RiArrowDropDownLine
+                                        aria-hidden="true"
+                                        className={`absolute right-3 text-2xl transition-transform duration-200 lg:static ${ouvert ? 'rotate-180' : ''}`}
+                                    />
+                                </button>
+                                {/* Mobile : accordéon dans le flux. Desktop : menu flottant */}
+                                <ul
+                                    id={`${menu.id}-menu`}
+                                    className={`${ouvert ? 'block lg:visible lg:opacity-100' : 'hidden lg:block lg:invisible lg:opacity-0'} w-full bg-white transition-opacity lg:absolute lg:left-0 lg:top-full lg:z-20 lg:w-auto lg:min-w-48 lg:shadow-lg`}
+                                >
+                                    {menu.pages.map((page) => (
+                                        <li key={page.id}>
+                                            <NavLink
+                                                to={page.url}
+                                                onClick={fermerMenus}
+                                                className={({ isActive }) => `${sousItemClassName} ${isActive ? sousItemActifClassName : ''}`}
+                                            >
+                                                {page.nom}
+                                            </NavLink>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </li>
+                        );
+                    })}
 
-                        <li className="relative flex w-full items-center justify-center lg:w-auto">
-                            <button
-                                type="button"
-                                className="bg-[#3c3792] text-white hover:bg-[#2a266c] relative flex h-full w-full cursor-pointer items-center justify-center px-2 py-3 text-base lg:static lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg"
-                                aria-expanded={openMenu === 'jpo'}
-                                aria-controls="jpo-menu"
-                                onClick={() => setOpenMenu(openMenu === 'jpo' ? null : 'jpo')}
-                            >
-                                <span className="w-full text-center lg:w-auto">JPO</span>
-                                <RiArrowDropDownLine className="absolute right-3 mt-1 lg:static" />
-                            </button>
-                            <ul
-                                id="jpo-menu"
-                                className={`${openMenu === 'jpo' ? 'visible opacity-100' : 'invisible opacity-0'} absolute left-0 top-full z-20 w-full min-w-0 bg-white py-0 text-center text-lg shadow-lg transition-opacity lg:w-auto lg:min-w-48 lg:text-left`}
-                            >
-                                {JPO.map((page) => (
-                                    <li key={page.id}>
-                                        <Link className="hover:border-l-3 hover:border-[#3c3792] block whitespace-normal px-4 py-3 text-center text-lg text-black hover:bg-gray-100 transform transition-all duration-100 lg:whitespace-nowrap lg:text-left" to={page.url}>
-                                            {page.nom}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </li>
+                    <li className="flex">
+                        <NavLink to={Contact.url} className={classeLien} onClick={fermerMenus}>
+                            {Contact.nom}
+                        </NavLink>
+                    </li>
 
-                        <li className="relative flex w-full items-center justify-center lg:w-auto">
-                            <button
-                                type="button"
-                                className="bg-[#3c3792] text-white hover:bg-[#2a266c] relative flex h-full w-full cursor-pointer items-center justify-center px-2 py-3 text-base  lg:static lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
-                                aria-expanded={openMenu === 'services'}
-                                aria-controls="services-menu"
-                                onClick={() => setOpenMenu(openMenu === 'services' ? null : 'services')}
-                            >
-                                <span className="w-full text-center lg:w-auto">Services</span>
-                                <RiArrowDropDownLine className="absolute right-3 mt-1 lg:static" />
-                            </button>
-                            <ul
-                                id="services-menu"
-                                className={`${openMenu === 'services' ? 'visible opacity-100' : 'invisible opacity-0'} absolute left-0 top-full z-20 w-full min-w-0 bg-white text-center shadow-lg transition-opacity lg:w-auto lg:min-w-48 lg:text-left transform duration-300`}
-                            >
-                                {Services.map((page) => (
-                                    <li key={page.id}>
-                                        <Link className="hover:border-l-3 hover:border-[#3c3792] block whitespace-normal px-4 py-3 text-center text-lg text-black hover:bg-gray-100 transform transition-all duration-100 lg:whitespace-nowrap lg:text-left" to={page.url}>
-                                            {page.nom}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </li>
-                    </ul>
-
+                    {/* Espace utilisateur, séparé visuellement de la navigation */}
                     {RoleAdmin === true && (
-                        <Link
-                            aria-label={Admin.nom}
-                            className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm bg-[#3c3792] text-white hover:bg-[#2a266c] lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
-                            to={Admin.url}
-                        >
-                        <MdOutlineAdminPanelSettings />
-                        <span className="lg:hidden">{Admin.nom}</span>
-                        <span className="hidden lg:inline">{Admin.nom}</span>
-                    </Link>
+                        <li className="flex lg:border-l lg:border-white/25">
+                            <NavLink to={Admin.url} className={classeLien} onClick={fermerMenus}>
+                                <MdOutlineAdminPanelSettings aria-hidden="true" />
+                                {Admin.nom}
+                            </NavLink>
+                        </li>
                     )}
 
                     {IsConnected === true && (
-                        <Link
-                            aria-label={Compte.nom}
-                            className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm bg-[#3c3792] text-white hover:bg-[#2a266c] lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
-                            to={Compte.url}
-                        >
-                            <FaUser />
-                            <span className="lg:hidden">{Compte.nom}</span>
-                            <span className="hidden lg:inline">{Compte.nom}</span>
-                        </Link>
+                        <li className="flex lg:border-l lg:border-white/25">
+                            <NavLink to={Compte.url} className={classeLien} onClick={fermerMenus}>
+                                <FaUser aria-hidden="true" />
+                                {Compte.nom}
+                            </NavLink>
+                        </li>
                     )}
 
                     {IsInscrit === false && IsConnected === false ? (
-                        <Link
-                            aria-label={JPOinscription.nom}
-                            className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm text-white bg-[#00936e] hover:bg-[#92c56e] lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
-                            to={JPOinscription.url}
-                        >
-                            <IoIosSchool />
-                            {JPOinscription.nom}
-                        </Link>
-                    ) : IsInscrit === true && IsConnected === true ? (
-                        <div>
-                            <button
-                                type="button"
-                                disabled
-                                className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm text-white bg-[#00936e] lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
+                        <li className="flex">
+                            <NavLink
+                                to={JPOinscription.url}
+                                onClick={fermerMenus}
+                                className={`${itemClassName} bg-mmi-vert font-bold hover:bg-mmi-vert-clair hover:text-mmi-texte`}
                             >
-                                <IoIosSchool />
+                                <IoIosSchool aria-hidden="true" />
+                                {JPOinscription.nom}
+                            </NavLink>
+                        </li>
+                    ) : IsInscrit === true && IsConnected === true ? (
+                        <li className="flex">
+                            {/* Simple indicateur d'état, non cliquable */}
+                            <span className="inline-flex h-full w-full min-w-0 cursor-default items-center justify-center gap-2 bg-mmi-vert px-4 py-4 text-center text-base font-bold text-white lg:w-auto lg:text-lg">
+                                <FaCheck aria-hidden="true" />
                                 Inscrit à la JPO
-                            </button>
-                        </div>
+                            </span>
+                        </li>
                     ) : null}
-
-                </section>
+                </ul>
             </div>
-            <div className="hidden h-2 w-full bg-[#3c3792] lg:block"></div>
         </nav>
     )
 }

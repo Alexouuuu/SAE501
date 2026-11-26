@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+@theme {
+    --color-mmi-bleu: #3c3792;
+    --color-mmi-bleu-fonce: #2a266c;
+    --color-mmi-vert: #00936e;
+    --color-mmi-vert-clair: #92c56e;
+    --color-mmi-texte: #1d1d1b;
+}
