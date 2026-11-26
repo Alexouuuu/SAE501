@@ -79,6 +79,7 @@ export default function Enseignements() {
 
             const tl = gsap.timeline({
                 scrollTrigger: {
+                    id: "animation-mmi", // utilisé par le lien « Découvrir la formation » du hero
                     trigger: section,
                     start: "top top",
                     end: () => `+=${window.innerHeight * (slides.length + 1)}`,
@@ -99,6 +100,9 @@ export default function Enseignements() {
                         ease: "none",
                     }, index * 0.3);
                 });
+
+                // Moment où le dernier mot est entièrement apparu
+                tl.addLabel("titreComplet", introWords.length * 0.3);
 
                 tl.to(intro, {
                     autoAlpha: 0,
@@ -141,7 +145,7 @@ export default function Enseignements() {
     }, []);
 
     return (
-        <section ref={sectionRef} className="relative h-screen w-full overflow-hidden text-white bg-black/20">
+        <section id="decouvrir-formation" ref={sectionRef} className="relative h-screen w-full overflow-hidden text-white bg-black/20">
             <div
                 ref={introRef}
                 className="absolute inset-0 z-20 flex items-center justify-center bg-white px-6 text-center text-slate-950 sm:px-10"

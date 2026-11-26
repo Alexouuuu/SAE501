@@ -2,7 +2,6 @@
 //maxime derenes
 
 // sections
-import ScrollFormation from "./FormationsComps/ScrollFormation";
 import AnimationMMI from "./FormationsComps/AnimationMMI";
 import HeroFormation from "./FormationsComps/HeroFormation";
 import DomainesFormation from "./FormationsComps/DomainesFormation";
@@ -34,8 +33,6 @@ export default function Formation() {
             <TitreProps titre="La formation MMI" />
             <HeroFormation />
             <Filarial titrePage="La formation" />
-
-            <ScrollFormation /> {/*incite a scroll*/}
 
             <AnimationMMI />
             
