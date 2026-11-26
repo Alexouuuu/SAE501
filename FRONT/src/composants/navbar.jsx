@@ -9,8 +9,9 @@ import { IoIosSchool } from "react-icons/io";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import { MdOutlineAdminPanelSettings } from "react-icons/md";
 import { HiMiniBars3BottomRight } from "react-icons/hi2";
+import { IoHome } from "react-icons/io5";
 
-import logo from "../images/logo_univ_eiffel_bleu.webp"
+// import logo from "../images/logo_univ_eiffel_bleu.webp"
 
 export default function Navbar() {
     const [openMenu, setOpenMenu] = useState(null);
@@ -49,11 +50,11 @@ export default function Navbar() {
     const Accueil = { nom: 'Accueil', url: '/' }
     const Admin = { nom: 'Admin', url: '/admin/dashboard' }
     const Compte = { nom: 'Mon espace', url: '/mon-espace' }
-    const JPOinscription = { nom: "S'inscrire à la JPO", url: '/auth' }
+    const JPOinscription = { nom: "S'inscrire à la JPO", url: '/auth?mode=inscription' }
 
     const RoleAdmin = true; // = false : cache admin
-    const IsInscrit = true; // true = cache page d'inscription ( S'inscrire a la jpo )
-    const IsConnected = true; // false = cache mon espace
+    const IsInscrit = false; // true = cache page d'inscription ( S'inscrire a la jpo )
+    const IsConnected = false; // false = cache mon espace
     // attention c une double verif, faut mettre double true pour afficher l'autre etat
 
     return (
@@ -61,7 +62,8 @@ export default function Navbar() {
             <div className="flex flex-wrap items-center justify-between shadow-md lg:flex-nowrap lg:items-stretch lg:pl-8 xl:pl-20">
                 <div className="flex w-full items-center justify-between lg:w-auto">
                     <Link to="/">
-                        <img src={logo} alt="Logo" className="h-12 p-2 w-auto" />
+                        {/* <img src={logo} alt="Logo" className="h-12 p-2 w-auto" /> */}
+                        faire un logo departement MMI
                     </Link>
                     <button
                         type="button"
@@ -85,6 +87,7 @@ export default function Navbar() {
                         className="inline-flex h-full min-w-0 w-full items-center justify-center gap-1 px-2 py-5 text-center text-sm bg-[#3c3792] text-white hover:bg-[#2a266c] lg:w-auto lg:gap-2 lg:px-4 lg:py-4 lg:text-lg transform transition duration-300"
                         to={Accueil.url}
                     >
+                        <IoHome />
                         <span className="lg:hidden">{Accueil.nom}</span>
                         <span className="hidden lg:inline">{Accueil.nom}</span>
                     </Link>
@@ -214,7 +217,7 @@ export default function Navbar() {
 
                 </section>
             </div>
-            {/* <div className="hidden h-2 w-full bg-[#3c3792] lg:block"></div> */}
+            <div className="hidden h-2 w-full bg-[#3c3792] lg:block"></div>
         </nav>
     )
 }

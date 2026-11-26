@@ -35,7 +35,7 @@ const planDuSiteData = [
             titre: "Gestion du Compte",
             liens: [
                 { nom: "Mon espace", route: "/mon-espace" },
-                { nom: "S'inscrire à la JPO", route: "/auth" },
+                { nom: "S'inscrire à la JPO", route: "/auth?mode=inscription" },
             ]
         }, {
             titre: "Navigation",

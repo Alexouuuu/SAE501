@@ -53,6 +53,8 @@
     }
 }
 
+/*img de fond pour le footer*/
+
 .footer-pattern {
     background-image: url("../../images/pattern2.webp");
     background-repeat: repeat;

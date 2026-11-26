@@ -12,8 +12,8 @@ import bg from "../../../images/IUT.webp"
 const boutonSecondaire = "group gap-3 whitespace-nowrap inline-flex min-h-12 items-center justify-center rounded-md border-2 border-white px-4 text-center font-semibold transition-colors hover:bg-white hover:text-[#2f2a85] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white";
 
 export default function LandingAccueil({
-    titre = "Journée Portes Ouvertes 2026",
-    soustitre = "L'université Gustave Eiffel vous ouvre ses portes pour découvrir l'IUT de Meaux et ses formations.",
+    titre = "BUT MMI. JPO 2026",
+    soustitre = "L'université Gustave Eiffel vous ouvre ses portes pour découvrir la formation BUT MMI à l'IUT de Meaux.",
     date = "Date et horaires à confirmer",
     adresse = "17 rue Jablinot, 77100 Meaux",
     backgroundImage = bg,

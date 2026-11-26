@@ -1,27 +1,21 @@
 import { useState } from "react";
 import Champ from "./Champ";
+import MessageInfo from "./MessageInfo";
+import useValidation from "./useValidation";
+
+const lienClassName =
+    "cursor-pointer font-semibold text-[#212684] underline underline-offset-4 hover:decoration-[#92c56e] hover:decoration-2";
 
 export default function Connexion({ onCreateAccount }) {
     const [message, setMessage] = useState("");
-    const [formulaireValide, setFormulaireValide] = useState(false);
+    const { erreurs, surSortie, surSaisie, validerTout } = useValidation();
 
     function handleSubmit(event) {
         event.preventDefault();
-        setMessage("La connexion et la création de compte nécessitent le serveur.");
-    }
+        setMessage("");
+        if (!validerTout(event.currentTarget)) return;
 
-    function verifierFormulaire(event) {
-        const formulaire = event.currentTarget;
-        const champsRequis = Array.from(
-            formulaire.querySelectorAll("input[required], select[required], textarea[required]")
-        );
-        const champsRenseignes = champsRequis.every((champ) =>
-            champ.type === "checkbox"
-                ? champ.checked && champ.validity.valid
-                : champ.value.trim() !== "" && champ.validity.valid
-        );
-
-        setFormulaireValide(formulaire.checkValidity() && champsRenseignes);
+        setMessage("Le service de connexion n'est pas encore disponible. Merci de réessayer plus tard.");
     }
 
     return (
@@ -33,48 +27,51 @@ export default function Connexion({ onCreateAccount }) {
 
             <form
                 className="mt-7 space-y-5"
+                noValidate
                 onSubmit={handleSubmit}
-                onChange={verifierFormulaire}
+                onBlur={surSortie}
+                onChange={surSaisie}
             >
                 <Champ
-                    label="Adresse e-mail*"
+                    label="Adresse e-mail"
                     name="email"
                     type="email"
                     autoComplete="email"
+                    erreur={erreurs.email}
                 />
-                <Champ
-                    label="Mot de passe*"
-                    name="password"
-                    type="password"
-                    autoComplete="current-password"
-                    minLength="8"
-                />
+                <div>
+                    <Champ
+                        label="Mot de passe"
+                        name="password"
+                        type="password"
+                        autoComplete="current-password"
+                        erreur={erreurs.password}
+                    />
+                    <div className="mt-2 text-right">
+                        <button
+                            type="button"
+                            className={`${lienClassName} text-sm`}
+                            onClick={() =>
+                                setMessage("La réinitialisation du mot de passe n'est pas encore disponible.")
+                            }
+                        >
+                            Mot de passe oublié ?
+                        </button>
+                    </div>
+                </div>
                 <button
                     type="submit"
-                    disabled={!formulaireValide}
-                    className="w-full cursor-pointer rounded-md bg-[#212684] px-5 py-3 font-semibold text-white transition hover:bg-[#161b7d] focus:outline-none focus:ring-2 focus:ring-[#212684] focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="w-full cursor-pointer rounded-md bg-[#212684] px-5 py-3 font-semibold text-white transition hover:bg-[#3c3792] focus:outline-none focus:ring-2 focus:ring-[#212684] focus:ring-offset-2"
                 >
                     Se connecter
                 </button>
             </form>
 
-            {message && (
-                <p
-                    className="mt-5 rounded-md border border-amber-300 bg-amber-50 p-4 text-sm leading-6 text-amber-950"
-                    role="status"
-                    aria-live="polite"
-                >
-                    {message}
-                </p>
-            )}
+            {message && <MessageInfo>{message}</MessageInfo>}
 
             <p className="mt-5 text-center text-sm text-gray-600">
                 Pas encore de compte ?{" "}
-                <button
-                    type="button"
-                    className="cursor-pointer font-semibold text-[#212684] underline underline-offset-2 hover:text-[#161b7d]"
-                    onClick={onCreateAccount}
-                >
+                <button type="button" className={lienClassName} onClick={onCreateAccount}>
                     Créer un compte
                 </button>
             </p>
